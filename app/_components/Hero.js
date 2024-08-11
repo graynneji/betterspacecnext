@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 "use client";
 import styles from "./Hero.module.css"; // Import the CSS module
-import RightHeroImage from "@/public/Img.svg";
+// import RightHeroImage from "@/public/Img.svg";
 import Input from "./Input";
 import { Form, useForm } from "react-hook-form";
 import Button from "./Button";
@@ -63,12 +63,12 @@ function Hero() {
               alt="flower"
             />
           </div>
-          <Image
+          {/* <Image
             style={{ width: "100%", height: "100%" }}
             src={RightHeroImage}
             alt="Hero Image man and a woman hugging sign of peace"
             className={styles.blur}
-          />
+          /> */}
           <div className={styles.styledStar}>
             <Image
               style={{ width: "100%", height: "100%" }}
