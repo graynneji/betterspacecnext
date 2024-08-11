@@ -1,0 +1,21 @@
+.fourOfourmain{
+  background-color:   rgba(248, 244, 240, 1);
+  text-align: center;
+  padding: 9rem;
+}
+.notContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    margin-bottom: 8rem;
+}
+.four{
+    font-size: 10.6rem;
+    line-height: 2.4rem;
+}
+.fourText{
+    font-size: 3.6rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+    
+}

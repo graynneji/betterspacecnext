@@ -42,6 +42,13 @@ function Button({ children, disabled, type }) {
       </button>
     );
   }
+  if (type === "fourOFour") {
+    return (
+      <button type="fourOFour" className={styles.fourOFour}>
+        {children}
+      </button>
+    );
+  }
 }
 
 export default Button;

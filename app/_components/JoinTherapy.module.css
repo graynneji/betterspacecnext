@@ -1,0 +1,31 @@
+/* JoinTherapy.module.css */
+.TextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .ContentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
+  }
+  
+  .Rows {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+  
+  .Solutions {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: auto auto;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Solutions {
+      grid-template-columns: auto;
+    }
+  }
+  

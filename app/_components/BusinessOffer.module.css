@@ -54,6 +54,9 @@
   }
   
   .Feature {
+    display: flex;
+    flex-direction: column;
+    place-self: center;
     gap: 20px;
     width: auto;
   }

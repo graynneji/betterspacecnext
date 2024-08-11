@@ -79,6 +79,7 @@
     margin-left: -1.5rem;
     max-width: 17.4rem;
     max-height: 5.6rem;
+    border: none;
   }
   
   @media screen and (max-width: 468px) {
@@ -121,4 +122,11 @@
     .businessBtn {
       padding: 12px 24px;
     }
+  }
+  .fourOFour{
+    padding: 2rem;
+    color: #022c22;
+    background-color: #eff87a;
+    /* font-size: 2.4rem; */
+    border: none;
   }
