@@ -1,0 +1,93 @@
+.styledSteps {
+    background-color: rgba(239, 248, 122, 1);
+  }
+  
+  .stepsContainer {
+    padding: 64px 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  @media screen and (max-width: 685px) {
+    .stepsContainer {
+      padding: 40px 16px;
+    }
+  }
+  
+  .textBold {
+    font-family: "Poppins", sans-serif;
+    flex: 1;
+    font-weight: 700;
+    font-size: 3.6rem;
+    line-height: 4.8rem;
+    letter-spacing: -0.01em;
+    color: rgba(2, 44, 34, 1);
+  }
+  
+  @media screen and (max-width: 685px) {
+    .textBold {
+      font-size: 3.2rem;
+      line-height: 4rem;
+    }
+  }
+  
+  .stepsProper {
+    display: flex;
+    gap: 3.2rem;
+  }
+  
+  @media screen and (max-width: 685px) {
+    .stepsProper {
+      flex-direction: column;
+    }
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    height: auto;
+    color: rgba(2, 44, 34, 1);
+  }
+  
+  .stepNumber {
+    font-weight: 800;
+    font-size: 4rem;
+    line-height: 4.2rem;
+    position: relative;
+    z-index: 9999;
+  }
+  
+  .stepBoldText {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.01em;
+  }
+  
+  .stepLightText {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+  
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  
+  .numberContainer {
+    position: relative;
+  }
+  
+  .roundedImg img {
+    position: absolute;
+    top: -0.3em;
+    left: -0.3em;
+  }
+  

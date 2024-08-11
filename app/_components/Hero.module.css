@@ -1,0 +1,199 @@
+.heroContainer {
+    padding: 64px 120px;
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  @media screen and (max-width: 1270px) {
+    .heroContainer {
+      padding: 64px 16px;
+    }
+  }
+  
+  @media screen and (max-width: 990px) {
+    .heroContainer {
+      padding: 32px 16px;
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+  
+  .styledHero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.2rem;
+    padding: 0px 40px;
+  }
+  
+  @media screen and (max-width: 1270px) {
+    .styledHero {
+      gap: 3.2rem;
+    }
+  }
+  
+  @media screen and (max-width: 990px) {
+    .styledHero {
+      padding: 0px;
+      flex-direction: column;
+    }
+  }
+  
+  .leftHero {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    flex: 1;
+    align-self: center;
+    width: 100%;
+  }
+  
+  .leftTextHero {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+  
+  .leftTextBold {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    color: rgba(2, 44, 34, 1);
+    font-weight: 700;
+    font-size: 6.4rem;
+    line-height: 6.8rem;
+    letter-spacing: -0.04em;
+  }
+  
+  @media screen and (max-width: 990px) {
+    .leftTextBold {
+      font-size: 3.6rem;
+      line-height: 4.8rem;
+      letter-spacing: -0.01em;
+    }
+  }
+  
+  .leftTextLight {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    letter-spacing: -0.004em;
+    color: rgba(2, 44, 34, 1);
+  }
+  
+  .rightHero {
+    flex: 1;
+    position: relative;
+    width: 100%;
+  }
+  
+  .rightHero img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .styledForm {
+    display: flex;
+    border: 0.1rem solid rgba(2, 44, 34, 0.1);
+    padding: 0px 0px 0px 24px;
+    border-radius: 4.8rem;
+    justify-content: space-between;
+    max-width: 40.5rem;
+    max-height: 40.5rem;
+    overflow: hidden;
+  }
+  
+  .styledForm:hover,
+  .styledForm:focus {
+    background: white;
+    color: #022c22;
+    border: 1px solid #022c22;
+  }
+  
+  @media screen and (max-width: 990px) {
+    .styledForm {
+      width: 100%;
+      max-width: none;
+      max-height: none;
+    }
+  }
+  
+  @media screen and (max-width: 695.2px) {
+    .styledForm {
+      width: 100%;
+      max-width: none;
+      max-height: none;
+    }
+  }
+  
+  .styledFlower {
+    position: absolute;
+    top: -2em;
+    right: -3em;
+    z-index: 9999;
+  }
+  
+  .styledFlower img {
+    max-width: 90%;
+    height: auto;
+  }
+  
+  @media screen and (max-width: 687.2px) {
+    .styledFlower {
+      top: -1.2em;
+      right: -5.5em;
+    }
+  
+    .styledFlower img {
+      max-width: 60%;
+      height: auto;
+    }
+  }
+  
+  .styledStar {
+    position: absolute;
+    bottom: -3em;
+    left: -2.5em;
+  }
+  
+  .styledStar img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  @media screen and (max-width: 687.2px) {
+    .styledStar {
+      bottom: -3em;
+      left: -1.8em;
+    }
+  
+    .styledStar img {
+      max-width: 70%;
+      height: auto;
+    }
+  }
+  
+  .styledLine {
+    position: absolute;
+    bottom: -0.3em;
+    left: 12px;
+  }
+  
+  @media screen and (max-width: 989.6px) {
+    .styledLine {
+      bottom: -0.4em;
+    }
+  }
+  /* .blur{
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+  } */
+   .blur{
+    /* border: 2px solid rgba(2, 44, 34, 0.353); */
+    border: none;
+    padding: 3px 7px 3px 7px;
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.179); */
+    background-color: rgba(2, 44, 34, 0.197);
+    /* background-color: rgba(240, 248, 122, 0.432); */
+    border-radius: 15px;
+   }

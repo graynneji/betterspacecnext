@@ -1,0 +1,63 @@
+.label {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    letter-spacing: -0.1px;
+    font-weight: 500;
+    color: #022c22;
+  }
+  
+  .styledInput {
+    width: 100%;
+    border-radius: 0.6rem;
+    padding: 1.2rem 1.6rem;
+    gap: 0.8rem;
+    border: 1px solid #e7e7e7;
+  }
+  
+  .styledInput::placeholder {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: rgba(136, 136, 136, 1);
+  }
+  
+  .styledInputArea {
+    width: 100%;
+    border-radius: 0.6rem;
+    padding: 1.2rem 1.6rem;
+    gap: 1rem;
+    border: 1px solid #e7e7e7;
+  }
+  
+  .styledInputArea::placeholder {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: rgba(136, 136, 136, 1);
+  }
+  
+  .inputLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  
+  .joinHeroInput {
+    border: none;
+    flex: 1;
+  }
+  
+  .joinHeroInput:focus {
+    outline: none;
+    outline-offset: none;
+  }
+  .ErrorMessage {
+  color: red;
+  font-size: 1.4rem;
+  }

@@ -1,0 +1,130 @@
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(45deg);
+    }
+  }
+  
+  .styledNav {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaebf0;
+    display: flex;
+    height: 80px;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 160px 20px 160px;
+  }
+  
+  @media screen and (max-width: 1270px) {
+    .styledNav {
+      padding: 20px 60px 20px 60px;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .styledNav {
+      padding: 16px;
+    }
+  }
+  
+  .navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .navbarContainer {
+      padding: 0;
+    }
+  }
+  
+  .navbarContent {
+    
+  /* padding: 0 32px 0 32px; */
+  width: 100%;
+ 
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbarItems {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 0;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .navbarItems {
+      display: none;
+    }
+  }
+  
+  .navToggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 16px;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .navToggle {
+      display: flex;
+    }
+  }
+  
+  .navItem {
+    display: flex;
+    gap: 6px;
+  }
+  
+  .menuIcon,
+  .closeIcon {
+    width: 50px;
+    height: 50px;
+    color: #022c22;
+  }
+  
+  .closeIcon {
+    animation: spin 0.3s ease-in-out;
+    z-index: 100000000;
+  }
+  
+  .navLink {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    color: #022c22;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .navLink:hover,
+  .navLink:focus {
+    border-bottom: 2px solid #022c22;
+  }
+  
+  .navbarButtonContainer {
+    display: flex;
+    padding: 0 0 0 32px;
+    gap: 24px;
+  }
+  @media screen and (max-width: 992px) {
+    .navbarButtonContainer {
+      display: none;
+    }
+  }
+  
+  .logoLnk {
+    z-index: 10;
+  }
+  

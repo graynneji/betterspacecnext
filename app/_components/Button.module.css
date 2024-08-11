@@ -1,0 +1,124 @@
+/* Button.module.css */
+
+.navbarButton {
+    background: #022c22;
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+  
+  .navbarButton:hover,
+  .navbarButton:focus {
+    background: white;
+    color: #022c22;
+    border: 1px solid #022c22;
+  }
+  
+  .submitBtn {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    padding: 12px 24px;
+    border-radius: 2.4rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.004em;
+    border: none;
+    background-color: #022c22;
+    color: white;
+    width: 100%;
+  }
+  
+  .submitBtn:hover,
+  .submitBtn:focus {
+    background: white;
+    color: #022c22;
+    border: 1px solid #022c22;
+  }
+  
+  .joinBtn {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    padding: 8px 20px;
+    border-radius: 0rem 2.2rem 2.2rem 0rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.004em;
+    border: none;
+    text-align: center;
+    background-color: #eff87a;
+    color: rgba(2, 44, 34, 1);
+    width: 100%;
+  }
+  
+  .joinBtn:hover,
+  .joinBtn:focus {
+    background: white;
+    color: #022c22;
+    border: 1px solid #022c22;
+  }
+  
+  .startBtn {
+    padding: 16px 24px;
+    background-color: rgba(2, 44, 34, 1);
+    border-radius: 4rem;
+    gap: 1.6rem;
+    color: white;
+    width: 100%;
+    margin-left: -1.5rem;
+    max-width: 17.4rem;
+    max-height: 5.6rem;
+  }
+  
+  @media screen and (max-width: 468px) {
+    .startBtn {
+      padding: 12px 24px;
+      gap: 1.6rem;
+      border-radius: 2.4rem;
+      max-height: 4.8rem;
+    }
+  }
+  .businessBtn {
+    background: rgba(239, 248, 122, 1);
+    border-radius: 40px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    color: rgba(2, 44, 34, 1);
+    width: fit-content;
+    border: none;
+    outline: none;
+    transition: 0.3s all ease;
+    cursor: pointer;
+  }
+  
+  .businessBtn:hover,
+  .businessBtn:focus {
+    border: 1px solid rgba(2, 44, 34, 1);
+    background: white;
+  }
+  
+  @media screen and (max-width: 468px) {
+    .businessBtn {
+      padding: 12px 24px;
+    }
+  }

@@ -1,0 +1,76 @@
+.heroSection {
+    background-color: rgba(2, 44, 34, 1);
+    width: 100vw;
+    padding: 0px 200px;
+  }
+  
+  @media screen and (max-width: 990px) {
+    .heroSection {
+      padding: 32px 24px;
+    }
+  }
+  
+  .heroContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 500px;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 690px) {
+    .heroContainer {
+      height: 479px;
+    }
+  }
+  
+  .heroHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .heroHeader {
+      width: 100%;
+    }
+  }
+  
+  .heroHeadingText {
+    font-family: "Poppins", sans-serif;
+    font-size: 6.4rem;
+    font-weight: 700;
+    line-height: 6.8rem;
+    letter-spacing: -0.01em;
+    color: rgba(239, 248, 122, 1);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .heroHeadingText {
+      font-size: 3.2rem;
+      line-height: 4rem;
+    }
+  }
+  
+  .heroHeadingSubText {
+    font-family: "Inter", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 2.6rem;
+    letter-spacing: -0.004em;
+    color: #ffffff83;
+  }
+  
+  .heroHeadingSubText span {
+    color: rgba(239, 248, 122, 1);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .heroHeadingSubText {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+    }
+  }

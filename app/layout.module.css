@@ -1,0 +1,16 @@
+.StyledAppLayout{
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  /* position: relative; */
+}
+
+.Main{
+  /* filter: ${({ isMenuOpen }) => (isMenuOpen ? "blur(8px)" : "none")}; */
+  width: 100vw;
+  overflow-x: hidden;
+  @media screen and (max-width: 990px) {
+    justify-content: center;
+    align-items: center;
+  }
+}
