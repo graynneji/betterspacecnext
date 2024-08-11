@@ -1,0 +1,109 @@
+/* BusinessOffer.module.css */
+.Features {
+    display: flex;
+    gap: 64px;
+    flex-direction: column;
+    padding: 100px 200px 64px 200px;
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  @media screen and (max-width: 1270px) {
+    .Features {
+      padding: 100px 60px 100px 60px;
+    }
+  }
+  
+  @media screen and (max-width: 990px) {
+    .Features {
+      padding: 40px 16px;
+    }
+  }
+  
+  .BlockHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 32px;
+    gap: 12px;
+  }
+  
+  .Container {
+    gap: 48px;
+    padding: 0;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(47%, 1fr));
+  }
+  
+  .BackgroundContent {
+    border-radius: 16px;
+    flex-grow: 1;
+  }
+  
+  .BackgroundContent img {
+    border-radius: 16px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .Content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    place-self: center;
+  }
+  
+  .Feature {
+    gap: 20px;
+    width: auto;
+  }
+  
+  .Number {
+    font-family: "Poppins", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 42px;
+    text-align: center;
+    color: rgba(2, 44, 34, 1);
+    background: rgba(207, 220, 255, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+  }
+  
+  .Heading {
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: rgba(2, 44, 34, 1);
+  }
+  
+  @media screen and (max-width: 468px) {
+    .Heading {
+      font-size: 2rem;
+      line-height: 2.4rem;
+    }
+  }
+  
+  .SupportingText {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: rgba(2, 44, 34, 1);
+  }
+  
+  @media screen and (max-width: 468px) {
+    .SupportingText {
+      font-size: 1.6rem;
+      letter-spacing: -0.004em;
+    }
+  }
+  
