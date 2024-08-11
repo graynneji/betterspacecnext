@@ -8,10 +8,15 @@ import styles from "./not-found.module.css";
 export default function Error({ error, reset }) {
   return (
     <main className={`${styles.fourOfourmain} ${styles.fourText}`}>
-      <h1>Something went wrong!</h1>
-      <p>{error.message}!</p>
+      <div className={styles.errorContainer}>
+        <h1 className={styles.error}>Something went wrong!</h1>
+        <p className={styles.errorText}>
+          <span>⚠️</span>
+          <span>Error: {error.message}!</span>
+        </p>
+      </div>
 
-      <Button onClick={reset} type="fourOFour">
+      <Button onClick={reset} type="error">
         Try again
       </Button>
     </main>

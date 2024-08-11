@@ -19,3 +19,20 @@
     font-weight: 400;
     
 }
+.errorContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+.error{
+    font-size: 4rem;
+}
+.errorText{
+    font-size:2rem;
+    color: red;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}

@@ -21,8 +21,8 @@ export const PrivacyContainer = styled.div`
 `;
 
 export const PrivacyContainerContent = styled(PrivacyContainer)`
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
 `;
 
 export const PrivacyHeader = styled(PrivacyContainer)`
@@ -72,7 +72,7 @@ export const PrivacyParagraph = styled.p`
   color: rgba(2, 44, 34, 1);
 `;
 
-const PrivacyList = styled.ul`
+export const PrivacyList = styled.ul`
   list-style: disc;
   li {
     list-style: disc;

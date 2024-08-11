@@ -49,6 +49,13 @@ function Button({ children, disabled, type }) {
       </button>
     );
   }
+  if (type === "error") {
+    return (
+      <button type="error" className={styles.error}>
+        {children}
+      </button>
+    );
+  }
 }
 
 export default Button;
