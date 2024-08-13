@@ -14,10 +14,12 @@
 
   width: 100vw;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  @media screen and (max-width: 990px) {
-    padding: 40px 16px 40px 16px;
-    justify-content: center;
-    align-items: center;
+}
+@media screen and (max-width: 990px) {
+  .WhyContainer{
+  padding: 40px 16px 40px 16px;
+  justify-content: center;
+  align-items: center;
   }
 }
 
@@ -30,9 +32,11 @@
   line-height: 4.8rem;
   color: rgba(2, 44, 34, 1);
   /* padding: 64px 120px 64px 120px; */
-  @media screen and (max-width: 687.2px) {
-    font-size: 3.2rem;
-    line-height: 4rem;
+}
+@media screen and (max-width: 687.2px) {
+  .WhyBoldText{
+  font-size: 3.2rem;
+  line-height: 4rem;
   }
 }
 .WhyTinyText{
@@ -45,9 +49,10 @@
     line-height: 2.6rem;
     color: rgba(2, 44, 34, 1);
     /* padding: 64px 120px 64px 120px; */
-    @media screen and (max-width: 687.2px) {
-      font-size: 1.6rem;
-  
-      line-height: 2.4rem;
+  }
+  @media screen and (max-width: 687.2px) {
+    .WhyTinyText{
+    font-size: 1.6rem;
+    line-height: 2.4rem;
     }
-}
+  }
