@@ -8,9 +8,9 @@ function NotFound() {
         <h1 className={styles.four}>404</h1>
         <h1 className={styles.fourText}>This page could not be found :(</h1>
       </div>
-      <Button href="/" type="fourOFour">
+      <Link href="/" type="fourOFour">
         Go back to Homepage &#8594;
-      </Button>
+      </Link>
     </main>
   );
 }

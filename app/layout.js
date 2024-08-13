@@ -9,11 +9,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* <div className={styles.StyledAppLayout}> */}
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        {/* </div> */}
+        <div className={styles.StyledAppLayout}>
+          <Header />
+          <main style={{ marginTop: "80px" }}>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

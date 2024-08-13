@@ -1,8 +1,8 @@
 .StyledAppLayout{
-  display: grid;
+  /* display: grid;
   height: 100vh;
-  grid-template-rows: auto 1fr auto;
-  /* position: relative; */
+  grid-template-rows: auto 1fr auto; */
+  position: relative;
 }
 
 .Main{
