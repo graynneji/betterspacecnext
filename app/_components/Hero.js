@@ -30,10 +30,12 @@ function Hero() {
         <div className={styles.leftHero}>
           <div className={styles.leftTextHero}>
             <h1 className={styles.leftTextBold}>
-              Reclaim your mental wellbeing with betterspace
+              Reclaim your <br />
+              mental wellbeing <br />
+              with betterspace
               <div className={styles.styledLine}>
                 <Image
-                  style={{ width: "100%", height: "100%" }}
+                  style={{ width: "80%", height: "100%" }}
                   src={Line}
                   alt="Line"
                 />
@@ -59,7 +61,7 @@ function Hero() {
         <div className={styles.rightHero}>
           <div className={styles.styledFlower}>
             <Image
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "60%", height: "100%" }}
               src={Flower}
               alt="flower"
             />
@@ -72,7 +74,7 @@ function Hero() {
           />
           <div className={styles.styledStar}>
             <Image
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "70%", height: "100%" }}
               src={Star}
               alt="Star"
             />

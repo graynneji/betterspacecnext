@@ -3,7 +3,7 @@
 import Link from "next/link";
 import styles from "./Button.module.css"; // Import the CSS module
 
-function Button({ children, disabled, type }) {
+function Button({ children, disabled, type, href }) {
   if (type === "join") {
     return (
       <button className={styles.navbarButton}>
@@ -44,9 +44,9 @@ function Button({ children, disabled, type }) {
   }
   if (type === "fourOFour") {
     return (
-      <button type="fourOFour" className={styles.fourOFour}>
+      <Link type="fourOFour" href={href} className={styles.fourOFour}>
         {children}
-      </button>
+      </Link>
     );
   }
   if (type === "error") {

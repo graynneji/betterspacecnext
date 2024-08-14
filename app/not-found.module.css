@@ -36,3 +36,23 @@
     gap: 2rem;
     align-items: center;
 }
+@media screen and (max-width: 692.8px) {
+    .fourText {
+      font-size: 2.6rem; 
+      line-height: 2.8rem;
+      letter-spacing: -0.01em; 
+      
+    }
+    .four{
+        
+        font-size: 7.6rem; 
+    }
+  }
+@media screen and (max-width: 543px) {
+    .fourText {
+      font-size: 1.6rem; 
+      line-height: 1.8rem;
+      letter-spacing: -0.01em; 
+     
+    }
+  }
