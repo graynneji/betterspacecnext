@@ -40,6 +40,9 @@ export const PrivacyHeaderText = styled.h1`
   letter-spacing: -0.01em;
   text-align: left;
   color: rgba(2, 44, 34, 1);
+  @media screen and (max-width: 600px) {
+    font-size: 3.5rem;
+  }
 `;
 
 export const PrivacyHeaderTextTwo = styled.h2`
@@ -70,12 +73,19 @@ export const PrivacyParagraph = styled.p`
   letter-spacing: -0.004em;
   text-align: justify;
   color: rgba(2, 44, 34, 1);
+  @media screen and (max-width: 600px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const PrivacyList = styled.ul`
   list-style: disc;
   li {
     list-style: disc;
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 0rem 1rem 0rem 1rem;
   }
 `;
 
