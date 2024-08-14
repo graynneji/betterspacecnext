@@ -11,10 +11,10 @@ function Input({
   label,
   id,
   placeholder,
-  register,
-  error,
+  // register,
+  // error,
   inputType,
-  disabled,
+  // disabled,
 }) {
   return (
     <>
@@ -23,14 +23,15 @@ function Input({
           <input
             id={id}
             type={type}
-            disabled={disabled}
+            name={id}
+            // disabled={disabled}
             placeholder={placeholder}
             className={styles.joinHeroInput}
-            {...register(id)}
+            // {...register(id)}
           />
-          {error && error.message && (
+          {/* {error && error.message && (
             <span className={styles.ErrorMessage}>{error.message}</span>
-          )}
+          )} */}
         </>
       )}
       <div className={styles.inputLabel}>
@@ -42,14 +43,15 @@ function Input({
             <input
               id={id}
               type={type}
-              disabled={disabled}
+              // disabled={disabled}
               placeholder={placeholder}
               className={styles.styledInput}
-              {...register(id)}
+              name={id}
+              // {...register(id)}
             />
-            {error && error.message && (
+            {/* {error && error.message && (
               <span className={styles.ErrorMessage}>{error.message}</span>
-            )}
+            )} */}
           </>
         )}
         {inputType === "textarea" && (
@@ -60,15 +62,16 @@ function Input({
             <textarea
               id={id}
               type={type}
-              disabled={disabled}
+              name={id}
+              // disabled={disabled}
               rows="6"
               placeholder={placeholder}
               className={styles.styledInputArea}
-              {...register(id)}
+              // {...register(id)}
             />
-            {error && error.message && (
+            {/* {error && error.message && (
               <span className={styles.ErrorMessage}>{error.message}</span>
-            )}
+            )} */}
           </>
         )}
       </div>
@@ -76,11 +79,11 @@ function Input({
   );
 }
 
-Input.propTypes = {
-  type: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  placeholder: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-};
+// Input.propTypes = {
+//   type: PropTypes.string.isRequired,
+//   label: PropTypes.string,
+//   placeholder: PropTypes.string.isRequired,
+//   id: PropTypes.string.isRequired,
+// };
 
 export default Input;
