@@ -77,7 +77,7 @@ function NavMenu() {
           </Link>
         </li>
       </ul>
-      <Button type="join" />
+      <Button onClick={handleMenuClick} type="join" />
     </div>
   );
 }
