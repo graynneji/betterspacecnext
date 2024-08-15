@@ -15,7 +15,7 @@ function NavMenu() {
   console.log(isMenuOpen);
   return (
     <div
-      className={styles.NavMenu}
+      className={`${isMenuOpen ? styles.NavMenu : styles.NavMenuClosed}`}
       // className={`${styles.NavMenu} ${
       //   isMenuOpen ? styles.NavMenuOpen : styles.NavMenuClosed
       // }`}
