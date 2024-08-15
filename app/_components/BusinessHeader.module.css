@@ -44,6 +44,8 @@
   
   .text {
     gap: 24px;
+    display: flex;
+    flex-direction: column;
   }
   
   .heading {
