@@ -12,12 +12,9 @@ const menuModalSlice = createSlice({
     toggleMenu(state) {
       state.isMenuOpen = !state.isMenuOpen;
     },
-    toggleTurnOff(state) {
-      state.isMenuOpen = false;
-    },
   },
 });
 
-export const { toggleMenu, toggleTurnOff } = menuModalSlice.actions;
+export const { toggleMenu } = menuModalSlice.actions;
 
 export default menuModalSlice.reducer;

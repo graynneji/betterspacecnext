@@ -1,11 +1,15 @@
+"use client";
+//change to server component later
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./BusinessHeader.module.css";
 import GreenLine from "@/public/green-line.svg";
 import Image from "next/image";
 import Button from "./Button";
+import { usePathname } from "next/navigation";
 
 const BusinessHeader = ({ name, img, img1, img2 }) => {
+  const pathname = usePathname();
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -29,7 +33,9 @@ const BusinessHeader = ({ name, img, img1, img2 }) => {
             </p>
           </div>
           <div className={`${styles.content} ${styles.actions}`}>
-            <Button type="business">Request a demo</Button>
+            <Button type="business" text="Request a demo">
+              {pathname === "/therapy" ? "Apply now" : "Request a demo"}
+            </Button>
           </div>
         </div>
         <div>

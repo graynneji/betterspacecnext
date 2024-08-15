@@ -37,23 +37,33 @@
     width: 100%;
     align-self: center;
   }
-  
+  .QuesAnsContainer{
+display: flex;
+flex-direction: column;
+gap: 1.6rem;
+    padding: 1.6rem 0rem 1.6rem 0rem;
+    word-wrap: break-word;
+    border-bottom: 1px solid rgba(246, 246, 246, 1);
+    cursor: pointer;
+    margin-bottom: 1.6rem;
+  }
+
   .individualFaq {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(246, 246, 246, 1);
-    padding: 1.6rem;
-    margin-bottom: 1.6rem;
-    word-wrap: break-word;
-    cursor: pointer;
+    align-items: center;
   }
-  
+  .answerFaq{
+    /* margin-bottom: 1.6rem; */
+
+  }
   .textFaq {
     font-size: 2rem;
     line-height: 2.4rem;
     letter-spacing: -0.01em;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
+
   }
   
   .spanRound {

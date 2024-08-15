@@ -52,7 +52,7 @@ function Nav() {
             </li>
             <li className={styles.navItem}>
               <Link href="/therapy" className={styles.navLink}>
-                For therapist
+                Log In
               </Link>
             </li>
           </ul>
