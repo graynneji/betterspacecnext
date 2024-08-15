@@ -3,11 +3,13 @@ import Link from "next/link";
 import styles from "./NavMenu.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./Button";
+import { toggleMenu } from "../store/menuModalSlice";
+// import { usePathname } from "next/navigation";
 
 function NavMenu() {
+  // const pathname = usePathname();
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menuModal.isMenuOpen);
-  // const location = useLocation();
 
   const handleMenuClick = () => {
     dispatch(toggleMenu());
@@ -23,7 +25,7 @@ function NavMenu() {
       <ul className={styles.NavMenuContainer}>
         <li className={styles.MenuItem}>
           <Link
-            href="/home"
+            href="/"
             className={`${styles.NavLink} ${styles.NavMenuLink}`}
             onClick={handleMenuClick}
             // active={location.pathname === "/home"}

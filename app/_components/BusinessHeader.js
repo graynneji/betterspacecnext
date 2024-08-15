@@ -12,7 +12,8 @@ const BusinessHeader = ({ name, img, img1, img2 }) => {
         <div className={styles.content}>
           <div className={`${styles.content} ${styles.text}`}>
             <h1 className={styles.heading}>
-              Betterspace for{" "}
+              Betterspace for
+              <br />
               <span className={styles.spanText}>
                 {name}
                 <Image

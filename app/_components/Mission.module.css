@@ -58,11 +58,11 @@
   }
   
   .missionImages {
-    width: auto;
+    /* width: auto;
     border: none;
     padding: 7px;
     background-color: rgba(2, 44, 34, 0.197);
-    border-radius: 25px;
+    border-radius: 25px; */
   }
   
   @media screen and (max-width: 768px) {
