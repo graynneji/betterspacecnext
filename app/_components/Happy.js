@@ -37,25 +37,35 @@ function Happy() {
 
   return (
     <section className={styles.styledHappy}>
+      <div className={styles.whyContainer}>
+        <h3 className={styles.whyHead}>Why betterspace?</h3>
+        <p className={styles.whyPara}>
+          At BetterSpace, we understand the importance of prioritizing your
+          well-being. Whether you&#39;re seeking support for stress, anxiety, or
+          just need a safe space to express yourself, we&#39;re here for you.
+        </p>
+      </div>
       <div className={styles.happyContainer}>
         <picture className={styles.happyImage}>
-          <span className={styles.starFlow}>
-            <Image
-              style={{ width: "100%", height: "100%" }}
-              // placeholder="blur"
-              quality={100}
-              src={StarFlower}
-              alt="star flower"
-              // blurDataURL=""
-            />
-          </span>
+          {/* <span className={styles.starFlow}> */}
+          {/* <Image
+            style={{ width: "40%", height: "100%" }}
+            placeholder="blur"
+            quality={100}
+            src={StarFlower}
+            alt="star flower"
+            className={styles.star}
+          /> */}
+          {/* </span> */}
+
           <Image
-            style={{ width: "100%", height: "100%" }}
+            style={{ minWidth: "100%", width: "100%", height: "100%" }}
             // placeholder="blur"
             quality={100}
             src={ImageHappy}
             alt="content"
             // blurDataURL=""
+            className={styles.Immmage}
           />
         </picture>
 

@@ -13,10 +13,44 @@
       align-items: center;
     }
   }
+  .whyContainer{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    color: #ffffff;
+    margin-bottom: 6.4rem;
+    text-align: center;
+  }
+  .whyHead{
+    font-size:4rem ;
+    /* font: Inter; */
+    font-weight: 700;
+    line-height: 52px;
+    letter-spacing: -0.01em;
+  
+  }
+  .whyPara{
+    font-size:1.8rem ;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.004em;
+   
+  }
+  @media screen and (max-width: 681.6px) {
+    .whyHead {
+      font-size: 3rem ;
+    }
+    .whyPara{
+      font-size: 1.6rem;
+    }
+  }
   
   .happyContainer {
     display: flex;
     gap: 2.4rem;
+   
   }
   
   @media screen and (max-width: 990px) {
@@ -28,16 +62,25 @@
   .happyImage {
     flex: 1;
     width: 100%;
-    position: relative;
+    /* position: relative; */
   }
   
   .happyImage img {
     border-radius: 1.6rem;
-    object-fit: fill;
+    /* object-fit: fill; */
     width: 100%;
     height: 100%;
+ 
   }
-  
+  /* .ImageHappy{
+    position: relative;
+  } */
+  /* .ImageStar{
+    position: absolute;
+    z-index: 9999;
+    top: -20em;
+    width: 30%;
+  } */
   .rightHappy {
     flex: 1;
     display: flex;
@@ -53,6 +96,7 @@
     flex-direction: column;
     gap: 1rem;
     color: rgba(2, 44, 34, 1);
+    /* flex: 1; */
   }
   
   .tabBoldText {
@@ -70,15 +114,25 @@
     line-height: 2.4rem;
     letter-spacing: -0.004em;
   }
-  
+
   .starFlow {
     position: absolute;
-    top: -4em;
-    left: -4em;
+    top: 1rem;
+    left: 10rem;
+
     z-index: 9999;
     width: 30%;
   }
-  
+  .Immmage{
+position: relative;
+  }
+  .star{
+position: absolute;
+z-index: 100;
+top: -1rem;
+left: 1rem;
+width: 40%;
+  }
   @media screen and (max-width: 990px) {
     .starFlow {
       top: -2em;
