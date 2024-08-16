@@ -25,7 +25,7 @@ export default function Testimonial() {
       <div className={styles.testyContainer}>
         {Array.from({ length: 3 }, (_, i) => (
           <div key={i + 1} className={styles.testy}>
-            <p>
+            <p className={styles.testyText}>
               For years, anxiety was holding me back at work. Therapy through
               [Your Service Name] helped me identify my triggers and develop
               coping mechanisms. Now I feel more confident and in control.
@@ -44,7 +44,7 @@ export default function Testimonial() {
                   alt="profile Image"
                 />
               </div>
-              <span>Jenny</span>
+              <span className={styles.testyName}>Jenny</span>
             </span>
           </div>
         ))}

@@ -33,10 +33,37 @@ font-weight: 400;
     gap: 2.4rem;
     /* background-color: transparent; */
 }
+.testyText{
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 26px;
+    letter-spacing: -0.01em;
+}
+.testyName{
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+
+}
 @media screen and (max-width: 685px) {
+    .testimonialContainer{
+        gap: 3.2rem;
+    }
     .testyContainer {
       flex-direction: column;
     }
+    .TestimonialBold{
+        font-weight: 700;
+        font-size: 3.2rem;
+        line-height: 40px;
+        letter-spacing: -0.01em;
+        }
+    .testimonialLight{
+        font-size: 1.6rem;
+        line-height: 24px;
+        letter-spacing: -0.004em;
+     }
   }
 .testy{
     background-color: #ffffff;
