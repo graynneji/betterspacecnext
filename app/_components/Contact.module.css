@@ -1,13 +1,51 @@
 /* ContactContainer.module.css */
 .ContactContainer {
     background-color: #f8f4f0;
-    display: flex;
-    justify-content: center;
-    gap: 4.8rem;
+   
     padding: 64px 200px;
     width: 100vw;
   }
-  
+  .MainContact{
+    display: flex;
+    justify-content: center;
+    gap: 4.8rem;
+  }
+  .ContactHorizontal{
+    border: none;
+    border-top: 1px solid #44444421;
+    margin-top: 64px;
+    padding: 64px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Socials{
+    display: flex;
+    gap: 2.4rem;
+    justify-content: center;
+    align-items: center;
+    /* flex-basis: 100px;  */
+  flex-grow: 0;      
+  flex-shrink: 0;   
+  }
+  .SocialsBoldText{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 2.4rem;
+    line-height: 36px;
+    letter-spacing: -1%;
+    font-weight: 700;
+    color: #022C22;
+  }
+
+  .SocialsLightText{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1.8rem;
+    line-height: 26px;
+    letter-spacing: -0.4%;
+    font-weight: 400;
+    color: #022C22;
+
+  }
   /* .isJoinPage {
     justify-content: space-between;
   } */
@@ -23,7 +61,7 @@
     .ContactContainer {
       padding: 40px 16px;
       justify-content: center;
-      flex-direction: column;
+      /* flex-direction: column; */
     }
   }
   .JoinWaitlist{
@@ -38,8 +76,33 @@
     .JoinWaitlist {
       padding: 40px 16px;
       justify-content: space-between;
+     
+    }
+  }
+  @media screen and (max-width: 685px) {
+    .JoinWaitlist {
+     
       flex-direction: column;
     }
+  
+  }
+  @media screen and (max-width: 685px) {
+    .MainContact{
+      flex-direction: column;
+
+    }
+    .ContactHorizontal{
+      flex-direction: column;
+      align-items: center;
+      margin-top: 48px;
+      padding-bottom: 32px;
+      padding-top: 48px;
+    gap: 4.8rem;
+    justify-content: center;
+    /* text-align: left; */
+      
+    }
+  
   }
   .LeftSide{
   display: flex;

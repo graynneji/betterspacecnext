@@ -21,7 +21,8 @@
     font-weight: 400;
     line-height: 20px;
     text-align: left;
-    color: rgba(136, 136, 136, 1);
+    color: rgba(136, 136, 136, 0.31);
+    /* color: rgba(136, 136, 136, 1); */
   }
   
   .styledInputArea {
@@ -38,7 +39,7 @@
     font-weight: 400;
     line-height: 20px;
     text-align: left;
-    color: rgba(136, 136, 136, 1);
+    color: rgba(136, 136, 136, 0.31);
   }
   
   .inputLabel {
