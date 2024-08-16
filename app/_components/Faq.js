@@ -4,6 +4,7 @@ import styles from "./Faq.module.css";
 import Arrow from "@/public/Icon.svg";
 import Vector from "@/public/Vector.svg";
 import { useState } from "react";
+import { MdKeyboardArrowUp } from "react-icons/md";
 // import { useDispatch, useSelector } from "react-redux";
 // import { toggleQuestion } from "../store/faqSlice";
 
@@ -58,7 +59,11 @@ function Faq() {
                 onClick={() => handleToggle(index)}
               >
                 <span className={styles.textFaq}>{item.question}</span>
-                <Image src={Arrow} alt="arrow" />
+                {openIndex === index ? (
+                  <MdKeyboardArrowUp className={styles.arrowUp} />
+                ) : (
+                  <Image src={Arrow} alt="arrow" />
+                )}
               </div>
               {openIndex === index && (
                 <span className={styles.answerFaq}>{item.answer}</span>

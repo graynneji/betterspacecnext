@@ -4,7 +4,7 @@
     overflow: hidden;
   }
   
-  @media screen and (max-width: 1270px) {
+  /* @media screen and (max-width: 1270px) {
     .heroContainer {
       padding: 64px 16px;
     }
@@ -16,13 +16,19 @@
       justify-content: center;
       flex-direction: column;
     }
-  }
-  
+  } */
+  @media screen and (max-width: 1096.8px) {
+    .heroContainer {
+      padding: 40px 16px;
+     
+    }
+  } 
+  /* ooooooooooooooooooooooo */
   .styledHero {
     display: flex;
     flex-wrap: wrap;
     gap: 3.2rem;
-    padding: 0px 40px;
+    /* padding: 0px 40px; */
   }
   
   @media screen and (max-width: 1270px) {
@@ -69,7 +75,11 @@
     letter-spacing: -0.04em;
     text-wrap: nowrap;
   }
-  
+  /* @media screen and (max-width: 1096.8px) {
+    .leftTextBold {
+      font-size: 6rem;
+    }
+  } */
   @media screen and (max-width: 975.2px) {
     .leftTextBold {
       font-size: 5.6rem; 
@@ -159,7 +169,7 @@
     max-width: 90%;
     height: auto;
   }
-  
+
   @media screen and (max-width: 687.2px) {
     .styledFlower {
       top: -1.2em;
