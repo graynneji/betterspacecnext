@@ -53,4 +53,8 @@ flex-direction: column;
         flex-direction: column-reverse;
         gap: 3.2rem;
     }
+    .downloadHOne{
+        font-size: 3.2rem;
+    line-height: 40px;
+    }
 }
