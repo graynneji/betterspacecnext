@@ -21,9 +21,40 @@ function Faq() {
         "Betterspace is for anyone seeking mental health support. Whether you're dealing with stress, anxiety, depression, or any other challenge, we can help you find a therapist who specializes in your needs.",
     },
     {
+      question: "How does Betterspace work?",
+      answer:
+        "You start by signing up and completing a brief assessment to help us understand your needs. Based on your preferences and the issues you'd like to address, we'll match you with a therapist. You can then schedule sessions, communicate through chat, or have video and audio calls with your therapist.",
+    },
+    {
+      question: "Who are the therapists on Betterspace?",
+      answer:
+        "All therapists on Betterspace are licensed professionals with credentials verified by our team. They come from various backgrounds and specialties to ensure you can find the right fit for your mental health needs.",
+    },
+    {
       question: "Can I choose my own therapist?",
       answer:
         "While we don't offer direct therapist selection, we work hard to match you with a therapist who aligns with your preferences and areas of concern. ",
+    },
+    {
+      question: "Is Betterspace confidential?",
+      answer:
+        "Absolutely. We prioritize your privacy and confidentiality. All communications between you and your therapist are encrypted, and we adhere to strict privacy standards to protect your personal information.",
+    },
+    {
+      // question: "What types of issues can Betterspace help with?",
+      question: "What issues can Betterspace help with?",
+      answer:
+        "Betterspace can assist with a wide range of mental health concerns, including anxiety, depression, stress, relationship issues, trauma, grief, and more. Our therapists are trained to support you through various challenges.",
+    },
+    {
+      question: "Can I switch therapists if I’m not satisfied?",
+      answer:
+        "Yes, if you feel that your current therapist isn’t the right fit, you can easily switch to another therapist at any time through your account settings.",
+    },
+    {
+      question: "How do I get started with Betterspace?",
+      answer:
+        "Getting started is easy! Simply sign up on our website or app, complete the initial assessment, and you’ll be matched with a therapist who suits your needs. From there, you can start your journey to better mental health.",
     },
   ];
   // const dispatch = useDispatch();

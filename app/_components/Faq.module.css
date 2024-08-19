@@ -69,15 +69,18 @@
   }
   .answerFaq{
     /* margin-bottom: 1.6rem; */
-
+    font-size: 1.4rem;
+    line-height: 20px;
+    letter-spacing: -0.004em;
+    font-weight: 400;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   }
   .textFaq {
-    font-size: 2rem;
-    line-height: 2.4rem;
+    font-size: 2.4rem;
+    line-height: 36px;
     letter-spacing: -0.01em;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-
+    font-weight: 700;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   }
   
   .spanRound {

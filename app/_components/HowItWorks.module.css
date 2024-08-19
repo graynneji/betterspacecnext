@@ -1,0 +1,103 @@
+.howItWorksContainer{
+    padding: 6.4rem 20rem 6.4rem 20rem;
+}
+.howHead{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.howright{
+
+}
+.howHOne{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 52px;
+    letter-spacing: -0.01em;
+}
+.howHFour{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 26px;
+    letter-spacing: -0.004em;
+}
+.howLeft{
+
+}
+.headBotCon{
+   
+    gap: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.headBot{
+    padding: 48px 24px 48px 24px;
+    border: 1px solid #D6D6D6;
+    border-radius: 16px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 325.33px;
+    height: 348px;
+}
+.headBotHOne{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    margin-bottom: 8px;
+
+}
+.IndexOne{
+    margin-bottom: 26px;
+}
+.IndexNone{
+    margin-bottom: 24px;
+}
+.headBotPara{
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: center;
+}
+    @media screen and (max-width: 990px) {
+        /* @media screen and (max-width: 685px) { */
+          .howItWorksContainer {
+            padding: 40px 16px;
+          }
+        }
+
+        @media screen and (max-width: 685px) {
+            .howHead{
+                flex-direction: column;   
+                align-items: flex-start;
+                gap: 2.4rem;
+            }
+            .headBotCon{
+                flex-direction: column;
+             }
+             .headBot{
+                max-width: none;
+                width: 100%;
+                height: auto;
+             }
+             .howHOne{
+                font-size: 3.2rem;
+    line-height: 40px;
+    letter-spacing: -0.01em;
+             }
+            .howHFour{
+
+            }
+        }

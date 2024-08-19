@@ -60,6 +60,7 @@
     background-color: #eff87a;
     color: rgba(2, 44, 34, 1);
     width: 100%;
+  
   }
   
   .joinBtn:hover,
@@ -136,4 +137,11 @@
     background-color: #022c22 ;
     font-size: 1.5rem;
     padding: 1rem 4rem 1rem 4rem;
+  }
+  .download{
+    display: flex;
+    gap: 1.6rem;
+align-items: center;
+
+
   }

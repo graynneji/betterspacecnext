@@ -7,7 +7,14 @@ function Button({ children, disabled, type, href }) {
   if (type === "join") {
     return (
       <button className={styles.navbarButton}>
-        <Link href="/join">Join Waitlist</Link>
+        <Link href="/join">{children}</Link>
+      </button>
+    );
+  }
+  if (type === "download") {
+    return (
+      <button className={`${styles.download} ${styles.navbarButton}`}>
+        {children}
       </button>
     );
   }

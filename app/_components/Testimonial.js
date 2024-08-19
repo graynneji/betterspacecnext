@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "./Testimonial.module.css";
 import profileTesty from "@/public/profile testimonial.svg";
+import { FaQuoteLeft } from "react-icons/fa6";
+import { FaQuoteRight } from "react-icons/fa6";
 const testimonial = [
   {
     name: "Jenny",
@@ -26,9 +28,10 @@ export default function Testimonial() {
         {Array.from({ length: 3 }, (_, i) => (
           <div key={i + 1} className={styles.testy}>
             <p className={styles.testyText}>
-              For years, anxiety was holding me back at work. Therapy through
-              [Your Service Name] helped me identify my triggers and develop
-              coping mechanisms. Now I feel more confident and in control.
+              <FaQuoteLeft /> For years, anxiety was holding me back at work.
+              Therapy through [Your Service Name] helped me identify my triggers
+              and develop coping mechanisms. Now I feel more confident and in
+              control. <FaQuoteRight />
             </p>
             <span className={styles.profileTesty}>
               <div>
@@ -49,6 +52,9 @@ export default function Testimonial() {
           </div>
         ))}
       </div>
+      <h1 className={styles.recievedHelp}>
+        Over 56,826 persons already recieved help
+      </h1>
     </section>
   );
 }

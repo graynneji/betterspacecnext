@@ -28,7 +28,7 @@ letter-spacing: -0.004em;
 font-weight: 400;
 }
 .testyContainer{
-    padding: 2.4rem;
+    /* padding: 2.4rem; */
     display: flex;
     gap: 2.4rem;
     /* background-color: transparent; */
@@ -80,4 +80,10 @@ font-weight: 400;
     display: flex;
     gap: 1.6rem;
     align-items: center;
+}
+.recievedHelp{
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 52px;
+    letter-spacing: -0.01em;
 }

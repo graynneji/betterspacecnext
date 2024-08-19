@@ -1,123 +1,137 @@
 /* ContactContainer.module.css */
 .ContactContainer {
-    background-color: #f8f4f0;
-   
-    padding: 64px 200px;
-    width: 100vw;
-  }
-  .MainContact{
-    display: flex;
-    justify-content: center;
-    gap: 4.8rem;
-  }
-  .ContactHorizontal{
-    border: none;
-    border-top: 1px solid #44444421;
-    margin-top: 64px;
-    padding: 64px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .Socials{
-    display: flex;
-    gap: 2.4rem;
-    justify-content: center;
-    align-items: center;
-    /* flex-basis: 100px;  */
-  flex-grow: 0;      
-  flex-shrink: 0;   
-  }
-  .SocialsBoldText{
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 2.4rem;
-    line-height: 36px;
-    letter-spacing: -1%;
-    font-weight: 700;
-    color: #022C22;
-  }
+  background-color: #f8f4f0;
 
-  .SocialsLightText{
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 1.8rem;
-    line-height: 26px;
-    letter-spacing: -0.4%;
-    font-weight: 400;
-    color: #022C22;
+  padding: 64px 200px;
+  width: 100vw;
+}
 
-  }
-  /* .isJoinPage {
+.MainContact {
+  display: flex;
+  justify-content: center;
+  gap: 4.8rem;
+}
+
+.ContactHorizontal {
+  border: none;
+  border-top: 1px solid #44444421;
+  margin-top: 64px;
+  padding: 64px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Socials {
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  align-items: center;
+  /* flex-basis: 100px;  */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.SocialsBoldText {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 2.4rem;
+  line-height: 36px;
+  letter-spacing: -1%;
+  font-weight: 700;
+  color: #022C22;
+}
+
+.SocialsLightText {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.8rem;
+  line-height: 26px;
+  letter-spacing: -0.4%;
+  font-weight: 400;
+  color: #022C22;
+
+}
+
+/* .isJoinPage {
     justify-content: space-between;
   } */
-     /* Conditional styling for isJoinPage */
-  /* ${({ $isJoinPage }) =>
+/* Conditional styling for isJoinPage */
+/* ${({ $isJoinPage }) =>
   $isJoinPage &&
   css` */
-    /* Add your conditional styles here */
-    /* justify-content: space-between;
+/* Add your conditional styles here */
+/* justify-content: space-between;
   `} */
-  
-  @media screen and (max-width: 990px) {
-    .ContactContainer {
-      padding: 40px 16px;
-      justify-content: center;
-      /* flex-direction: column; */
-    }
-  }
-  .JoinWaitlist{
-    background-color: #f8f4f0;
-    display: flex;
-    justify-content: center;
-    padding: 64px 200px;
-    width: 100vw;
-    gap: 4.8rem;
-  }
-  @media screen and (max-width: 990px) {
-    .JoinWaitlist {
-      padding: 40px 16px;
-      justify-content: space-between;
-     
-    }
-  }
-  @media screen and (max-width: 685px) {
-    .JoinWaitlist {
-     
-      flex-direction: column;
-    }
-  
-  }
-  @media screen and (max-width: 685px) {
-    .MainContact{
-      flex-direction: column;
 
-    }
-    .ContactHorizontal{
-      flex-direction: column;
-      align-items: center;
-      margin-top: 48px;
-      padding-bottom: 32px;
-      padding-top: 48px;
+@media screen and (max-width: 990px) {
+  .ContactContainer {
+    padding: 40px 16px;
+    justify-content: center;
+    /* flex-direction: column; */
+  }
+}
+
+.JoinWaitlist {
+  background-color: #f8f4f0;
+  display: flex;
+  justify-content: center;
+  padding: 64px 200px;
+  width: 100vw;
+  gap: 4.8rem;
+}
+
+@media screen and (max-width: 990px) {
+  .JoinWaitlist {
+    padding: 40px 16px;
+    justify-content: space-between;
+
+  }
+}
+
+@media screen and (max-width: 685px) {
+  .JoinWaitlist {
+
+    flex-direction: column;
+  }
+
+}
+
+@media screen and (max-width: 685px) {
+  .MainContact {
+    flex-direction: column;
+
+  }
+
+  .ContactHorizontal {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 48px;
+    padding-bottom: 32px;
+    padding-top: 48px;
     gap: 4.8rem;
     justify-content: center;
     /* text-align: left; */
-      
-    }
-    .Socials{
-      align-self: flex-start;
-    }
-  
+
   }
-  .LeftSide{
+
+  .Socials {
+    align-self: flex-start;
+  }
+
+}
+
+.LeftSide {
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  }
-  .TopText{
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-  }
-  .ContactBoldText{
+}
+
+.TopText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.ContactBoldText {
   font-family: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 4rem;
@@ -125,28 +139,31 @@
   letter-spacing: -0.01em;
   color: #022c22;
 }
-.ContactLightText {
-font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-font-weight: 400;
-font-size: 1.8rem;
-line-height: 2.6rem;
-letter-spacing: -0.004em;
-color: #022c22;
-/* text-wrap: balance; */
-}
-.SocialContactCon {
-display: flex;
-gap: 1.6rem;
-justify-content: start;
 
-/* img {
+.ContactLightText {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  letter-spacing: -0.004em;
+  color: #022c22;
+  /* text-wrap: balance; */
+}
+
+.SocialContactCon {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: start;
+
+  /* img {
   max-width: 48px;
   max-height: 48px;
   width: 100%;
   height: 100%;
 } */
 }
-.ContactForm  {
+
+.ContactForm {
   background-color: white;
   padding: 3.2rem;
   border-radius: 1.6rem;
@@ -157,35 +174,40 @@ justify-content: start;
   /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
   /* width: 100vw; */
 }
+
 @media screen and (max-width: 600px) {
-    .ContactForm  {
-  width: 100%;
-  /* display: flex;
+  .ContactForm {
+    width: 100%;
+    /* display: flex;
   flex-direction: column;
   padding: 40px 16px 40px 16px; */
-    }
+  }
 }
+
 .MergeInput {
-display: flex;
-gap: 2.4rem;
-width: 100%;
-/* justify-content: space-between; */
+  display: flex;
+  gap: 2.4rem;
+  width: 100%;
+  /* justify-content: space-between; */
 }
+
 @media screen and (max-width: 600px) {
-    .MergeInput {
-  flex-direction: column;
-    }
+  .MergeInput {
+    flex-direction: column;
+  }
 }
+
 .ButtonContainer {
-display: flex;
-flex-direction: column;
-gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
+
 .PrivacyText {
-font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-font-weight: 400;
-font-size: 1.2rem;
-line-height: 1.6rem;
-text-align: center;
-color: rgba(2, 44, 34, 0.6);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  text-align: center;
+  color: rgba(2, 44, 34, 0.6);
 }
