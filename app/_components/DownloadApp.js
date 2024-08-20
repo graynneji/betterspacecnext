@@ -5,6 +5,7 @@ import styles from "./DownloadApp.module.css";
 import check from "@/public/checkList.svg";
 import Appstore from "@/public/ic_outline-apple.svg";
 import Playstore from "@/public/logos_google-play-icon.svg";
+import ScanMe from "@/public/scanMe.svg";
 export default function DownloadApp() {
   return (
     <section className={styles.downloadAppCon}>
@@ -35,10 +36,20 @@ export default function DownloadApp() {
               <Image src={Appstore} alt="app store play store images" />
               <span>Download on App store</span>
             </Button>
+            <Image
+              src={ScanMe}
+              alt="scan me image"
+              style={{ width: "20%", height: "auto" }}
+            />
           </div>
         </div>
         <div>
-          <Image src={Phone} alt="download phone" style={{ height: "auto" }} />
+          <Image
+            src={Phone}
+            alt="download phone"
+            className={styles.scanMe}
+            style={{ height: "auto" }}
+          />
         </div>
       </div>
     </section>

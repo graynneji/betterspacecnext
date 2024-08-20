@@ -42,7 +42,14 @@ flex-direction: column;
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
+   
 }
+/* .scanMe{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+} */
 @media screen and (max-width: 990px) {
     .downloadAppCon {
         padding: 40px 16px;

@@ -18,6 +18,12 @@ function Button({ children, disabled, type, href }) {
       </button>
     );
   }
+  if (type === "reject") {
+    return <button className={`${styles.reject}`}>{children}</button>;
+  }
+  if (type === "accept") {
+    return <button className={`${styles.accept}`}>{children}</button>;
+  }
 
   if (type === "submit") {
     return (

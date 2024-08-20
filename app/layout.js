@@ -4,6 +4,7 @@ import Header from "./_components/Header";
 import "@/app/_styles/globalStyles.css";
 import styles from "./layout.module.css";
 import store from "./store/store";
+import Cookies from "./_components/Cookies";
 
 export default function RootLayout({ children }) {
   return (
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
           <Header />
           <main style={{ marginTop: "80px" }}>{children}</main>
           <Footer />
+          {/* <Cookies /> */}
         </div>
       </body>
     </html>
