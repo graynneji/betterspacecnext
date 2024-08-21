@@ -1,0 +1,83 @@
+.joinwaitlistpatnercontainer{
+    background: rgba(2, 44, 34, 1);
+    height: 100vh;
+    width: 100vw;
+    /* margin: 0 auto; */
+    padding: 3.2rem;
+    color: "white";
+    overflow: scroll;
+}
+.navmenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 80px;
+}
+.List{
+    display: flex;
+    gap: 3.2rem;
+    align-items: center;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.0em;
+    color: #ffffff;
+    cursor: pointer;
+}
+.hero{
+    
+}
+.heroHOne{
+    font-family: "Poppins", sans-serif;
+    /* position: relative; */
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 6.4rem;
+    line-height: 6.8rem;
+    letter-spacing: -0.02em;
+    /* text-wrap: nowrap; */
+    margin-bottom: 3rem;
+}
+.leftTextLight{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    letter-spacing: -0.007em;
+    color: white;
+    text-align: center;
+    margin-bottom: 8rem;
+}
+.buttonCon{
+    display: flex;
+    gap:3.2rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8rem;
+
+}
+.contact{
+    color: white;
+    text-align: center;
+}
+@media screen and (max-width: 668px) {
+    .navmenu{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .heroHOne{
+        font-size: 4rem;
+        line-height: 4.8rem;
+    }
+    .buttonCon{
+
+    }
+    .leftTextLight{
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+  }

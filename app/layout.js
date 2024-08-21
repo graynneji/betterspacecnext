@@ -10,12 +10,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className={styles.StyledAppLayout}>
-          <Header />
-          <main style={{ marginTop: "80px" }}>{children}</main>
-          <Footer />
-          {/* <Cookies /> */}
-        </div>
+        {/* <div className={styles.StyledAppLayout}> */}
+        {/* <Header /> */}
+        {/* <main style={{ marginTop: "80px" }}>{children}</main> */}
+        <main>{children}</main>
+        {/* <Footer /> */}
+        {/* <Cookies /> */}
+        {/* </div> */}
       </body>
     </html>
   );

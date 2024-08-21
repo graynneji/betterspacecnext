@@ -18,6 +18,8 @@ function Button({ children, disabled, type, href }) {
       </button>
     );
   }
+
+  // COOKIES BUTTON
   if (type === "reject") {
     return <button className={`${styles.reject}`}>{children}</button>;
   }
@@ -25,6 +27,7 @@ function Button({ children, disabled, type, href }) {
     return <button className={`${styles.accept}`}>{children}</button>;
   }
 
+  // CALL TO ACTION BUTTON
   if (type === "submit") {
     return (
       <button disabled={disabled} type="submit" className={styles.submitBtn}>
@@ -40,7 +43,16 @@ function Button({ children, disabled, type, href }) {
       </button>
     );
   }
+  // HERO GET STARTED
+  if (type === "started") {
+    return (
+      <button type="submit" className={`${styles.btn} ${styles.getstarted}`}>
+        <Link href="/get-started">{children}</Link>
+      </button>
+    );
+  }
 
+  // Other GET STARTED
   if (type === "start") {
     return (
       <button type="submit" className={styles.startBtn}>
@@ -55,6 +67,8 @@ function Button({ children, disabled, type, href }) {
       </button>
     );
   }
+
+  // ERROR page BUTTON
   if (type === "fourOFour") {
     return (
       <Link type="fourOFour" href={href} className={styles.fourOFour}>
@@ -66,6 +80,38 @@ function Button({ children, disabled, type, href }) {
     return (
       <button type="error" className={styles.error}>
         {children}
+      </button>
+    );
+  }
+
+  // QUESTIONAIRE BUTTON
+  if (type === "TransparentButton") {
+    return (
+      <button type="error" className={`${styles.btn} ${styles.transparent}`}>
+        {children}
+      </button>
+    );
+  }
+  if (type === "ColorButton") {
+    return (
+      <button type="error" className={`${styles.btn} ${styles.color}`}>
+        {children}
+      </button>
+    );
+  }
+
+  // WAITLIST PAGE
+  if (type === "waitlist") {
+    return (
+      <button className={`${styles.btn} ${styles.waitlist}`}>
+        <Link href="/join">{children}</Link>
+      </button>
+    );
+  }
+  if (type === "partner") {
+    return (
+      <button className={`${styles.btn} ${styles.partner}`}>
+        <Link href="/contact">{children}</Link>
       </button>
     );
   }

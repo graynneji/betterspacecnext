@@ -20,6 +20,7 @@
     width: 100vw;
     z-index: 10000;
     top: 0rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.077);
   }
   
   @media screen and (max-width: 1270px) {

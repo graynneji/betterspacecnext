@@ -42,11 +42,19 @@ function Hero() {
               </div>
             </h1>
             <h5 className={styles.leftTextLight}>
+              Discover a world of mental health resources and connect with
+              professionals globally on our online platform, empowering you to
+              prioritize your well-being anytime, anywhere.
+            </h5>
+            {/* <h5 className={styles.leftTextLight}>
               Get matched with a professional therapist, you deserve the support
               you need.
-            </h5>
+            </h5> */}
           </div>
-          <form className={styles.styledForm} onSubmit={handleSubmit}>
+
+          <Button type="started">Get Started</Button>
+
+          {/* <form className={styles.styledForm} onSubmit={handleSubmit}>
             <Input
               inputType="join"
               type="email"
@@ -56,7 +64,7 @@ function Hero() {
               error={errors.email}
             />
             <Button type="joinHero">Join</Button>
-          </form>
+          </form> */}
         </div>
         <div className={styles.rightHero}>
           <div className={styles.styledFlower}>

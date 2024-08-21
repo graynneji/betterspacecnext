@@ -17,6 +17,7 @@
       flex-direction: column;
     }
   } */
+  
   @media screen and (max-width: 1096.8px) {
     .heroContainer {
       padding: 40px 16px;
