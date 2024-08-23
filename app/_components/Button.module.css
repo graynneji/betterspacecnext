@@ -56,17 +56,33 @@
 /* ////////////////////////////QUESTIONAIRE BUTTON ////////////////////////////////////////////////////// */
 .transparent{
 width: 100%;
-background: #022c22d7;
-color:white;
+/* background: #022c22d7; */
+border: 1px solid #022c225a;
+color: #022c22d7;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.071);
 /* border: 1px solid #022c22; */
-border: none;
+/* border: none; */
 border-radius: 50px;
 font-weight: 500;
 font-size: 2rem;
 line-height: 32px;
 letter-spacing: -0.004em;
-text-align: center;
+text-align: left;
+caret-color: transparent;
 
+}
+.transparent:hover{
+  border: 2px solid #022c22d7;
+}
+@media screen and (max-width: 450.4px) {
+.transparent{
+  font-size: 1.6rem;
+}
+}
+@media screen and (max-width: 370px) {
+  .transparent{
+    font-size: 1.3rem;
+  }
 }
 .color{
   background: #022c22;
@@ -87,7 +103,7 @@ text-align: center;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -0.01em;
-  background: #022c22;
+  background: #022c22d7;
   outline: none;
     border: none;
     width: 203px;
@@ -99,7 +115,7 @@ text-align: center;
     justify-content: center;
 }
 .navbarButton {
-    background: #022c22;
+    background: #022c22d7;
     border-radius: 24px;
     padding: 8px 20px;
     font-size: 16px;

@@ -1,5 +1,6 @@
 .testimonialContainer{
-background-color: #F8F4F0;
+background-color: rgba(2, 44, 34, 1);
+/* background-color: #F8F4F0; */
 font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 /* color: ; */
 text-align: center;
@@ -7,6 +8,7 @@ padding: 100px 200px 100px 200px;
 display: flex;
 flex-direction: column;
 gap: 6.4rem;
+color: #ffffff;
 }
 @media screen and (max-width: 990px) {
     /* @media screen and (max-width: 685px) { */
@@ -32,6 +34,7 @@ font-weight: 400;
     display: flex;
     gap: 2.4rem;
     /* background-color: transparent; */
+    color: rgba(2, 44, 34, 1);
 }
 .testyText{
     font-weight: 500;

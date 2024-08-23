@@ -1,6 +1,6 @@
 /* ContactContainer.module.css */
 .ContactContainer {
-  /* background-color: #f8f4f0; */
+  background-color: #f8f4f0;
 
   padding: 64px 200px;
   width: 100vw;
@@ -71,7 +71,7 @@
 }
 
 .JoinWaitlist {
-  /* background-color: #f8f4f0; */
+  background-color: #f8f4f0;
   display: flex;
   justify-content: center;
   padding: 64px 200px;
@@ -165,8 +165,8 @@
 }
 
 .ContactForm {
-  /* background-color: white; */
-    background-color: #f8f4f0;
+  background-color: white;
+    /* background-color: #f8f4f0; */
   padding: 3.2rem;
   border-radius: 1.6rem;
   gap: 2.4rem;

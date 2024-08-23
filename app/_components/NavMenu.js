@@ -14,7 +14,7 @@ function NavMenu() {
   const handleMenuClick = () => {
     dispatch(toggleMenu());
   };
-  console.log(isMenuOpen);
+
   return (
     <div
       className={`${isMenuOpen ? styles.NavMenu : styles.NavMenuClosed}`}

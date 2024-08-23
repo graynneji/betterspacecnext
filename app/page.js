@@ -11,22 +11,18 @@ import Why from "./_components/Why";
 export default function Page() {
   return (
     <>
-      {/* <Hero />
-
-     
+      <Hero />
 
       <Happy />
 
       <HowItWorks />
 
-     
-
       <Testimonial />
 
       <Faq />
 
-      <DownloadApp /> */}
-      <JoinWaitlistPatner />
+      <DownloadApp />
+      {/* <JoinWaitlistPatner /> */}
     </>
   );
 }

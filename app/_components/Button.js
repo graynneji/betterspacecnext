@@ -3,7 +3,14 @@
 import Link from "next/link";
 import styles from "./Button.module.css"; // Import the CSS module
 
-function Button({ children, disabled, type, href }) {
+function Button({
+  children,
+  disabled,
+  type,
+  href,
+  handleSection,
+  defaultValue,
+}) {
   if (type === "join") {
     return (
       <button className={styles.navbarButton}>
@@ -87,9 +94,13 @@ function Button({ children, disabled, type, href }) {
   // QUESTIONAIRE BUTTON
   if (type === "TransparentButton") {
     return (
-      <button type="error" className={`${styles.btn} ${styles.transparent}`}>
-        {children}
-      </button>
+      <input
+        readOnly
+        onClick={handleSection}
+        type="text"
+        className={`${styles.btn} ${styles.transparent}`}
+        value={defaultValue}
+      />
     );
   }
   if (type === "ColorButton") {
