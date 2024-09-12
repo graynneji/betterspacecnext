@@ -103,7 +103,11 @@
       line-height: 3.8rem;
     }
   }
-  
+  .buttonDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
   .leftTextLight {
     font-family: "Inter", sans-serif;
     font-weight: 400;
@@ -112,7 +116,14 @@
     letter-spacing: -0.004em;
     color: rgba(2, 44, 34, 1);
   }
-  
+  .leftTextLightLight{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    letter-spacing: -0.004em;
+    color: rgba(2, 44, 34, 0.855);
+  }
   .rightHero {
     flex: 1;
     position: relative;

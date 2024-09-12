@@ -6,6 +6,10 @@ import BusinessHeader from "../_components/BusinessHeader";
 import JoinTherapy from "../_components/JoinTherapy";
 import TherapyApplication from "../_components/TherapyApplication";
 
+export const metadata = {
+  title: "Therapy",
+};
+
 function Therapy() {
   return (
     <>

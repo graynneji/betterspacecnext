@@ -3,7 +3,7 @@ background-color: rgba(2, 44, 34, 1);
 /* background-color: #F8F4F0; */
 font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 /* color: ; */
-text-align: center;
+
 padding: 100px 200px 100px 200px;
 display: flex;
 flex-direction: column;
@@ -41,6 +41,12 @@ font-weight: 400;
     font-size: 1.8rem;
     line-height: 26px;
     letter-spacing: -0.01em;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 5px;
+   
+
 }
 .testyName{
     font-weight: 500;
@@ -48,6 +54,22 @@ font-weight: 400;
     line-height: 24px;
     letter-spacing: -0.01em;
 
+}
+.textyIconLeft{
+    align-self: flex-start;
+}
+.textyIconRight{
+    align-self: flex-end;
+}
+.testimonies{
+    align-items: center;
+}
+.recievedHelp{
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 52px;
+    letter-spacing: -0.01em;
+    text-align: center;
 }
 @media screen and (max-width: 685px) {
     .testimonialContainer{
@@ -67,6 +89,10 @@ font-weight: 400;
         line-height: 24px;
         letter-spacing: -0.004em;
      }
+     .recievedHelp{
+        font-size: 1.6rem;
+        line-height: 30px;
+     }
   }
 .testy{
     background-color: #ffffff;
@@ -84,9 +110,4 @@ font-weight: 400;
     gap: 1.6rem;
     align-items: center;
 }
-.recievedHelp{
-    font-weight: 700;
-    font-size: 4rem;
-    line-height: 52px;
-    letter-spacing: -0.01em;
-}
+

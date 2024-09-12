@@ -19,18 +19,15 @@
 
 .FooterTopContainer{
   display: grid;
-  /* justify-content: space-between; */
   align-items: center;
   border-radius: 16px;
   padding: 32px;
   gap: 24px;
-  /* max-width: 1040px; */
-  width: 100%;
-  background: #eff87a;
 
-  /* grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%) 1fr)); */
+  width: 100%;
+  background-color: #f0f87a;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  /* grid-template-columns: repeat(auto-fit, minmax(min-content, 30rem)); */
+
 }
 @media screen and (max-width: 400px) {
   .FooterTopContainer{

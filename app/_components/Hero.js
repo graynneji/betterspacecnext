@@ -46,13 +46,16 @@ function Hero() {
               professionals globally on our online platform, empowering you to
               prioritize your well-being anytime, anywhere.
             </h5>
-            {/* <h5 className={styles.leftTextLight}>
-              Get matched with a professional therapist, you deserve the support
-              you need.
-            </h5> */}
           </div>
 
-          <Button type="started">Get Started</Button>
+          <div className={styles.buttonDiv}>
+            {/* REMEMBER TO CHANGE THE CHILDREN JOIN WAITLIST TO GET STARTED */}
+            <Button type="started">Join Waitlist</Button>
+            <h5 className={styles.leftTextLightLight}>
+              Enjoy flexible scheduling and personalized care from our licensed
+              therapists.
+            </h5>
+          </div>
 
           {/* <form className={styles.styledForm} onSubmit={handleSubmit}>
             <Input

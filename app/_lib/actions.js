@@ -1,6 +1,7 @@
 "use server";
 import { contactFormSchema } from "../services/validationSchema";
 import pool from "./db";
+import { supabase } from "./supabase";
 
 export async function submitForm(prevState, formData) {
   const response = await fetch(`http://www.geoplugin.net/json.gp`);
@@ -47,5 +48,23 @@ export async function submitForm(prevState, formData) {
     // return { success: false, message: err.message };
     // showToast("Message was not sent: " + err.message, { type: "error" });
     // throw new Error("Message was not sent");
+  }
+}
+
+////////// GET STARTED/////////////////////////////////////
+export async function createPatients(formData) {
+  const response = await fetch(`http://www.geoplugin.net/json.gp`);
+  const location = await response.json();
+  const newPatients = {
+    // name: formData.get("")
+    ip: location.geoplugin_request,
+    city: location.geoplugin_city,
+    region: location.geoplugin_region,
+    country: location.geoplugin_countryName,
+  };
+  try {
+    const { error } = await supabase.from("patients").insert([newPatients]);
+  } catch (error) {
+    throw new Error("Acoount creation unsuccessful");
   }
 }

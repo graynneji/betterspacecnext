@@ -35,7 +35,8 @@ export default function HowItWorks() {
           </h4>
         </div>
         <div className={styles.howLeft}>
-          <Button type="join">Get Started</Button>
+          {/* remember to change to get started  */}
+          <Button type="join">Join Waitlist</Button>
         </div>
       </div>
       {/* But */}

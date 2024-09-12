@@ -14,10 +14,12 @@ function Footer() {
       <div className={styles.FooterTopContainer}>
         <div className={styles.FooterTopText}>
           <h5 className={styles.FooterTopTextBold}>
-            Your well-being deserves to be a priority.
+            Subscribe to our newsletter
+            {/* Your well-being deserves to be a priority. */}
           </h5>
           <p className={styles.FooterTopTextLight}>
-            Be among the first to experience Betterspace
+            Stay updated on new releases and features, guides, and case studies.
+            {/* Be among the first to experience Betterspace */}
           </p>
         </div>
         <div className={styles.FooterTopField}>
@@ -27,7 +29,7 @@ function Footer() {
             type="email"
           />
           <button className={styles.FooterTopFieldButton}>
-            Submit
+            Subscribe
             <Image styles={{ width: "100%" }} src={Chevron} alt="Arrow Right" />
           </button>
         </div>

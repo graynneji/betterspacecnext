@@ -5,10 +5,22 @@ import { FaQuoteLeft } from "react-icons/fa6";
 import { FaQuoteRight } from "react-icons/fa6";
 const testimonial = [
   {
-    name: "Jenny",
+    name: "Eniola",
     testimony:
-      "For years, anxiety was holding me back at work. Therapy through [Your Service Name] helped me identify my triggers and develop coping mechanisms. Now I feel more confident and in control.",
-    image: "",
+      "I've never experienced such accessible and empowering therapy. It feels like having a supportive friend available anytime. Subscribing was the best decision I've made for my well-being!",
+    image: profileTesty,
+  },
+  {
+    name: "Eniola",
+    testimony:
+      "I finally found a mental health resource that truly resonates with me. The expert support and engaging tools have brought me confidence and joy. If you're considering investing in your mental health, this is your sign!",
+    image: profileTesty,
+  },
+  {
+    name: "Eniola",
+    testimony:
+      "My mental health journey has been redefined with such genuine empathy and support. The growth I've experienced has been incredible. If you're ready to thrive, taking this step could be your path to a brighter future.",
+    image: profileTesty,
   },
 ];
 
@@ -27,12 +39,14 @@ export default function Testimonial() {
       <div className={styles.testyContainer}>
         {Array.from({ length: 3 }, (_, i) => (
           <div key={i + 1} className={styles.testy}>
-            <p className={styles.testyText}>
-              <FaQuoteLeft /> For years, anxiety was holding me back at work.
-              Therapy through [Your Service Name] helped me identify my triggers
-              and develop coping mechanisms. Now I feel more confident and in
-              control. <FaQuoteRight />
-            </p>
+            <div className={styles.testyText}>
+              <FaQuoteLeft className={styles.textyIconLeft} />
+
+              <span className={styles.testimonies}>
+                {testimonial[i].testimony}
+              </span>
+              <FaQuoteRight className={styles.textyIconRight} />
+            </div>
             <span className={styles.profileTesty}>
               <div>
                 <Image

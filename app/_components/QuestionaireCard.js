@@ -6,6 +6,7 @@ import { GrCircleInformation } from "react-icons/gr";
 import Button from "./Button";
 import { useNext } from "../hooks/useNext";
 // import { useState } from "react";
+import { createPatients } from "../_lib/actions";
 
 export default function QuestionaireCard({ data }) {
   const [currentSection, setCurrentSection] = useState(0); // Track current section
@@ -25,6 +26,7 @@ export default function QuestionaireCard({ data }) {
     setCurrentSection(currentSection - 0.5);
   };
   console.log(data);
+
   return (
     <>
       <div className={styles.progressBar}>
@@ -64,7 +66,7 @@ export default function QuestionaireCard({ data }) {
 
       {/* <h3 className={styles.questionHThree}>Which best describes you?</h3> */}
       <div className={styles.formContainer}>
-        <form className={styles.form}>
+        <form action={createPatients} className={styles.form}>
           {/* ///////// FIRST ///////////////////////////////////////////////////////////////////////////////////////////// */}
           {currentSection === 0 && (
             <>
@@ -499,6 +501,7 @@ export default function QuestionaireCard({ data }) {
                   handleSection={handleNextSection}
                   type="TransparentButton"
                 />
+                <Button type="submit">Submit</Button>
               </div>
               <div className={styles.infoBar}>
                 <GrCircleInformation /> <p>Please select your needs</p>
