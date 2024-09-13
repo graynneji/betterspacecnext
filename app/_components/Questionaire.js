@@ -1,16 +1,18 @@
 import styles from "./Questionaire.module.css";
 import QuestionaireCard from "./QuestionaireCard";
-import { getQuestions } from "../_lib/data-services";
+import { createQuestions, getQuestions } from "../_lib/data-services";
 import Button from "./Button";
 import { GrCircleInformation } from "react-icons/gr";
+import QuestionCard from "./QuestionCard";
 
 export default async function Questionaire() {
-  const data = await getQuestions();
+  // const data = await getQuestions();
 
   return (
     <section className={styles.questionaireCon}>
       {/* <ProgressBar /> */}
-      <QuestionaireCard data={data} />
+      {/* <QuestionaireCard data={data} /> */}
+      <QuestionCard />
     </section>
   );
 }

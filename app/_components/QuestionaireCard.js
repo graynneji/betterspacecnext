@@ -7,6 +7,130 @@ import Button from "./Button";
 import { useNext } from "../hooks/useNext";
 // import { useState } from "react";
 import { createPatients } from "../_lib/actions";
+const questions = [
+  {
+    question_text: "What is your gender identity?",
+    info_text:
+      "Gender is a significant aspect of your identity. Sharing this information helps your therapist tailor a more customized and supportive approach to your needs.",
+    options: ["Man", "Woman"],
+  },
+  {
+    question_text: "What is your relationship status?",
+    info_text:
+      "Relationship status can affect your well-being. Sharing it helps your therapist provide a more personalized approach.",
+    options: [
+      "Single",
+      "Married",
+      "Divorced",
+      "Widowed",
+      "Other",
+      "Prefer not to say",
+    ],
+  },
+  {
+    question_text: "How would you rate your current physical health?",
+    info_text:
+      "This will help your therapist understand your needs better and create a more effective plan.",
+    options: ["Good", "Fair", "Poor"],
+  },
+  {
+    question_text: "Are you on any medication?",
+    info_text:
+      "Medication can play a significant role in mental health treatment. Sharing this information will enable your therapist to provide the most personalized care.",
+    options: ["No", "Yes"],
+  },
+  {
+    question_text: "Have you been in therapy before?",
+    info_text:
+      "Sharing your therapeutic history helps your therapist create a personalized plan. New to therapy? We'll guide you through what to expect after signing up.",
+    options: ["No", "Yes"],
+  },
+  {
+    question_text: "Why do you want to work on your mental health?",
+    info_text:
+      "Understanding your motivations helps us match you with a therapist who aligns with your goals and empowers you to achieve lasting progress.",
+    options: [
+      "I feel depressed",
+      "I have anxious thoughts",
+      "I am grieving",
+      "I lost the purpose of life",
+      "I struggle to have healthy relationships",
+      "I am having a tough time",
+      "I have low self esteem",
+      "I have experienced trauma",
+      "I want to improve all areas of my life",
+      "Just exploring",
+      "Other",
+    ],
+  },
+  {
+    question_text: "What kind of resources are you interested in exploring?",
+    info_text: "Helps us recommend relevant tools and support.",
+    options: [
+      "Articles",
+      "Journals",
+      "Support group",
+      "Educational videos/courses",
+      "Goals & Habit tracking",
+      "Mindfulness excercise",
+    ],
+  },
+  {
+    question_text: "Are there any specific therapist qualities you prefer?",
+    info_text:
+      "We want to ensure you have a compatible and effective therapeutic relationship.",
+    options: [
+      "Male therapist",
+      "Female therapist",
+      "Christain therapist",
+      "Muslim therapist",
+      "Non-religious therapist",
+    ],
+  },
+  {
+    question_text: "What kind of communication style resonates with you?",
+    info_text: "The therapist who communicates in a way that suits you.",
+    options: [
+      "Direct and straightforward",
+      "Warm and empathetic",
+      "Humorous and ligthearted",
+      "Gentle and patient",
+    ],
+  },
+  {
+    question_text: "What is your preferred language?",
+    info_text:
+      "We want to ensure there is a clear communication and understanding.",
+    options: [
+      "English",
+      "Vanacular",
+      "Igbo",
+      "Yoruba",
+      "Hausa",
+      "Efik",
+      "Birom",
+      "Calaba",
+    ],
+  },
+  {
+    question_text: "Is there anything else you'd like your therapist to know?",
+    info_text:
+      "We want to get some information from you to provide the therapist valuable context for a personalized approach.",
+    options: ["Man", "Woman"],
+  },
+  {
+    question_text: "How did you get to know about betterspace?",
+    info_text: "Helps us improve outreach and support.",
+    options: [
+      "Google search",
+      "Facebook",
+      "Youtube",
+      "X (formerly twitter)",
+      "Instagram",
+      "Other",
+    ],
+  },
+];
 
 export default function QuestionaireCard({ data }) {
   const [currentSection, setCurrentSection] = useState(0); // Track current section
@@ -68,9 +192,11 @@ export default function QuestionaireCard({ data }) {
       <div className={styles.formContainer}>
         <form action={createPatients} className={styles.form}>
           {/* ///////// FIRST ///////////////////////////////////////////////////////////////////////////////////////////// */}
-          {currentSection === 0 && (
+          {/* {currentSection === 0 && (
             <>
-              <h3 className={styles.questionHThree}>{data[0].question_text}</h3>
+              <h3 className={styles.questionHThree}>
+                {data[0].question_text}
+              </h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -88,12 +214,14 @@ export default function QuestionaireCard({ data }) {
                 <GrCircleInformation /> <p>Please select your needs</p>
               </div>
             </>
-          )}
+          )} */}
           {/* //////// SECOND FORM ////////////////////////////////////////////////////////////////////////////////////////// */}
 
-          {currentSection === 0.5 && (
+          {currentSection === 0 && (
             <>
-              <h3 className={styles.questionHThree}>{data[1].question_text}</h3>
+              <h3 className={styles.questionHThree}>
+                {data[11].question_text}
+              </h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -113,9 +241,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* //////// THIRD //////////////////////////////////////////////////////////////////////////////////// */}
-          {currentSection === 1 && (
+          {currentSection === 0.5 && (
             <>
-              <h3 className={styles.questionHThree}>{data[2].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[0].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -156,9 +284,9 @@ export default function QuestionaireCard({ data }) {
           )}
 
           {/* /////// FOURTH //////////////////////////////////////////////////////////////////////////// */}
-          {currentSection === 1.5 && (
+          {currentSection === 1 && (
             <>
-              <h3 className={styles.questionHThree}>{data[3].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[1].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -183,9 +311,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* /////// FIFTH //////////////////////////////////////////////////////////////////////////////// */}
-          {currentSection === 2 && (
+          {currentSection === 1.5 && (
             <>
-              <h3 className={styles.questionHThree}>{data[4].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[2].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -205,9 +333,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* /////// SIXTH //////////////////////////////////////////////////////////////////////////////// */}
-          {currentSection === 2.5 && (
+          {currentSection === 2 && (
             <>
-              <h3 className={styles.questionHThree}>{data[5].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[3].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -228,9 +356,9 @@ export default function QuestionaireCard({ data }) {
           )}
 
           {/* ////// SEVENTH //////////////////////////////////////////////////////////// */}
-          {currentSection === 3 && (
+          {currentSection === 2.5 && (
             <>
-              <h3 className={styles.questionHThree}>{data[6].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[4].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -295,9 +423,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* ////// EIGHTH //////////////////////////////////////////////////////////// */}
-          {currentSection === 3.5 && (
+          {currentSection === 3 && (
             <>
-              <h3 className={styles.questionHThree}>{data[7].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[5].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -357,9 +485,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* ////// NINTH //////////////////////////////////////////////////////////// */}
-          {currentSection === 4 && (
+          {currentSection === 3.5 && (
             <>
-              <h3 className={styles.questionHThree}>{data[8].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[6].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -394,9 +522,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* ////// TENTH //////////////////////////////////////////////////////////// */}
-          {currentSection === 4.5 && (
+          {currentSection === 4 && (
             <>
-              <h3 className={styles.questionHThree}>{data[9].question_text}</h3>
+              <h3 className={styles.questionHThree}>{data[7].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -426,11 +554,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* ////// ELEVENTH //////////////////////////////////////////////////////////// */}
-          {currentSection === 5 && (
+          {currentSection === 4.5 && (
             <>
-              <h3 className={styles.questionHThree}>
-                {data[10].question_text}
-              </h3>
+              <h3 className={styles.questionHThree}>{data[8].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -445,11 +571,9 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* ////// TWELVTH //////////////////////////////////////////////////////////// */}
-          {currentSection === 5.5 && (
+          {currentSection === 5 && (
             <>
-              <h3 className={styles.questionHThree}>
-                {data[11].question_text}
-              </h3>
+              <h3 className={styles.questionHThree}>{data[9].question_text}</h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>
                 <Button
@@ -464,10 +588,10 @@ export default function QuestionaireCard({ data }) {
             </>
           )}
           {/* ////// THIRTEENTH //////////////////////////////////////////////////////////// */}
-          {currentSection === 6 && (
+          {currentSection === 5.5 && (
             <>
               <h3 className={styles.questionHThree}>
-                {data[12].question_text}
+                {data[10].question_text}
               </h3>
               <span className={styles.questionSpan}>Please select</span>
               <div className={styles.buttonCon}>

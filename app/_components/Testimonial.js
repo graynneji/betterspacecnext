@@ -7,7 +7,7 @@ const testimonial = [
   {
     name: "Eniola",
     testimony:
-      "I've never experienced such accessible and empowering therapy. It feels like having a supportive friend available anytime. Subscribing was the best decision I've made for my well-being!",
+      "I've never experienced such accessible and empowering therapy. It feels like having a supportive friend available anytime. Subscribing was the best decision I've made for my well-being. Betterspace has shaped my life!",
     image: profileTesty,
   },
   {
@@ -27,7 +27,7 @@ const testimonial = [
 export default function Testimonial() {
   return (
     <section className={styles.testimonialContainer}>
-      <div>
+      <div style={{ textAlign: "center" }}>
         <h1 className={styles.TestimonialBold}>
           They Got Better, You Can Too!
         </h1>

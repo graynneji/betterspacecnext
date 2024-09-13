@@ -36,7 +36,7 @@ export const metadata = {
   keywords:
     "mental health, therapy, online therapy, licensed therapists, stress, anxiety, personal growth, video call therapy, chat therapy, Betterspace",
 
-  image: "/RightHero.svg",
+  image: "/IMg.png",
 
   openGraph: {
     title: "BetterspaceNG - Mental Health and Therapy Platform",
@@ -46,7 +46,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/RightHero.svg",
+        url: "/IMg.png",
         width: 1200,
         height: 630,
         alt: "Betterspace mental health platform",
@@ -58,8 +58,8 @@ export const metadata = {
     title: "Betterspace - Online Therapy",
     description:
       "Accessible mental health support through video and chat with licensed therapists.",
-    image: "/RightHero.svg",
-    site: "@betterspace",
+    image: "/IMg.png",
+    site: "@Betterspace_ng",
   },
 
   link: [{ rel: "canonical", href: "https://www.betterspace.ng" }],
