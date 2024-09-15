@@ -5,11 +5,16 @@ import { createPatients } from "../_lib/actions";
 import { GrCircleInformation } from "react-icons/gr";
 import { useState } from "react";
 import Input from "./Input";
+import FeaturedIcon from "@/public/Featuredicon.svg";
+import Image from "next/image";
+import Link from "next/link";
+// import { useFormState } from "react-hook-form";
+import { signup } from "../_lib/actions";
 const questions = [
   {
     question_text: "What is your gender identity?",
     info_text:
-      "Gender is a significant aspect of your identity. Sharing this information helps your therapist tailor a more customized and supportive approach to your needs.",
+      "Sharing this information helps your therapist tailor a more customized and supportive approach to your needs.",
     options: ["Man", "Woman"],
     section: 0,
   },
@@ -37,7 +42,7 @@ const questions = [
   {
     question_text: "Are you on any medication?",
     info_text:
-      "Medication can play a significant role in mental health treatment. Sharing this information will enable your therapist to provide the most personalized care.",
+      "Medication can play a significant role in mental health treatment.",
     options: ["No", "Yes"],
     section: 1.5,
   },
@@ -121,10 +126,18 @@ const questions = [
     section: 4.5,
   },
   {
-    question_text: "Is there anything else you'd like your therapist to know?",
+    question_text: "What best describes your current work situation?",
     info_text:
-      "We want to get some information from you to provide the therapist valuable context for a personalized approach.",
-    options: ["Man", "Woman"],
+      "This information helps your therapist understand your daily life and provide more tailored support.",
+    options: [
+      "Employed full-time",
+      "Employed part-time",
+      "Self-employed",
+      "Unemployed",
+      "Student",
+      "Retired",
+      "Other",
+    ],
     section: 5,
   },
   {
@@ -138,23 +151,39 @@ const questions = [
       "Instagram",
       "Other",
     ],
-    section: 5.5,
+    section: 6,
   },
 ];
 
 export default function QuestionCard() {
+  //   const [state, action] = useFormState(signup, undefined);
   const [currentSection, setCurrentSection] = useState(0); // Track current section
+  const [selectedQuesAnswers, setSelectedQuesAnswers] = useState([]);
   const totalSections = 8;
   let section = 0;
 
-  const handleNextSection = (e) => {
+  const handleNextSection = (e, option, questionText) => {
     e.preventDefault();
     if (currentSection < totalSections - 0.5) {
       setCurrentSection(currentSection + 0.5);
-      section += 0.5;
+    }
+    if (currentSection < totalSections - 0.5 && currentSection >= 5) {
+      setCurrentSection(currentSection + 1);
     }
     console.log("next", currentSection);
+    // const selectedvalue = e.target.value;
+    setSelectedQuesAnswers((prevAnswers) => [
+      ...prevAnswers,
+      //{} key and value {[questionText]: option,}
+      //   [questionText]: option,
+      { question: questionText, answer: option },
+    ]);
+    console.log(selectedQuesAnswers);
   };
+  const createPatientsWithQuestionAnswer = createPatients.bind(
+    null,
+    selectedQuesAnswers
+  );
   return (
     <>
       <div className={styles.progressBar}>
@@ -187,7 +216,14 @@ export default function QuestionCard() {
       </div>
 
       <div className={styles.formContainer}>
-        <form action={createPatients} className={styles.form}>
+        {/* <form action={createPatients} className={styles.form}> */}
+        <form
+          action={signup}
+          //   action={async (formData) =>
+          //     await createPatientsWithQuestionAnswer(formData)
+          //   }
+          className={styles.form}
+        >
           {questions.map((question, index) => (
             <div key={index} className={styles.questionCard}>
               {currentSection === question.section && (
@@ -203,7 +239,9 @@ export default function QuestionCard() {
                       <Button
                         key={option}
                         defaultValue={option}
-                        handleSection={handleNextSection}
+                        handleSection={(e) =>
+                          handleNextSection(e, option, question.question_text)
+                        }
                         type="TransparentButton"
                       />
                     ))}
@@ -214,12 +252,95 @@ export default function QuestionCard() {
                     />
                     <p>{question.info_text}</p>
                   </div>
-
-                  {question.section === null && <Input />}
                 </>
               )}
             </div>
           ))}
+          {currentSection === 7 && (
+            <div className={styles.createFormSection}>
+              <Image
+                style={{ width: "48px", height: "48px" }}
+                src={FeaturedIcon}
+                alt="featured icon"
+              />
+              <span className={styles.questionSpan} style={{ maxWidth: "70%" }}>
+                Great job, You&#39;ve successfully completed the questionnaire!{" "}
+                <strong>next step is to create an account</strong>
+              </span>
+              <Input
+                type="text"
+                inputType="create"
+                label="First Name"
+                id="name"
+                name="name"
+                placeholder="First Name"
+                //   disabled={isSubmitting}
+                //   register={register}
+                //   error={errors.name}
+              />
+
+              <Input
+                type="text"
+                inputType="create"
+                label="Email Address"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+                //   disabled={isSubmitting}
+                //   register={register}
+                //   error={errors.name}
+              />
+
+              <Input
+                type="text"
+                inputType="create"
+                label="Phone Number"
+                id="phone"
+                name="phone"
+                placeholder="Phone"
+                //   disabled={isSubmitting}
+                //   register={register}
+                //   error={errors.name}
+              />
+
+              <Input
+                type="password"
+                inputType="create"
+                label="Create Password"
+                id="password"
+                name="password"
+                placeholder="Create password"
+                //   disabled={isSubmitting}
+                //   register={register}
+                //   error={errors.name}
+              />
+
+              <Input
+                type="hidden"
+                inputType="create"
+                // label="selected"
+                id="selected"
+                name="selected"
+                // placeholder="First Name"
+                //   disabled={isSubmitting}
+                //   register={register}
+                //   error={errors.name}
+                selectedQuesAnswers={selectedQuesAnswers}
+              />
+              <div className={styles.btnCon}>
+                <span className={styles.PrivacyText}>
+                  By continuing you agree with betterspace{" "}
+                  <Link
+                    href="/privacy"
+                    style={{ color: "#022c22", textDecoration: "underline" }}
+                  >
+                    Privacy Policy
+                  </Link>
+                </span>
+                <Button type="submit">Create account</Button>
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </>

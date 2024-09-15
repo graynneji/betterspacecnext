@@ -15,6 +15,7 @@ function Input({
   // error,
   inputType,
   // disabled,
+  selectedQuesAnswers,
 }) {
   return (
     <>
@@ -75,6 +76,24 @@ function Input({
           </>
         )}
       </div>
+
+      {/* ///////////////////////////////vreateInoput///////////////////// */}
+      {inputType === "create" && (
+        <div className={styles.inputContainer}>
+          <input
+            id={id}
+            type={type}
+            name={id}
+            placeholder=" " // Empty placeholder for float label functionality
+            className={styles.createInput}
+            required // Ensure placeholder-shown works for browsers that rely on 'required'
+            value={selectedQuesAnswers}
+          />
+          <label htmlFor={id} className={styles.createInpLabel}>
+            {label}
+          </label>
+        </div>
+      )}
     </>
   );
 }

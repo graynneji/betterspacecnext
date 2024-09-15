@@ -62,3 +62,62 @@
   color: red;
   font-size: 1.4rem;
   }
+
+  /* ////////////////INPUT FOR CREATE ACCOUNT//////////////////////// */
+  .inputContainer {
+    position: relative;
+    width: 100%;
+  }
+  
+  .createInput {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #022c2283;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    background: none;
+    transition: border-color 0.3s ease;
+    padding-top: 20px; /* Space for the floating label */
+    position: relative;
+    z-index: 1; /* Ensure input is behind the label when floating */
+  }
+  
+  /* Style for the label */
+  .createInpLabel {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #022c2283;
+    background-color: rgba(255, 255, 255, 0.721);  /* Add background color to overlap input */
+    padding: 0 4px;           /* Padding to create a nice effect with background */
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 2;               /* Ensure the label is above the input */
+  }
+  
+  /* Float label directly on top of the input border when focused or filled */
+  .createInput:focus + .createInpLabel,
+  .createInput:not(:placeholder-shown) + .createInpLabel {
+    top: 0px;                   /* Moves label directly on top of the input border */
+    left: 10px;
+    font-size: 16px;
+    background-color: white;
+    /* background-color: rgba(255, 255, 255, 0.721); */
+    color: #022c22aa;
+    /* color: #666; */
+    padding: 0 5px;             /* Adjust padding for better overlap look */
+  }
+  
+  /* Add a focus state for the input */
+  .createInput:focus {
+    border-color: #022c22;         /*Darker border when focused*/
+    
+  }
+  
+  
+  
+  
+  
