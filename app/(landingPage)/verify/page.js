@@ -1,15 +1,21 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import { Suspense, lazy } from "react";
 
-const VerifyEmail = lazy(() => import("@/app/_components/VerifyEmail"));
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const VerifyEmail = dynamic(() => import("@/app/_components/VerifyEmail"), {
+  ssr: false, // Disable SSR for the component
+  loading: () => <div>Loading...</div>, // Fallback loading state
+});
 
 export default function Page() {
   const searchParams = useSearchParams();
-  const emailId = searchParams.get("emailId");
+  const emailId = searchParams?.get("emailId");
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <VerifyEmail emailId={emailId} />;
+      <VerifyEmail emailId={emailId} />
     </Suspense>
   );
 }
