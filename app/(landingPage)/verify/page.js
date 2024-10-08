@@ -1,9 +1,8 @@
 "use client";
-import VerifyEmail from "@/app/_components/VerifyEmail";
 import { useSearchParams } from "next/navigation";
 import { Suspense, lazy } from "react";
 
-const VerifyEmailPage = lazy(() => import("./VerifyEmailPage"));
+const VerifyEmail = lazy(() => import("@/app/_components/VerifyEmail"));
 
 export default function Page() {
   const searchParams = useSearchParams();
