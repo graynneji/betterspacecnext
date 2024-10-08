@@ -31,7 +31,7 @@ function Nav() {
           <Link href="/" className={styles.logoLnk}>
             <Image width={160} height={40} src={Logo} alt="Logo" />
           </Link>
-          {pathname === "/get-started" ? (
+          {pathname === "/get-started" || "/care" ? (
             ""
           ) : (
             <ul className={styles.navbarItems}>
@@ -57,7 +57,7 @@ function Nav() {
               </li>
               <li className={styles.navItem}>
                 <Link href="/therapy" className={styles.navLink}>
-                  Log In
+                  <strong>Log In</strong>
                 </Link>
               </li>
               <li className={styles.navItem}>

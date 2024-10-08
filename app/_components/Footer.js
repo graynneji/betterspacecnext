@@ -7,6 +7,7 @@ import Chevron from "@/public/arrow-right.svg";
 import Link from "next/link";
 import styles from "./Footer.module.css";
 import Image from "next/image";
+import { FaArrowRight } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -30,7 +31,8 @@ function Footer() {
           />
           <button className={styles.FooterTopFieldButton}>
             Subscribe
-            <Image styles={{ width: "100%" }} src={Chevron} alt="Arrow Right" />
+            <FaArrowRight />
+            {/* <Image styles={{ width: "100%" }} src={Chevron} alt="Arrow Right" /> */}
           </button>
         </div>
       </div>

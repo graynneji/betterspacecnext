@@ -1,21 +1,41 @@
 import { z } from "zod";
 
-export const SignupFormSchema = z.object({
+export const signUpschema = z.object({
   name: z
-    .string()
-    .min(2, { message: "Name must be at least 2 characters long." })
-    .trim(),
-  email: z.string().email({ message: "Please enter a valid email." }).trim(),
-  phoneNumberSchema: z.string().regex(/^\+?[1-9]\d{1,14}$/, {
-    message: "Invalid phone number format",
-  }),
+    .string({
+      invalid_type_error: "Name is required and more than 3 characters",
+    })
+    .min(3, "Name should be more than 3 characters"),
+  email: z
+    .string({
+      invalid_type_error: "Valid email is required",
+    })
+    .email("Please enter a valid email"),
+  phone: z
+    .string({
+      invalid_type_error: "Valid phone is required",
+    })
+    .regex(
+      /^(\+\d{1,3}[-\s]?)?\(?\d{3}\)?[-\s.]?\d{3}[-\s.]?\d{4,7}$/,
+      "Please enter a valid phone"
+    ),
   password: z
-    .string()
-    // .min(8, { message: 'Be at least 8 characters long' })
-    // .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
-    // .regex(/[0-9]/, { message: 'Contain at least one number.' })
-    // .regex(/[^a-zA-Z0-9]/, {
-    //   message: 'Contain at least one special character.',
-    // })
-    .trim(),
+    .string({
+      invalid_type_error: "Password must be at least 6 characters",
+    })
+    .min(8, "Password must be at least 6 characters"),
+});
+
+export const loginSchema = z.object({
+  email: z
+    .string({
+      invalid_type_error: "Valid email is required",
+    })
+    .email("Please enter a valid email"),
+
+  password: z
+    .string({
+      invalid_type_error: "Password must be at least 6 characters",
+    })
+    .min(8, "Password must be at least 6 characters"),
 });

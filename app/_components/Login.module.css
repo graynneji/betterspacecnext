@@ -1,0 +1,21 @@
+.loginCon{
+    padding: 0px 200px 0px 200px;
+
+}
+
+.getstarted{
+    font-size: 2rem;
+    font-weight: 400;
+
+}
+.forgetPassword{
+place-self: flex-end;
+font-weight: 400;
+}
+
+@media screen and (max-width: 685px) {
+    .loginCon{
+        padding: 0px 0px;
+    
+    }
+}

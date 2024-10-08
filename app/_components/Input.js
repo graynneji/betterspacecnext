@@ -16,6 +16,7 @@ function Input({
   inputType,
   // disabled,
   selectedQuesAnswers,
+  onChange,
 }) {
   return (
     <>
@@ -28,6 +29,8 @@ function Input({
             // disabled={disabled}
             placeholder={placeholder}
             className={styles.joinHeroInput}
+            autoComplete="off"
+            autofill="off"
             // {...register(id)}
           />
           {/* {error && error.message && (
@@ -48,6 +51,9 @@ function Input({
               placeholder={placeholder}
               className={styles.styledInput}
               name={id}
+              autocomplete="off"
+              autoComplete="off"
+              autofill="off"
               // {...register(id)}
             />
             {/* {error && error.message && (
@@ -68,6 +74,9 @@ function Input({
               rows="6"
               placeholder={placeholder}
               className={styles.styledInputArea}
+              autocomplete="off"
+              autoComplete="off"
+              autofill="off"
               // {...register(id)}
             />
             {/* {error && error.message && (
@@ -88,6 +97,9 @@ function Input({
             className={styles.createInput}
             required // Ensure placeholder-shown works for browsers that rely on 'required'
             value={selectedQuesAnswers}
+            onChange={onChange}
+            autoComplete="off"
+            autofill="off"
           />
           <label htmlFor={id} className={styles.createInpLabel}>
             {label}

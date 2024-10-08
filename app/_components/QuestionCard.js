@@ -1,15 +1,14 @@
 "use client";
 import Button from "./Button";
 import styles from "./Questionaire.module.css";
-import { createPatients } from "../_lib/actions";
 import { GrCircleInformation } from "react-icons/gr";
 import { useState } from "react";
 import Input from "./Input";
 import FeaturedIcon from "@/public/Featuredicon.svg";
 import Image from "next/image";
 import Link from "next/link";
-// import { useFormState } from "react-hook-form";
 import { signup } from "../_lib/actions";
+
 const questions = [
   {
     question_text: "What is your gender identity?",
@@ -156,9 +155,10 @@ const questions = [
 ];
 
 export default function QuestionCard() {
-  //   const [state, action] = useFormState(signup, undefined);
+  const [error, setError] = useState(null);
   const [currentSection, setCurrentSection] = useState(0); // Track current section
   const [selectedQuesAnswers, setSelectedQuesAnswers] = useState([]);
+
   const totalSections = 8;
   let section = 0;
 
@@ -178,12 +178,12 @@ export default function QuestionCard() {
       //   [questionText]: option,
       { question: questionText, answer: option },
     ]);
-    console.log(selectedQuesAnswers);
+    // console.log(selectedQuesAnswers);
   };
-  const createPatientsWithQuestionAnswer = createPatients.bind(
-    null,
-    selectedQuesAnswers
-  );
+
+  const createAccount = signup.bind(null, selectedQuesAnswers);
+  console.log("the error", error);
+
   return (
     <>
       <div className={styles.progressBar}>
@@ -216,12 +216,23 @@ export default function QuestionCard() {
       </div>
 
       <div className={styles.formContainer}>
-        {/* <form action={createPatients} className={styles.form}> */}
         <form
-          action={signup}
-          //   action={async (formData) =>
-          //     await createPatientsWithQuestionAnswer(formData)
-          //   }
+          // action={signup}
+          action={async (formData) => {
+            setError(null);
+            // const { error, status } = await createAccount(formData);
+            const error = await createAccount(formData);
+            console.log(error);
+            if (error) {
+              setError(error);
+              // setError(error?.error?.message);
+            }
+            // if (final.status === "420") {
+            //   console.log(final.error);
+            //   setError(final.error);
+            //   // setError(error?.error?.message);
+            // }
+          }}
           className={styles.form}
         >
           {questions.map((question, index) => (
@@ -266,67 +277,96 @@ export default function QuestionCard() {
               <span className={styles.questionSpan} style={{ maxWidth: "70%" }}>
                 Great job, You&#39;ve successfully completed the questionnaire!{" "}
                 <strong>next step is to create an account</strong>
+                <p
+                  style={{
+                    marginBottom: "-10px",
+                    marginTop: "5px",
+                    color: "red",
+                  }}
+                >
+                  {error}
+                </p>
               </span>
-              <Input
-                type="text"
-                inputType="create"
-                label="First Name"
-                id="name"
-                name="name"
-                placeholder="First Name"
-                //   disabled={isSubmitting}
-                //   register={register}
-                //   error={errors.name}
-              />
 
-              <Input
-                type="text"
-                inputType="create"
-                label="Email Address"
-                id="email"
-                name="email"
-                placeholder="Email Address"
-                //   disabled={isSubmitting}
-                //   register={register}
-                //   error={errors.name}
-              />
-
-              <Input
-                type="text"
-                inputType="create"
-                label="Phone Number"
-                id="phone"
-                name="phone"
-                placeholder="Phone"
-                //   disabled={isSubmitting}
-                //   register={register}
-                //   error={errors.name}
-              />
-
-              <Input
-                type="password"
-                inputType="create"
-                label="Create Password"
-                id="password"
-                name="password"
-                placeholder="Create password"
-                //   disabled={isSubmitting}
-                //   register={register}
-                //   error={errors.name}
-              />
-
-              <Input
+              <div className={styles.contaErrorInputWidth}>
+                <Input
+                  type="text"
+                  inputType="create"
+                  label="First Name"
+                  id="name"
+                  name="name"
+                  placeholder="First Name"
+                  onChange={() => {
+                    setError(null);
+                  }}
+                />
+                {/* {error?.name?.length > 0 ? (
+                  <p className={styles.error}>{error?.name[0]}</p>
+                ) : (
+                  ""
+                )} */}
+              </div>
+              <div className={styles.contaErrorInputWidth}>
+                <Input
+                  type="email"
+                  inputType="create"
+                  label="Email Address"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address"
+                  onChange={() => {
+                    setError(null);
+                  }}
+                />
+                {/* {error?.email?.length > 0 ? (
+                  <p className={styles.error}>{error?.email[0]}</p>
+                ) : (
+                  ""
+                )} */}
+              </div>
+              <div className={styles.contaErrorInputWidth}>
+                <Input
+                  type="text"
+                  inputType="create"
+                  label="Phone Number"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone"
+                  onChange={() => {
+                    setError(null);
+                  }}
+                />
+                {/* {error?.phone?.length > 0 ? (
+                  <p className={styles.error}>{error?.phone[0]}</p>
+                ) : (
+                  ""
+                )} */}
+              </div>
+              <div className={styles.contaErrorInputWidth}>
+                <Input
+                  type="password"
+                  inputType="create"
+                  label="Create Password"
+                  id="password"
+                  name="password"
+                  placeholder="Create password"
+                  onChange={() => {
+                    setError(null);
+                  }}
+                />
+                {/* {error?.password?.length > 0 ? (
+                  <p className={styles.error}>{error?.password[0]}</p>
+                ) : (
+                  ""
+                )} */}
+              </div>
+              {/* <Input
                 type="hidden"
                 inputType="create"
-                // label="selected"
                 id="selected"
                 name="selected"
-                // placeholder="First Name"
-                //   disabled={isSubmitting}
-                //   register={register}
-                //   error={errors.name}
-                selectedQuesAnswers={selectedQuesAnswers}
-              />
+                selectedQuesAnswers={JSON.stringify(selectedQuesAnswers)}
+              /> */}
               <div className={styles.btnCon}>
                 <span className={styles.PrivacyText}>
                   By continuing you agree with betterspace{" "}
@@ -337,11 +377,12 @@ export default function QuestionCard() {
                     Privacy Policy
                   </Link>
                 </span>
-                <Button type="submit">Create account</Button>
+                <Button btntype="login">Create account</Button>
               </div>
             </div>
           )}
         </form>
+        {/* <VerifyEmail /> */}
       </div>
     </>
   );

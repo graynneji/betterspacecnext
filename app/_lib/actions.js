@@ -1,18 +1,12 @@
 "use server";
-
+import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
-// import { revalidatePath } from "next/cache";
-// import { redirect } from "next/navigation";
-
-// import { createClient } from "@/utils/supabase/server";
-
-///////////////////////////////////////////////////
-////////////////////////////////////////////////
 import { contactFormSchema } from "../services/validationSchema";
 import { createClient } from "../utils/supabase/server";
 import pool from "./db";
 import { supabase } from "./supabase";
 import { redirect } from "next/navigation";
+import { signUpschema, loginSchema } from "./validationSchema";
 
 export async function submitForm(prevState, formData) {
   const response = await fetch(`http://www.geoplugin.net/json.gp`);
@@ -28,128 +22,130 @@ export async function submitForm(prevState, formData) {
     region: location.geoplugin_region,
     country: location.geoplugin_countryName,
   };
-  try {
-    // await contactFormSchema.validate({
-    //   name: fullData.name,
-    //   company: fullData.company,
-    //   phone: fullData.phone,
-    //   email: fullData.email,
-    //   message: fullData.message,
-    // });
-    const client = await pool.connect();
 
-    const queryMes = `INSERT INTO contacts(name, company, phone, email,message, ip, city, region, country)
+  const client = await pool.connect();
+
+  const queryMes = `INSERT INTO contacts(name, company, phone, email,message, ip, city, region, country)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
-    const values = [
-      fullData.name,
-      fullData.company,
-      fullData.phone,
-      fullData.email,
-      fullData.message,
-      fullData.ip,
-      fullData.city,
-      fullData.region,
-      fullData.country,
-    ];
-    await client.query(queryMes, values);
-    client.release();
-    // return { success: true };
-    // showToast("Message sent successfully!", { type: "success" });
-  } catch (err) {
-    // return { success: false, message: err.message };
-    // showToast("Message was not sent: " + err.message, { type: "error" });
-    // throw new Error("Message was not sent");
-  }
+  const values = [
+    fullData.name,
+    fullData.company,
+    fullData.phone,
+    fullData.email,
+    fullData.message,
+    fullData.ip,
+    fullData.city,
+    fullData.region,
+    fullData.country,
+  ];
+  await client.query(queryMes, values);
+  client.release();
 }
 
-////////// GET STARTED/////////////////////////////////////
-export async function createPatients(selectedQuesAnswers, formData) {
-  console.log(selectedQuesAnswers, formData);
-  const response = await fetch(`http://www.geoplugin.net/json.gp`);
-  const location = await response.json();
-  const newPatients = {
-    // name: formData.get("")
-    ip: location.geoplugin_request,
-    city: location.geoplugin_city,
-    region: location.geoplugin_region,
-    country: location.geoplugin_countryName,
-  };
-  try {
-    const { error } = await supabase.from("patients").insert([newPatients]);
-  } catch (error) {
-    throw new Error("Acoount creation unsuccessful");
-  }
-}
+///////////////////////////////////////////////////////////////////////// GET STARTED///////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-/////////////////Signup///////////////////////////////////
-////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////Signin/Signup/////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
-// export async function login(formData) {
-//   const supabase = createClient();
+export async function login(formData) {
+  const supabase = createClient();
 
-//   // type-casting here for convenience
-//   // in practice, you should validate your inputs
-//   const data = {
-//     email: formData.get("email"),
-//     password: formData.get("password"),
-//   };
+  const validatedFields = loginSchema.safeParse({
+    email: formData.get("email"),
+    password: formData.get("password"),
+  });
 
-//   const { error } = await supabase.auth.signInWithPassword(data);
+  if (!validatedFields.success) {
+    return JSON.stringify({
+      error: validatedFields.error.flatten().fieldErrors,
+      status: "450",
+    });
+  }
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: formData.get("email"),
+    password: formData.get("password"),
+  };
 
-//   if (error) {
-//     redirect("/error");
-//   }
+  const { error } = await supabase.auth.signInWithPassword(data);
 
-//   revalidatePath("/", "layout");
-//   redirect("/");
-// }
+  if (error.code === "invalid_credentials") {
+    return JSON.stringify({
+      error: "Invalid email and password",
+    });
+  }
+  if (error) {
+    return JSON.stringify({
+      error: "Something went wrong try again",
+    });
+    // return { error: JSON.parse(JSON.stringify(error)) };
+  }
 
-export async function signup(formData) {
+  if (error.code === "email_not_confirmed") {
+    return JSON.stringify({
+      error: "Please confirm your email",
+    });
+  }
+
+  if (!error) {
+    return JSON.stringify({
+      error: "There is no error",
+    });
+  }
+}
+
+export async function signup(selectedQuesAnswers, formData) {
   const supabase = createClient();
   const response = await fetch(`http://www.geoplugin.net/json.gp`);
   const location = await response.json();
+
+  const validatedFields = signUpschema.safeParse({
+    email: formData.get("email"),
+    password: formData.get("password"),
+    name: formData.get("name"),
+    phone: formData.get("phone"),
+  });
+
+  if (!validatedFields.success) {
+    return "Invalid inputs, please check your inputs";
+  }
 
   const { data: signUpData, error } = await supabase.auth.signUp({
     email: formData.get("email"),
     password: formData.get("password"),
   });
-  // console.log(signUpData);
-
+  console.log(signUpData);
   if (error) {
-    // redirect("/error");
-    throw new Error("Something went wrong");
+    console.log(error);
+    return "Error, signing up please try again";
   }
 
   const data = {
     user_id: signUpData.user.id,
     name: formData.get("name"),
     phone: formData.get("phone"),
+    email: formData.get("email"),
     //convert to json string
     //use JSON.parse() to convert back to an object
-    selected: JSON.stringify(formData.get("selected")),
+    selected: JSON.stringify(selectedQuesAnswers),
     ip: location.geoplugin_request,
     city: location.geoplugin_city,
     region: location.geoplugin_region,
     country: location.geoplugin_countryName,
   };
 
-  const { error: InsertError } = await supabase.from("patients").insert([
-    // {
-    //   user_id: signUpData.user.id, // assuming 'profiles' table has 'user_id' as a foreign key
-    //   name: formData.get("name"),
-    //   phone: formData.get("phone"),
-    //   selected: formData.get("selected").json(),
-    // },
-    data,
-  ]);
+  const { error: InsertError } = await supabase.from("patients").insert([data]);
 
   if (InsertError) {
     console.log(InsertError);
-    // redirect("/error");
-    throw new Error("Something went wrong");
+    return "An account is associated with the email";
+
+    // return { error: JSON.parse(JSON.stringify(InsertError)), source: "Insert data" };
   }
 
   revalidatePath("/", "layout");
-  redirect("/care");
+  redirect(`/verify?emailId=${formData.get("email")}`);
 }

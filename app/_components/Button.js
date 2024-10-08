@@ -1,16 +1,20 @@
+"use client";
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import Link from "next/link";
 import styles from "./Button.module.css"; // Import the CSS module
-
+import { useFormStatus } from "react-dom";
 function Button({
   children,
   disabled,
   type,
+  btntype,
   href,
   handleSection,
   defaultValue,
 }) {
+  const { pending } = useFormStatus();
+
   if (type === "join") {
     return (
       <button className={styles.navbarButton}>
@@ -42,7 +46,20 @@ function Button({
       </button>
     );
   }
-
+  ///////////////////////////////////////////
+  if (btntype === "login") {
+    return (
+      <button
+        btntype="login"
+        disabled={pending}
+        type="submit"
+        className={styles.submitBtn}
+      >
+        {pending ? " Loading..." : children}
+      </button>
+    );
+  }
+  /////////////////////////////////////////////////
   if (type === "joinHero") {
     return (
       <button type="submit" className={styles.joinBtn}>
@@ -67,6 +84,7 @@ function Button({
       </button>
     );
   }
+  //Business page button
   if (type === "business") {
     return (
       <button type="business" className={styles.businessBtn}>
