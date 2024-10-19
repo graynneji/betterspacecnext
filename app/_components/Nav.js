@@ -32,7 +32,7 @@ function Nav() {
           <Link href="/" className={styles.logoLnk}>
             <Image width={160} height={40} src={Logo} alt="Logo" />
           </Link>
-          {pathname === "/get-started" || "/care" ? (
+          {pathname === "/care" ? (
             ""
           ) : (
             <ul className={styles.navbarItems}>

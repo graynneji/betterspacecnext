@@ -147,5 +147,5 @@ export async function signup(selectedQuesAnswers, formData) {
   }
 
   revalidatePath("/", "layout");
-  redirect(`/verify?emailId=${formData.get("email")}`);
+  redirect(`/verify/${formData.get("email")}`);
 }
