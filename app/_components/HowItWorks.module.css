@@ -1,6 +1,7 @@
 .howItWorksContainer{
     padding: 12.4rem 20rem 6.4rem 20rem;
-    background-color: #FFFBF4;
+    background: linear-gradient(#f7f0e6 60%,#fffcf6 80%);
+    /* background-color: #FFFBF4; */
     position: relative;
 }
 .howHead{
@@ -114,7 +115,7 @@ background-color: #C4B1F9;
         }
 
 
-        .custom {
+        /* .custom {
             position: absolute;
             top: 0;
             left: 0;
@@ -133,4 +134,4 @@ background-color: #C4B1F9;
         
         .custom .shape {
             fill: #022C22;
-        }
+        } */

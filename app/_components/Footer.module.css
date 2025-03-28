@@ -5,7 +5,8 @@
   gap: 48px;
   justify-content: center;
   /* align-items: center; */
-  background: #022c22;
+  /* background: #022c22; */
+  background: #325343;
   width: 100vw;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   position: relative;
@@ -254,7 +255,7 @@ color: #022c22;
   outline: none;
 }
 
-.custom {
+/* .custom {
   position: absolute;
   top: 0;
   left: 0;
@@ -276,4 +277,4 @@ color: #022c22;
 }
 .custom .shapeNonPath{
   fill: #FFFFFF;
-}
+} */

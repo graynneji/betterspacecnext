@@ -35,7 +35,7 @@
   gap: 10px;
   padding: 20px clamp(20px, 10%, 160px);
   position: fixed;
-  width: 100%;
+  width: 100vw;
   z-index: 10000;
   top: 0;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);

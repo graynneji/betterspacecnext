@@ -54,8 +54,7 @@ function Hero() {
               {/* REMEMBER TO CHANGE THE CHILDREN JOIN WAITLIST TO GET STARTED */}
               <Button type="started">Get started</Button>
               <h5 className={styles.leftTextLightLight}>
-                Enjoy flexible scheduling and personalized care from our
-                licensed therapists.
+                Enjoy flexible scheduling and personalized care
               </h5>
             </div>
 
@@ -72,26 +71,26 @@ function Hero() {
           </form> */}
           </div>
           <div className={styles.rightHero}>
-            <div className={styles.styledFlower}>
+            {/* <div className={styles.styledFlower}>
               <Image
                 style={{ width: "60%", height: "100%" }}
                 src={Flower}
                 alt="flower"
               />
-            </div>
+            </div> */}
             <Image
               style={{ width: "100%", height: "100%" }}
               src={RightHeroImage}
               alt="Hero Image man and a woman hugging sign of peace"
               className={styles.blur}
             />
-            <div className={styles.styledStar}>
+            {/* <div className={styles.styledStar}>
               <Image
                 style={{ width: "70%", height: "100%" }}
                 src={Star}
                 alt="Star"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

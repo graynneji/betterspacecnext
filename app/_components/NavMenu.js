@@ -80,10 +80,18 @@ function NavMenu() {
         </li>
       </ul>
       <div className={styles.lognavreg}>
-        <Link className={styles.loginLinkNav} href="/login">
+        <Link
+          className={styles.loginLinkNav}
+          onClick={handleMenuClick}
+          href="/login"
+        >
           Login
         </Link>
-        <Button onClick={handleMenuClick} type="join">
+        <Button
+          href="/get-started"
+          onHandleMenuClick={handleMenuClick}
+          type="join"
+        >
           Get started
         </Button>
       </div>

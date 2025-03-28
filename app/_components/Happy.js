@@ -4,6 +4,7 @@ import ImageHappy from "@/public/IMGHappy.svg";
 import StarFlower from "@/public/starFlower.svg";
 import Image from "next/image";
 import WaveHaikei from "@/public/wave-haikei(4).svg";
+// import { Parachute, ShieldCheck, HandHeart } from "phosphor-react";
 
 // Function to determine tab colors based on index
 const getTabColor = (index) => {
@@ -25,14 +26,17 @@ function Happy() {
     {
       header: "A safe haven",
       body: "Our platform provides a safe haven where you can share your thoughts, feelings, and experiences with others who understand.",
+      // icon: Parachute,
     },
     {
       header: "Expert guidance",
       body: "Betterspace provides access to a team of experienced mental health professionals and counselors who are committed to your well-being.",
+      // icon: ShieldCheck,
     },
     {
       header: "Accessible care",
       body: "Our platform is available 24/7, ensuring that help is always within reach, whenever you need it.",
+      // icon: "",
     },
   ];
 
@@ -102,9 +106,12 @@ function Happy() {
                 className={styles.tabs}
                 style={{ backgroundColor: getTabColor(i) }}
               >
-                <span className={styles.tabBoldText}>
-                  {tabContent[i].header}
-                </span>
+                <div>
+                  <span className={styles.tabBoldText}>
+                    {tabContent[i].header}
+                  </span>
+                  {/* <span><tabContent[i].icon /></span> */}
+                </div>
                 <span className={styles.tabLightText}>
                   {tabContent[i].body}
                 </span>

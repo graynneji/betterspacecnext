@@ -27,7 +27,7 @@ const how = [
 export default function HowItWorks() {
   return (
     <section className={styles.howItWorksContainer}>
-      <div className={styles.custom}>
+      {/* <div className={styles.custom}>
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export default function HowItWorks() {
             className={styles.shape}
           ></path>
         </svg>
-      </div>
+      </div> */}
       <div className={styles.howHead}>
         <div className={styles.howright}>
           <h1 className={styles.howHOne}>How it works</h1>

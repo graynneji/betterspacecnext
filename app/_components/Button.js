@@ -12,6 +12,7 @@ function Button({
   href,
   handleSection,
   defaultValue,
+  onHandleMenuClick,
 }) {
   const { pending } = useFormStatus();
 
@@ -19,10 +20,15 @@ function Button({
     // if (type === "join") {
     //this is join but i am using it as started
     return (
-      <button className={styles.navbarButton}>
+      <Link
+        href="/get-started"
+        className={styles.navbarButton}
+        onClick={onHandleMenuClick}
+      >
         {/* <Link href="/join">{children}</Link> */}
-        <Link href="/get-started">{children}</Link>
-      </button>
+        {children}
+        {/* <Link href="/get-started">{children}</Link> */}
+      </Link>
     );
   }
   if (type === "download") {
