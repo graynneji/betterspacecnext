@@ -6,6 +6,7 @@ import styles from "./layout.module.css";
 import store from "../store/store";
 import Cookies from "../_components/Cookies";
 import { Toaster } from "react-hot-toast";
+import PageTransition from "../_components/pageTransition";
 
 export const metadata = {
   metadataBase: new URL("https://betterspace.ng"),
@@ -85,8 +86,13 @@ export default function RootLayout({ children }) {
       <body>
         <div className={styles.StyledAppLayout}>
           <Header />
-          <main style={{ marginTop: "80px" }}>{children}</main>
+          <PageTransition>
+            {children}
+            {/* <main style={{ marginTop: "80px" }}>{children}</main> */}
+          </PageTransition>
+
           <Toaster position="top-left" reverseOrder={false} />
+
           <Footer />
           {/* <Cookies /> */}
         </div>

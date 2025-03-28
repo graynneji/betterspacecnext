@@ -255,26 +255,22 @@ color: #022c22;
   outline: none;
 }
 
-/* .custom {
+.custom {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  transform: rotate(180deg);
 }
 
 .custom svg {
   position: relative;
   display: block;
-  width: calc(100% + 1.3px);
-  height: 90px;
+  width: calc(300% + 1.3px);
+  height: 45px;
 }
 
 .custom .shape{
-  fill: #F8F4F0;
+  fill: #f8f4f0;
 }
-.custom .shapeNonPath{
-  fill: #FFFFFF;
-} */

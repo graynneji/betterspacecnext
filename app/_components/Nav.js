@@ -57,7 +57,12 @@ function Nav() {
                 </Link>
               </li>
               <li className={styles.navItem}>
-                <Link href="/therapy" className={styles.navLink}>
+                <Link href="/therapist" className={styles.navLink}>
+                  Therapist
+                </Link>
+              </li>
+              <li className={styles.navItem}>
+                <Link href="/login" className={styles.navLink}>
                   <strong>Log In</strong>
                 </Link>
               </li>

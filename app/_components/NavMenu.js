@@ -62,20 +62,20 @@ function NavMenu() {
         </li>
         <li className={styles.MenuItem}>
           <Link
-            href="/therapy"
-            className={`${styles.NavLink} ${styles.NavMenuLink}`}
-            onClick={handleMenuClick}
-          >
-            Therapy
-          </Link>
-        </li>
-        <li className={styles.MenuItem}>
-          <Link
             href="/business"
             className={`${styles.NavLink} ${styles.NavMenuLink}`}
             onClick={handleMenuClick}
           >
             Business
+          </Link>
+        </li>
+        <li className={styles.MenuItem}>
+          <Link
+            href="/therapist"
+            className={`${styles.NavLink} ${styles.NavMenuLink}`}
+            onClick={handleMenuClick}
+          >
+            Therapy
           </Link>
         </li>
       </ul>

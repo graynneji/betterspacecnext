@@ -8,20 +8,21 @@ import FeaturedIcon from "@/public/Featuredicon.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { signup } from "../_lib/actions";
+import styles1 from "./QuestionCard.module.css";
+import { motion } from "framer-motion";
 
 const questions = [
   {
     question_text: "What is your gender identity?",
     info_text:
-      "Sharing this information helps your therapist tailor a more customized and supportive approach to your needs.",
+      "Help your therapist tailor a more customized and supportive approach to your needs.",
     options: ["Man", "Woman"],
     section: 0,
     select: false,
   },
   {
     question_text: "What is your relationship status?",
-    info_text:
-      "Relationship status can affect your well-being. Sharing it helps your therapist provide a more personalized approach.",
+    info_text: "Relationship status can affect your well-being.",
     options: [
       "Single",
       "Married",
@@ -36,7 +37,7 @@ const questions = [
   {
     question_text: "How would you rate your current physical health?",
     info_text:
-      "This will help your therapist understand your needs better and create a more effective plan.",
+      "Help your therapist understand your needs better and create a more effective plan.",
     options: ["Good", "Fair", "Poor"],
     section: 1,
     select: false,
@@ -52,7 +53,7 @@ const questions = [
   {
     question_text: "Have you been in therapy before?",
     info_text:
-      "Sharing your therapeutic history helps your therapist create a personalized plan. New to therapy? We'll guide you through what to expect after signing up.",
+      "We create a personalized plan and guide you through after signing up.",
     options: ["No", "Yes"],
     section: 2,
     select: false,
@@ -60,7 +61,7 @@ const questions = [
   {
     question_text: "Why do you want to work on your mental health?",
     info_text:
-      "Understanding your motivations helps us match you with a therapist who aligns with your goals and empowers you to achieve lasting progress.",
+      "This helps us match you with a therapist who aligns with your goals.",
     options: [
       "I feel depressed",
       "I have anxious thoughts",
@@ -137,7 +138,7 @@ const questions = [
   {
     question_text: "What best describes your current work situation?",
     info_text:
-      "This information helps your therapist understand your daily life and provide more tailored support.",
+      "Help us understand your daily life and provide more tailored support.",
     options: [
       "Employed full-time",
       "Employed part-time",
@@ -250,73 +251,80 @@ export default function QuestionCard() {
           {questions.map((question, index) => (
             <div key={index} className={styles.questionCard}>
               {currentSection === question.section && (
-                <>
-                  <h3 className={styles.questionHThree}>
-                    {question.question_text}
-                  </h3>
-                  {/* <span className={styles.questionSpan}>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <>
+                    <h3 className={styles.questionHThree}>
+                      {question.question_text}
+                    </h3>
+                    {/* <span className={styles.questionSpan}>
                     kindly provide us with some information
                   </span> */}
-                  <>
-                    {!question.select ? (
-                      <div className={styles.buttonCon}>
-                        {question.options.map((option) => (
-                          <Button
-                            key={option}
-                            defaultValue={option}
-                            handleSection={(e) =>
+                    <>
+                      {!question.select ? (
+                        <div className={styles.buttonCon}>
+                          {question.options.map((option) => (
+                            <Button
+                              key={option}
+                              defaultValue={option}
+                              handleSection={(e) =>
+                                handleNextSection(
+                                  e,
+                                  option,
+                                  question.question_text
+                                )
+                              }
+                              type="TransparentButton"
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        <>
+                          <select
+                            className={styles1.selectedOne}
+                            id="select"
+                            onChange={(e) =>
                               handleNextSection(
                                 e,
-                                option,
+                                e.target.value,
                                 question.question_text
                               )
                             }
-                            type="TransparentButton"
-                          />
-                        ))}
-                      </div>
-                    ) : (
-                      <>
-                        <select
-                          id="marriage-select"
-                          onChange={(e) =>
-                            handleNextSection(
-                              e,
-                              e.target.value,
-                              question.question_text
-                            )
-                          }
-                        >
-                          <label for="marriage-select"></label>
-                          <option value="">--Please choose an option--</option>
-                          {question.options.map((option) => (
-                            <>
-                              <option
-                                handleSection={(e) =>
-                                  handleNextSection(
-                                    e,
-                                    option,
-                                    question.question_text
-                                  )
-                                }
-                                value={option}
-                              >
-                                {option}
-                              </option>
-                            </>
-                          ))}
-                        </select>
-                      </>
-                    )}
-                  </>
+                          >
+                            <label for="select"></label>
+                            <option value="">Please choose an option</option>
+                            {question.options.map((option) => (
+                              <>
+                                <option
+                                  handleSection={(e) =>
+                                    handleNextSection(
+                                      e,
+                                      option,
+                                      question.question_text
+                                    )
+                                  }
+                                  value={option}
+                                >
+                                  {option}
+                                </option>
+                              </>
+                            ))}
+                          </select>
+                        </>
+                      )}
+                    </>
 
-                  <div className={styles.infoBar}>
-                    <GrCircleInformation
-                      style={{ minWidth: "24px", minHeight: "24px" }}
-                    />
-                    <p>{question.info_text}</p>
-                  </div>
-                </>
+                    <div className={styles.infoBar}>
+                      <GrCircleInformation
+                        style={{ minWidth: "24px", minHeight: "24px" }}
+                      />
+                      <p>{question.info_text}</p>
+                    </div>
+                  </>
+                </motion.div>
               )}
             </div>
           ))}

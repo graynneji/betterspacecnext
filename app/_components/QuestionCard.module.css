@@ -1,0 +1,36 @@
+.selectedOne {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px; 
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 1.8rem;
+    /* color: #333; */
+    cursor: pointer;
+    /* appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none; */
+    margin-bottom: 3.2rem;
+    color: #022c22d7;
+    font-weight: 500;
+  }
+  
+/* 
+  .selectedOne  {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+  } */
+  
+
+  .selectedOne :focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+
+  .selectedOne :hover {
+    border-color: #55555506;
+  }

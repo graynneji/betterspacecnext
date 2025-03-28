@@ -10,7 +10,7 @@ export const metadata = {
   title: "Therapy",
 };
 
-function Therapy() {
+function Therapist() {
   return (
     <>
       <BusinessHeader
@@ -25,4 +25,4 @@ function Therapy() {
   );
 }
 
-export default Therapy;
+export default Therapist;

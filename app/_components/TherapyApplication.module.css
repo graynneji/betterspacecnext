@@ -2,7 +2,7 @@
 .Section {
     display: flex;
     flex-direction: column;
-    background: rgba(239, 248, 122, 1);
+    background:  #FFE27C;
     gap: 48px;
     padding: 100px 200px;
   }
