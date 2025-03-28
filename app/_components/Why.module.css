@@ -30,7 +30,7 @@
   letter-spacing: -0.01em;
   text-align: center;
   line-height: 4.8rem;
-  color: rgba(2, 44, 34, 1);
+  color: #1B1B1B;
   /* padding: 64px 120px 64px 120px; */
 }
 @media screen and (max-width: 687.2px) {
@@ -47,7 +47,8 @@
     letter-spacing: -0.004em;
     text-align: center;
     line-height: 2.6rem;
-    color: rgba(2, 44, 34, 1);
+    color: #1B1B1B;
+    /* color: rgba(2, 44, 34, 1); */
     /* padding: 64px 120px 64px 120px; */
   }
   @media screen and (max-width: 687.2px) {

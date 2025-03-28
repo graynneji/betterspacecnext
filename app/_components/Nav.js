@@ -63,7 +63,8 @@ function Nav() {
               </li>
               <li className={styles.navItem}>
                 <Button href="/join" type="join">
-                  Join waitlist
+                  {/* Join waitlist */}
+                  Get started
                 </Button>
               </li>
             </ul>

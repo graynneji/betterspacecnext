@@ -1,5 +1,7 @@
 .howItWorksContainer{
-    padding: 6.4rem 20rem 6.4rem 20rem;
+    padding: 12.4rem 20rem 6.4rem 20rem;
+    background-color: #FFFBF4;
+    position: relative;
 }
 .howHead{
     display: flex;
@@ -28,7 +30,7 @@
 
 }
 .headBotCon{
-   
+
     gap: 3.2rem;
     display: flex;
     justify-content: center;
@@ -37,15 +39,24 @@
 }
 .headBot{
     padding: 48px 24px 48px 24px;
-    border: 1px solid #D6D6D6;
+    /* border: 1px solid #D6D6D6; */
     border-radius: 16px;
-    background-color: transparent;
+    /* background-color: #B1D8FC; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 325.33px;
     height: 348px;
+}
+.colorOne{
+background-color: #B1D8FC;
+}
+.colorTwo{
+background-color: #FFE27C;
+}
+.colorThree{
+background-color: #C4B1F9;
 }
 .headBotHOne{
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -74,7 +85,7 @@
     @media screen and (max-width: 990px) {
         /* @media screen and (max-width: 685px) { */
           .howItWorksContainer {
-            padding: 40px 16px;
+            padding: 90px 16px;
           }
         }
 
@@ -100,4 +111,26 @@
             .howHFour{
 
             }
+        }
+
+
+        .custom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        
+        .custom svg {
+            position: relative;
+            display: block;
+            width: calc(109% + 1.3px);
+            height: 150px;
+        }
+        
+        .custom .shape {
+            fill: #022C22;
         }

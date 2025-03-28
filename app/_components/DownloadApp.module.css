@@ -2,6 +2,7 @@
 .downloadAppCon{
     background-color: #F8F4F0;
     padding: 150px 200px 150px 200px;
+    position: relative;
 }
 .DownloadCon{
     display: flex;
@@ -52,7 +53,7 @@ flex-direction: column;
 } */
 @media screen and (max-width: 990px) {
     .downloadAppCon {
-        padding: 40px 16px;
+        padding: 90px 16px;
     }
 }
 @media screen and (max-width: 685px) {
@@ -64,4 +65,25 @@ flex-direction: column;
         font-size: 3.2rem;
     line-height: 40px;
     }
+}
+
+
+.custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 46px;
+}
+
+.custom .shape {
+    fill: #ffffff;
 }

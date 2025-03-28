@@ -244,9 +244,11 @@ export default function QuestionaireCard({ data }) {
           {currentSection === 0.5 && (
             <>
               <h3 className={styles.questionHThree}>{data[0].question_text}</h3>
-              <span className={styles.questionSpan}>Please select</span>
+              {/* <span className={styles.questionSpan}>Please select</span> */}
+              <label for="marriage-select"></label>
+
               <div className={styles.buttonCon}>
-                <Button
+                {/* <Button
                   defaultValue="Single"
                   handleSection={handleNextSection}
                   type="TransparentButton"
@@ -275,7 +277,19 @@ export default function QuestionaireCard({ data }) {
                   defaultValue="Prefer not to say"
                   handleSection={handleNextSection}
                   type="TransparentButton"
-                />
+                /> */}
+                <p>
+                  hIIIiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+                </p>
+                {/* <select id="marriage-select">
+                  <option value="">--Please choose an option--</option>
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Divorced">Divorced</option>
+                  <option value="Widowed">Widowed</option>
+                  <option value="Other">Other</option>
+                  <option value="Prefer not to say">Prefer not to say</option>
+                </select> */}
               </div>
               <div className={styles.infoBar}>
                 <GrCircleInformation /> <p>Please select your needs</p>

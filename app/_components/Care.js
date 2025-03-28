@@ -18,7 +18,7 @@ export default async function Care() {
 
   return (
     <div className={styles.careContainer}>
-      <Header />
+      {/* <Header /> */}
       <p>Hello {patientInfo[0].name}</p>
     </div>
   );

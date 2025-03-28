@@ -1,3 +1,4 @@
+"use client";
 import Logo from "@/public/Logo.svg";
 import Linkedin from "@/public/Linkedin.svg";
 import Instagram from "@/public/Instagram.svg";
@@ -8,10 +9,26 @@ import Link from "next/link";
 import styles from "./Footer.module.css";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 function Footer() {
+  const pathname = usePathname();
+  console.log(pathname);
   return (
     <footer className={styles.StyledFooter}>
+      <div className={styles.custom}>
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z"
+            className={pathname === "/" ? styles.shape : styles.shapeNonPath}
+          ></path>
+        </svg>
+      </div>
       <div className={styles.FooterTopContainer}>
         <div className={styles.FooterTopText}>
           <h5 className={styles.FooterTopTextBold}>
@@ -31,7 +48,7 @@ function Footer() {
           />
           <button className={styles.FooterTopFieldButton}>
             Subscribe
-            <FaArrowRight />
+            {/* <FaArrowRight /> */}
             {/* <Image styles={{ width: "100%" }} src={Chevron} alt="Arrow Right" /> */}
           </button>
         </div>

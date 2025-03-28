@@ -1,6 +1,6 @@
 .StyledFooter {
   display: flex;
-  padding: 6.4rem 20rem 6.4rem 20rem;
+  padding: 14.4rem 20rem 6.4rem 20rem;
   flex-direction: column;
   gap: 48px;
   justify-content: center;
@@ -8,10 +8,11 @@
   background: #022c22;
   width: 100vw;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  position: relative;
 }
 @media screen and (max-width: 990px) {
   .StyledFooter {
-  padding: 40px 16px 40px 16px;
+  padding: 90px 16px 40px 16px;
   justify-content: center;
   align-items: center;
   }
@@ -21,12 +22,14 @@
   display: grid;
   align-items: center;
   border-radius: 16px;
-  box-shadow: 0px 0px 3px #f0f87a, 0px 0px 3px #f0f87a;
+  /* box-shadow: 0px 0px 1px #FFE27C, 0px 0px 0px #FFE27C; */
   /* box-shadow: 0px 0px 10px #f0f87a, 0px 0px 20px #f0f87a; */
   padding: 32px;
   gap: 24px;
-color: #f0f87a;
+/* color: #FFE27C; */
+color: #022c22;
   width: 100%;
+  background-color: #FFE27C;
   /* background-color: #f0f87a; */
   /* border: 1px solid #f0f87a; */
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -79,8 +82,8 @@ color: #f0f87a;
   line-height: 26px;
   letter-spacing: -0.004em;
   text-align: left;
-  /* color: #022c22; */
-  color: #f0f87a;
+  color: #022c22;
+  /* color: #FFE27C; */
 }
 @media screen and (max-width: 468px) {
   .FooterTopTextLight{ 
@@ -91,7 +94,7 @@ color: #f0f87a;
 
 .FooterTopField {
   /* border: 1px solid #022c221a; */
-  border: 1px solid #f0f87a;
+  border: 1px solid #FFE27C;
   background: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -249,4 +252,28 @@ color: #f0f87a;
   background: none;
   border: none;
   outline: none;
+}
+
+.custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 90px;
+}
+
+.custom .shape{
+  fill: #F8F4F0;
+}
+.custom .shapeNonPath{
+  fill: #FFFFFF;
 }

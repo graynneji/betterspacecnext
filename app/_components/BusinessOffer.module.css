@@ -67,7 +67,7 @@
     font-weight: 800;
     line-height: 42px;
     text-align: center;
-    color: rgba(2, 44, 34, 1);
+    color: #1B1B1B;
     background: rgba(207, 220, 255, 1);
     border-radius: 50%;
     display: flex;
@@ -84,7 +84,7 @@
     line-height: 40px;
     letter-spacing: -0.01em;
     text-align: left;
-    color: rgba(2, 44, 34, 1);
+    color:#1B1B1B;
   }
   
   @media screen and (max-width: 468px) {
@@ -100,7 +100,7 @@
     font-weight: 400;
     line-height: 24px;
     text-align: left;
-    color: rgba(2, 44, 34, 1);
+    color: #1B1B1B;
   }
   
   @media screen and (max-width: 468px) {

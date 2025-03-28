@@ -75,8 +75,7 @@ const TabContainer = styled.div`
 
 const TabButton = styled.button`
   padding: 8px 12px;
-  background-color: ${({ active }) =>
-    active ? "rgba(239, 248, 122, 1)" : "transparent"};
+  background-color: ${({ active }) => (active ? "#FFE27C" : "transparent")};
   border: none;
   outline: none;
   cursor: pointer;
@@ -93,7 +92,7 @@ const TabButton = styled.button`
   color: ${({ active }) => (active ? "rgba(2, 44, 34, 1)" : "white")};
 
   span {
-    background-color: rgba(239, 248, 122, 1);
+    background-color: #ffe27c;
     padding: 2px 10px;
     border-radius: 24px;
     display: flex;
@@ -107,8 +106,7 @@ const TabButton = styled.button`
   }
 
   &:hover {
-    background-color: ${({ active }) =>
-      active ? "transparent" : "rgba(239, 248, 122, 1)"};
+    background-color: ${({ active }) => (active ? "transparent" : "#FFE27C")};
     color: ${({ active }) => (active ? "white" : "rgba(2, 44, 34, 1)")};
   }
 `;
@@ -197,7 +195,7 @@ const AmountBlockSubText = styled.p`
 
 const PricingButton = styled.button`
   background-color: ${({ active }) =>
-    active ? "rgba(239, 248, 122, 1)" : "rgba(2, 44, 34, 1)"};
+    active ? "#FFE27C" : "rgba(2, 44, 34, 1)"};
   display: flex;
   gap: 0.8rem;
   border-radius: 2.4rem;

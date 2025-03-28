@@ -7,7 +7,7 @@
     }
   }
   
-  .styledNav {
+  /* .styledNav {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     background-color: #ffffff;
     border-bottom: 1px solid #eaebf0;
@@ -21,8 +21,27 @@
     z-index: 10000;
     top: 0rem;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.077);
-  }
-  
+  } */
+/* glass version of nav */
+.styledNav {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent White */
+  backdrop-filter: blur(10px); /* Glassmorphism Blur Effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari Support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle Border */
+  display: flex;
+  height: 80px;
+  align-items: center;
+  gap: 10px;
+  padding: 20px clamp(20px, 10%, 160px);
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+  top: 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease; /* Smooth Transition */
+}
+
   @media screen and (max-width: 1270px) {
     .styledNav {
       padding: 20px 60px 20px 60px;
@@ -96,7 +115,7 @@
   .closeIcon {
     width: 50px;
     height: 50px;
-    color: #022c22;
+    color: #1B1B1B;
   }
   
   .closeIcon {
@@ -109,7 +128,7 @@
     font-weight: 500;
     line-height: 24px;
     letter-spacing: -0.004em;
-    color: #022c22;
+    color: #1B1B1B;
     cursor: pointer;
     transition: all 0.3s ease;
   }

@@ -1,10 +1,11 @@
 .heroContainer {
     padding: 64px 120px;
     width: 100vw;
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* position: relative */
   
   }
-  
+
   /* @media screen and (max-width: 1270px) {
     .heroContainer {
       padding: 64px 16px;
@@ -70,7 +71,7 @@
   .leftTextBold {
     font-family: "Poppins", sans-serif;
     position: relative;
-    color: rgba(2, 44, 34, 1);
+    color: #1B1B1B;
     font-weight: 700;
     font-size: 6.4rem;
     line-height: 6.8rem;
@@ -115,7 +116,7 @@
     font-size: 1.8rem;
     line-height: 2.6rem;
     letter-spacing: -0.004em;
-    color: rgba(2, 44, 34, 1);
+    color: #1B1B1B;
   }
   .leftTextLightLight{
     font-family: "Inter", sans-serif;
@@ -123,7 +124,7 @@
     font-size: 1.6rem;
     line-height: 2rem;
     letter-spacing: -0.004em;
-    color: rgba(2, 44, 34, 0.855);
+    color: #1B1B1B;
   }
   .rightHero {
     flex: 1;
@@ -151,7 +152,7 @@
   .styledForm:hover,
   .styledForm:focus {
     background: white;
-    color: #022c22;
+    color: #1B1B1B;
     border: 1px solid #022c22;
   }
   
@@ -223,7 +224,7 @@
     bottom: -0.3em;
     left: 12px;
   }
-  
+ 
   @media screen and (max-width: 989.6px) {
     .styledLine {
       bottom: -0.4em;

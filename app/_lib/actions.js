@@ -112,7 +112,7 @@ export async function signup(selectedQuesAnswers, formData) {
   if (!validatedFields.success) {
     return "Invalid inputs, please check your inputs";
   }
-
+  console.log(formData.get("email"));
   const { data: signUpData, error } = await supabase.auth.signUp({
     email: formData.get("email"),
     password: formData.get("password"),

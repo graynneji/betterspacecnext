@@ -16,6 +16,7 @@ const questions = [
       "Sharing this information helps your therapist tailor a more customized and supportive approach to your needs.",
     options: ["Man", "Woman"],
     section: 0,
+    select: false,
   },
   {
     question_text: "What is your relationship status?",
@@ -30,6 +31,7 @@ const questions = [
       "Prefer not to say",
     ],
     section: 0.5,
+    select: true,
   },
   {
     question_text: "How would you rate your current physical health?",
@@ -37,6 +39,7 @@ const questions = [
       "This will help your therapist understand your needs better and create a more effective plan.",
     options: ["Good", "Fair", "Poor"],
     section: 1,
+    select: false,
   },
   {
     question_text: "Are you on any medication?",
@@ -44,6 +47,7 @@ const questions = [
       "Medication can play a significant role in mental health treatment.",
     options: ["No", "Yes"],
     section: 1.5,
+    select: false,
   },
   {
     question_text: "Have you been in therapy before?",
@@ -51,6 +55,7 @@ const questions = [
       "Sharing your therapeutic history helps your therapist create a personalized plan. New to therapy? We'll guide you through what to expect after signing up.",
     options: ["No", "Yes"],
     section: 2,
+    select: false,
   },
   {
     question_text: "Why do you want to work on your mental health?",
@@ -70,6 +75,7 @@ const questions = [
       "Other",
     ],
     section: 2.5,
+    select: true,
   },
   {
     question_text: "What kind of resources are you interested in exploring?",
@@ -83,6 +89,7 @@ const questions = [
       "Mindfulness excercise",
     ],
     section: 3,
+    select: true,
   },
   {
     question_text: "Are there any specific therapist qualities you prefer?",
@@ -96,6 +103,7 @@ const questions = [
       "Non-religious therapist",
     ],
     section: 3.5,
+    select: true,
   },
   {
     question_text: "What kind of communication style resonates with you?",
@@ -107,6 +115,7 @@ const questions = [
       "Gentle and patient",
     ],
     section: 4,
+    select: true,
   },
   {
     question_text: "What is your preferred language?",
@@ -123,6 +132,7 @@ const questions = [
       "Calaba",
     ],
     section: 4.5,
+    select: true,
   },
   {
     question_text: "What best describes your current work situation?",
@@ -138,6 +148,7 @@ const questions = [
       "Other",
     ],
     section: 5,
+    select: true,
   },
   {
     question_text: "How did you get to know about betterspace?",
@@ -151,6 +162,7 @@ const questions = [
       "Other",
     ],
     section: 6,
+    select: true,
   },
 ];
 
@@ -222,7 +234,7 @@ export default function QuestionCard() {
             setError(null);
             // const { error, status } = await createAccount(formData);
             const error = await createAccount(formData);
-            console.log(error);
+            console.log(formData);
             if (error) {
               setError(error);
               // setError(error?.error?.message);
@@ -245,18 +257,59 @@ export default function QuestionCard() {
                   {/* <span className={styles.questionSpan}>
                     kindly provide us with some information
                   </span> */}
-                  <div className={styles.buttonCon}>
-                    {question.options.map((option) => (
-                      <Button
-                        key={option}
-                        defaultValue={option}
-                        handleSection={(e) =>
-                          handleNextSection(e, option, question.question_text)
-                        }
-                        type="TransparentButton"
-                      />
-                    ))}
-                  </div>
+                  <>
+                    {!question.select ? (
+                      <div className={styles.buttonCon}>
+                        {question.options.map((option) => (
+                          <Button
+                            key={option}
+                            defaultValue={option}
+                            handleSection={(e) =>
+                              handleNextSection(
+                                e,
+                                option,
+                                question.question_text
+                              )
+                            }
+                            type="TransparentButton"
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <>
+                        <select
+                          id="marriage-select"
+                          onChange={(e) =>
+                            handleNextSection(
+                              e,
+                              e.target.value,
+                              question.question_text
+                            )
+                          }
+                        >
+                          <label for="marriage-select"></label>
+                          <option value="">--Please choose an option--</option>
+                          {question.options.map((option) => (
+                            <>
+                              <option
+                                handleSection={(e) =>
+                                  handleNextSection(
+                                    e,
+                                    option,
+                                    question.question_text
+                                  )
+                                }
+                                value={option}
+                              >
+                                {option}
+                              </option>
+                            </>
+                          ))}
+                        </select>
+                      </>
+                    )}
+                  </>
+
                   <div className={styles.infoBar}>
                     <GrCircleInformation
                       style={{ minWidth: "24px", minHeight: "24px" }}

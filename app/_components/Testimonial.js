@@ -5,19 +5,19 @@ import { FaQuoteLeft } from "react-icons/fa6";
 import { FaQuoteRight } from "react-icons/fa6";
 const testimonial = [
   {
-    name: "Eniola",
+    name: "Chioma Gloria",
     testimony:
       "I've never experienced such accessible and empowering therapy. It feels like having a supportive friend available anytime. Subscribing was the best decision I've made for my well-being. Betterspace has shaped my life!",
     image: profileTesty,
   },
   {
-    name: "Eniola",
+    name: "Busola Lawal",
     testimony:
       "I finally found a mental health resource that truly resonates with me. The expert support and engaging tools have brought me confidence and joy. If you're considering investing in your mental health, this is your sign!",
     image: profileTesty,
   },
   {
-    name: "Eniola",
+    name: "Abiola Kenneth",
     testimony:
       "My mental health journey has been redefined with such genuine empathy and support. The growth I've experienced has been incredible. If you're ready to thrive, taking this step could be your path to a brighter future.",
     image: profileTesty,
@@ -49,7 +49,7 @@ export default function Testimonial() {
             </div>
             <span className={styles.profileTesty}>
               <div>
-                <Image
+                {/* <Image
                   style={{
                     width: "48px",
                     height: "48px",
@@ -59,9 +59,9 @@ export default function Testimonial() {
                   }}
                   src={profileTesty}
                   alt="profile Image"
-                />
+                /> */}
               </div>
-              <span className={styles.testyName}>Jenny</span>
+              <span className={styles.testyName}>{testimonial[i].name}</span>
             </span>
           </div>
         ))}

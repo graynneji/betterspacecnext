@@ -79,7 +79,14 @@ function NavMenu() {
           </Link>
         </li>
       </ul>
-      <Button onClick={handleMenuClick} type="join" />
+      <div className={styles.lognavreg}>
+        <Link className={styles.loginLinkNav} href="/login">
+          Login
+        </Link>
+        <Button onClick={handleMenuClick} type="join">
+          Get started
+        </Button>
+      </div>
     </div>
   );
 }

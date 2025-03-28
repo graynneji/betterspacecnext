@@ -8,18 +8,22 @@
 }
 .styledFaq {
     background-color: #ffffff;
+    position: relative;
   }
   
   .faqContainer {
     display: flex;
     gap: 4rem;
     padding: 64px 200px;
-    color: rgba(2, 44, 34, 1);
+    color: #1B1B1B;
   }
   @media screen and (max-width: 990px) {
     /* @media screen and (max-width: 685px) { */
       .faqContainer {
-        padding: 40px 16px;
+        padding-right: 16px;
+        padding-left: 16px;
+        padding-bottom:40px ;
+        padding-top: 90px;
       }
     }
   
@@ -76,7 +80,7 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   }
   .textFaq {
-    font-size: 2.4rem;
+    font-size: 2rem;
     line-height: 34px;
     letter-spacing: -0.01em;
     font-weight: 700;
@@ -106,3 +110,24 @@
     }
 
   }
+
+
+  .custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 46px;
+}
+
+.custom .shape {
+    fill: #FFFBF4;
+}

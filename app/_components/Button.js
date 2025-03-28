@@ -16,9 +16,12 @@ function Button({
   const { pending } = useFormStatus();
 
   if (type === "join") {
+    // if (type === "join") {
+    //this is join but i am using it as started
     return (
       <button className={styles.navbarButton}>
-        <Link href="/join">{children}</Link>
+        {/* <Link href="/join">{children}</Link> */}
+        <Link href="/get-started">{children}</Link>
       </button>
     );
   }

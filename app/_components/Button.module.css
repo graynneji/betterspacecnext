@@ -103,7 +103,7 @@ caret-color: transparent;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -0.01em;
-  background: #022c22;
+  background: #FFE27C;
   outline: none;
     border: none;
     width: 203px;
@@ -113,9 +113,10 @@ caret-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #022c22;
 }
 .navbarButton {
-    background: #022c22;
+    background: #FFE27C;
     border-radius: 24px;
     padding: 8px 20px;
     font-size: 16px;
@@ -126,7 +127,7 @@ caret-color: transparent;
     align-items: center;
     justify-content: center;
     text-align: left;
-    color: #ffffff;
+    color: #022c22;
     outline: none;
     border: none;
     white-space: nowrap;
@@ -233,7 +234,7 @@ caret-color: transparent;
     }
   }
   .businessBtn {
-    background: rgba(239, 248, 122, 1);
+    background: #FFE27C;
     border-radius: 40px;
     padding: 16px 24px;
     display: flex;

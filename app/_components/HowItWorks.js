@@ -4,6 +4,7 @@ import Evaluation from "@/public/Evaluation.svg";
 import Message from "@/public/Message Chat.svg";
 import User from "@/public/user-transfer.svg";
 import Image from "next/image";
+import WaveHaikeiBottom from "@/public/wave-haikei(7).svg";
 
 const how = [
   {
@@ -26,6 +27,19 @@ const how = [
 export default function HowItWorks() {
   return (
     <section className={styles.howItWorksContainer}>
+      <div className={styles.custom}>
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z"
+            className={styles.shape}
+          ></path>
+        </svg>
+      </div>
       <div className={styles.howHead}>
         <div className={styles.howright}>
           <h1 className={styles.howHOne}>How it works</h1>
@@ -36,13 +50,22 @@ export default function HowItWorks() {
         </div>
         <div className={styles.howLeft}>
           {/* remember to change to get started  */}
-          <Button type="join">Join Waitlist</Button>
+          <Button type="join">Get started</Button>
         </div>
       </div>
       {/* But */}
       <div className={styles.headBotCon}>
         {how.map((item, index) => (
-          <div key={item.name} className={styles.headBot}>
+          <div
+            key={item.name}
+            className={`${styles.headBot} ${
+              index == 0
+                ? styles.colorOne
+                : index == 1
+                ? styles.colorTwo
+                : styles.colorThree
+            }`}
+          >
             <Image
               src={item.image}
               alt="how betterspace works"
