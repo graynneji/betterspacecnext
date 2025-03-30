@@ -58,43 +58,28 @@ export async function login(formData) {
   });
 
   if (!validatedFields.success) {
-    return JSON.stringify({
-      error: validatedFields.error.flatten().fieldErrors,
-      status: "450",
-    });
+    return { error: "Invalid inputs, please check your inputs" };
   }
   // type-casting here for convenience
   // in practice, you should validate your inputs
-  const data = {
+
+  let { data, error } = await supabase.auth.signInWithPassword({
     email: formData.get("email"),
     password: formData.get("password"),
-  };
+  });
+  console.log(data, error);
 
-  const { error } = await supabase.auth.signInWithPassword(data);
-
-  if (error.code === "invalid_credentials") {
-    return JSON.stringify({
-      error: "Invalid email and password",
-    });
+  if (error?.code == "email_not_confirmed") {
+    return { error: "Please confirm your email" };
+  }
+  if (error?.code == "invalid_credentials") {
+    return { error: "Invalid email and password" };
   }
   if (error) {
-    return JSON.stringify({
-      error: "Something went wrong try again",
-    });
-    // return { error: JSON.parse(JSON.stringify(error)) };
+    return { error: "Something went wrong try again" };
   }
 
-  if (error.code === "email_not_confirmed") {
-    return JSON.stringify({
-      error: "Please confirm your email",
-    });
-  }
-
-  if (!error) {
-    return JSON.stringify({
-      error: "There is no error",
-    });
-  }
+  return { redirectUrl: "/therapy" };
 }
 
 export async function signup(selectedQuesAnswers, formData) {
@@ -112,7 +97,6 @@ export async function signup(selectedQuesAnswers, formData) {
   if (!validatedFields.success) {
     return "Invalid inputs, please check your inputs";
   }
-  console.log(formData.get("email"));
   const { data: signUpData, error } = await supabase.auth.signUp({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -148,4 +132,13 @@ export async function signup(selectedQuesAnswers, formData) {
 
   revalidatePath("/", "layout");
   redirect(`/verify/${formData.get("email")}`);
+}
+
+/////////////////////////////////////////////////
+// Logout
+export async function signOut() {
+  const supabase = createClient();
+  let { error } = await supabase.auth.signOut();
+  revalidatePath("/", "layout");
+  redirect(`/login`);
 }

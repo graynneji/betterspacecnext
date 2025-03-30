@@ -25,6 +25,49 @@ function Nav() {
   // useEffect(() => {
   //   Aos.init();
   // }, []);
+  const RenderNav = () => {
+    return (
+      <ul className={styles.navbarItems}>
+        <li className={styles.navItem}>
+          <Link href="/about" className={styles.navLink}>
+            About
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/pricing" className={styles.navLink}>
+            Pricing
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/article" className={styles.navLink}>
+            Article
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/business" className={styles.navLink}>
+            For business
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/therapist" className={styles.navLink}>
+            Therapist
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/login" className={styles.navLink}>
+            <strong>Log In</strong>
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Button type="join">
+            {/* Join waitlist */}
+            Get started
+          </Button>
+        </li>
+      </ul>
+    );
+  };
+
   return (
     <nav className={styles.styledNav}>
       <div className={styles.navbarContainer}>
@@ -32,48 +75,11 @@ function Nav() {
           <Link href="/" className={styles.logoLnk}>
             <Image width={160} height={40} src={Logo} alt="Logo" />
           </Link>
-          {pathname === "/care" ? (
-            ""
-          ) : (
-            <ul className={styles.navbarItems}>
-              <li className={styles.navItem}>
-                <Link href="/about" className={styles.navLink}>
-                  About
-                </Link>
-              </li>
-              <li className={styles.navItem}>
-                <Link href="/pricing" className={styles.navLink}>
-                  Pricing
-                </Link>
-              </li>
-              <li className={styles.navItem}>
-                <Link href="/article" className={styles.navLink}>
-                  Article
-                </Link>
-              </li>
-              <li className={styles.navItem}>
-                <Link href="/business" className={styles.navLink}>
-                  For business
-                </Link>
-              </li>
-              <li className={styles.navItem}>
-                <Link href="/therapist" className={styles.navLink}>
-                  Therapist
-                </Link>
-              </li>
-              <li className={styles.navItem}>
-                <Link href="/login" className={styles.navLink}>
-                  <strong>Log In</strong>
-                </Link>
-              </li>
-              <li className={styles.navItem}>
-                <Button type="join">
-                  {/* Join waitlist */}
-                  Get started
-                </Button>
-              </li>
-            </ul>
-          )}
+          {pathname === "/therapy" ? (
+            <div style={{ fontSize: "2rem", color: "black" }}>Gray</div>
+          ) : pathname !== "/get-started" ? (
+            <RenderNav />
+          ) : null}
         </div>
         {/* <div className={styles.navbarButtonContainer}>
           <Button href="/join" type="join">

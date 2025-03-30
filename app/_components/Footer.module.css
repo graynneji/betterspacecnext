@@ -1,6 +1,7 @@
 .StyledFooter {
   display: flex;
-  padding: 14.4rem 20rem 6.4rem 20rem;
+  padding: 14.4rem 18rem 6.4rem 18rem;
+  /* padding: 14.4rem 20rem 6.4rem 20rem; */
   flex-direction: column;
   gap: 48px;
   justify-content: center;
@@ -11,7 +12,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   position: relative;
 }
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1270px) {
   .StyledFooter {
   padding: 90px 16px 40px 16px;
   justify-content: center;
@@ -234,6 +235,8 @@ color: #022c22;
   color: white;
   text-align: center;
   cursor: pointer;
+
+  font-weight: 500;
 }
 @media screen and (max-width: 468px) {
   .FooterBottomLink {

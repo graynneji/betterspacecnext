@@ -7,35 +7,39 @@ import Button from "./Button";
 import { useState } from "react";
 import { useRef } from "react";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const ref = useRef(null);
-  const [error, setError] = useState("");
-  console.log(error, error.message);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+  // console.log(error, error.message);
 
   return (
     <form
       ref={ref}
       action={async (formData) => {
-        // const error = await login(formData);
-        const result = await login(formData);
+        setError(null);
 
-        const final = JSON.parse(result);
-        console.log(final);
-        if (final.error.status !== "405") {
-          setError(final?.error);
-          ref.current?.reset();
+        const response = await login(formData);
+
+        if (response?.error) {
+          setError(response?.error);
+          // setError(error?.error?.message);
         }
-        if (error) {
-          //   const result = JSON.parse(error);
-          setError(final?.error);
-          console.log(error?.error);
-          ref.current?.reset();
+        if (response?.redirectUrl) {
+          router.push(response?.redirectUrl);
         }
-        // if (!error) {
-        //   revalidatePath("/", "layout");
-        //   redirect("/care");
+        // const final = JSON.parse(result);
+        // console.log(final);
+        // if (final.error.status !== "405") {
+        //   setError(final?.error);
+        //   ref.current?.reset();
+        // }
+        // if (error) {
+        //   setError(final?.error);
+        //   console.log(error?.error);
+        //   ref.current?.reset();
         // }
       }}
       className={styles.form}
@@ -52,14 +56,14 @@ export default function LoginForm() {
             name="email"
             placeholder="Email Address"
             onChange={() => {
-              setError("");
+              setError(null);
             }}
           />
-          {error?.email?.length > 0 ? (
+          {/* {error?.email?.length > 0 ? (
             <p className={styles.error}>{error?.email[0]}</p>
           ) : (
             ""
-          )}
+          )} */}
         </div>
         <div style={{ width: "100%" }}>
           <Input
@@ -70,14 +74,14 @@ export default function LoginForm() {
             name="password"
             placeholder="Password"
             onChange={() => {
-              setError("");
+              setError(null);
             }}
           />
-          {error?.password?.length > 0 ? (
+          {/* {error?.password?.length > 0 ? (
             <p className={styles.error}>{error?.password[0]}</p>
           ) : (
             ""
-          )}
+          )} */}
         </div>
         <h3 className={styles1.forgetPassword}>Forgot password?</h3>
         <Button btntype="login">Login</Button>

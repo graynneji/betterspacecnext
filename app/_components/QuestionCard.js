@@ -295,7 +295,9 @@ export default function QuestionCard() {
                             }
                           >
                             <label for="select"></label>
-                            <option value="">Please choose an option</option>
+                            <option value="" disabled selected>
+                              Pick an option
+                            </option>
                             {question.options.map((option) => (
                               <>
                                 <option

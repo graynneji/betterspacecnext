@@ -41,10 +41,18 @@ function Button({
 
   // COOKIES BUTTON
   if (type === "reject") {
-    return <button className={`${styles.reject}`}>{children}</button>;
+    return (
+      <button className={`${styles.reject}`} onClick={onHandleMenuClick}>
+        {children}
+      </button>
+    );
   }
   if (type === "accept") {
-    return <button className={`${styles.accept}`}>{children}</button>;
+    return (
+      <button className={`${styles.accept}`} onClick={onHandleMenuClick}>
+        {children}
+      </button>
+    );
   }
 
   // CALL TO ACTION BUTTON

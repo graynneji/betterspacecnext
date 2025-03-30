@@ -1,8 +1,21 @@
+"use client";
 import Link from "next/link";
 import Button from "./Button";
 import styles from "./Cookies.module.css";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 export default function Cookies() {
+  const [cookies, setCookies] = useState(null);
+
+  useEffect(() => {
+    setCookies(localStorage.getItem("cookies"));
+  }, []);
+
+  const handleCookies = (value) => {
+    localStorage.setItem("cookies", value);
+    setCookies(value);
+  };
+  if (cookies) return;
   return (
     <section className={styles.CookiesSec}>
       <div>
@@ -21,8 +34,18 @@ export default function Cookies() {
           visiting our  <Link href="/privacy">Cookie Policy.</Link>
         </span>
         <div className={styles.cookieButtonContainer}>
-          <Button type="reject">Reject</Button>
-          <Button type="accept">Accept</Button>
+          <Button
+            type="reject"
+            onHandleMenuClick={() => handleCookies("Reject")}
+          >
+            Reject
+          </Button>
+          <Button
+            type="accept"
+            onHandleMenuClick={() => handleCookies("Accept")}
+          >
+            Accept
+          </Button>
         </div>
       </div>
     </section>

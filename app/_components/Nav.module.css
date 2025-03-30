@@ -30,10 +30,10 @@
   -webkit-backdrop-filter: blur(10px); /* Safari Support */
   border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle Border */
   display: flex;
-  height: 80px;
+  height: 60px;
   align-items: center;
   gap: 10px;
-  padding: 20px clamp(20px, 10%, 160px);
+  padding: 20px clamp(20px, 10%, 40px);
   position: fixed;
   width: 100vw;
   z-index: 10000;
@@ -44,7 +44,7 @@
 
   @media screen and (max-width: 1270px) {
     .styledNav {
-      padding: 20px 60px 20px 60px;
+      padding: 20px 16px 20px 16px;
     }
   }
   
