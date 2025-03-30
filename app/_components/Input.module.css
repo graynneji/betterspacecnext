@@ -118,6 +118,22 @@
   }
   
   
+  .chatTextarea{
+border: none;
+resize: none;
+  }
   
+  .chatTextarea::after {
+    content: "↘"; 
+    position: absolute;
+    top: 5px;  
+    right: 5px; 
+    font-size: 14px;
+    cursor: nwse-resize; 
+    color: gray;
+    user-select: none;
+  }
   
-  
+ .chatTextarea::after {
+    color: black; /* Change color on hover */
+  }

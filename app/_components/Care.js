@@ -7,6 +7,8 @@ import Nav from "./Nav";
 import { signOut } from "../_lib/actions";
 import { useEffect, useState, useTransition } from "react";
 
+import Image from "next/image";
+
 export default function Care() {
   // const [patientInfo, setPatientInfo] = useState(null);
   // useEffect(() => {
@@ -30,9 +32,10 @@ export default function Care() {
   return (
     <div className={styles.careContainer}>
       {/* <p>Hello {patientInfo[0].name}</p> */}
-      <button onClick={handleSignout} disabled={isPending}>
+      {/* <button onClick={handleSignout} disabled={isPending}>
         {isPending ? "Signing Out..." : "Sign Out"}
-      </button>
+      </button> */}
+      <div className={styles.chatCon}>ui</div>
     </div>
   );
   //   return <p>Hello {data.user.email}</p>;

@@ -1,0 +1,55 @@
+.navigation{
+    display: flex;
+    justify-content: space-around;
+}
+.navigation li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.navigation span{
+    font-size: 12px;
+}
+.IconImages{
+    max-width: "100%";
+    height: "auto";
+    width: 24px;
+    height: 24px;
+}
+.rare{
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+  
+}
+.navCon{
+    justify-self: flex-end;
+
+}
+.sendCon{
+ 
+    display: flex;
+place-content: flex-end;
+}
+.send{
+width: 32px;
+height: 32px;
+border-radius: 100px;
+background-color: #325343;
+justify-content: center;
+align-items: center;
+display: flex;
+text-align: right;
+}
+.searchCon{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #022c223b;
+    border-bottom:1px solid #022c223b;
+border-left: none;
+margin: 10px 0px 10px 0px;
+padding: 10px;
+position: relative;
+}

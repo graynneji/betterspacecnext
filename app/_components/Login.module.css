@@ -6,11 +6,14 @@
 .getstarted{
     font-size: 2rem;
     font-weight: 400;
+    font-size: 16px;
 
 }
 .forgetPassword{
 place-self: flex-end;
 font-weight: 400;
+font-size: 16px;
+color: #022c22;
 }
 
 @media screen and (max-width: 685px) {

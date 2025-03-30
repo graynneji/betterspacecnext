@@ -44,13 +44,13 @@ export default function LoginForm() {
       }}
       className={styles.form}
     >
-      <div className={styles.createFormSection}>
-        <span style={{ fontSize: "30px" }}>Login</span>
+      <div className={styles.createFormSection} style={{ textAlign: "left" }}>
+        <span style={{ fontSize: "20px" }}>Login</span>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div style={{ width: "100%" }}>
           <Input
             type="email"
-            inputType="create"
+            inputType="text"
             label="Email Address"
             id="email"
             name="email"
@@ -68,7 +68,7 @@ export default function LoginForm() {
         <div style={{ width: "100%" }}>
           <Input
             type="password"
-            inputType="create"
+            inputType="text"
             label="Password"
             id="password"
             name="password"
@@ -86,7 +86,8 @@ export default function LoginForm() {
         <h3 className={styles1.forgetPassword}>Forgot password?</h3>
         <Button btntype="login">Login</Button>
         <h6 className={styles1.getstarted}>
-          Don&#39;t have an account? <strong>Get started</strong>
+          Don&#39;t have an account?{" "}
+          <strong style={{ color: "#022c22" }}>Get started</strong>
         </h6>
       </div>
     </form>

@@ -17,6 +17,7 @@ function Input({
   // disabled,
   selectedQuesAnswers,
   onChange,
+  chat = null,
 }) {
   return (
     <>
@@ -71,9 +72,11 @@ function Input({
               type={type}
               name={id}
               // disabled={disabled}
-              rows="6"
+              rows={chat ? "2" : "6"}
               placeholder={placeholder}
-              className={styles.styledInputArea}
+              className={`${styles.styledInputArea} ${
+                chat ? styles.chatTextarea : ""
+              }`}
               autocomplete="off"
               autoComplete="off"
               autofill="off"
