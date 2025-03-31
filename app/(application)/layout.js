@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   const queryClient = new QueryClient();
   return (
     <html lang="en">
-      <body>
+      <body style={{ overflowY: "hidden", height: "100dvh" }}>
         <div className={styles.appLayout}>
           <AppNav />
 
