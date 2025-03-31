@@ -1,5 +1,5 @@
 .styledNav {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
     background-color: rgba(255, 255, 255, 0.2); /* Transparent White */
     backdrop-filter: blur(10px); /* Glassmorphism Blur Effect */
     -webkit-backdrop-filter: blur(10px); /* Safari Support */
@@ -9,7 +9,7 @@
     align-items: center;
     gap: 10px;
     padding: 20px clamp(20px, 10%, 20px);
-    /* position: fixed; */
+    position: fixed;
     width: 100vw;
     z-index: 10000;
     top: 0;

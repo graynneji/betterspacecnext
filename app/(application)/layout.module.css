@@ -1,6 +1,10 @@
 .appLayout{
    display: flex;
    flex-direction: column ;  
-   min-height : 100vh;
+   height : 100dvh;
 overflow: hidden;
+position: relative;
+}
+.safari{
+    -webkit-overflow-scrolling: touch;
 }
