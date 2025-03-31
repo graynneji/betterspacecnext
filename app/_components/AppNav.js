@@ -8,16 +8,9 @@ function AppNav() {
     <div className={styles.styledNav}>
       <div></div>
       <div className={styles.proCon}>
-        <div className={styles.profile}>
-          <Image
-            src={Profile}
-            alt="profile"
-            width={50}
-            height={50}
-            style={{ borderRadius: "200px" }}
-          />
-        </div>
-        <span className={styles.therName}>Ukaegbu Gray</span>
+        <h2 className={styles.profile}>
+          Session with <span className={styles.therName}>Ukaegbu Gray</span>
+        </h2>
       </div>
     </div>
   );

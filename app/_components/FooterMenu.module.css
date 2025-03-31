@@ -22,6 +22,8 @@
     display: flex;
     flex-direction: column;
     /* height: 70px; */
+    justify-self: flex-end;
+    flex-shrink: 0;
   
 }
 .navCon{
@@ -49,7 +51,7 @@ text-align: right;
     border-top: 1px solid #022c223b;
     border-bottom:1px solid #022c223b;
 border-left: none;
-margin: 10px 0px 10px 0px;
+/* margin: 10px 0px 10px 0px; */
 padding: 10px;
 position: relative;
 }

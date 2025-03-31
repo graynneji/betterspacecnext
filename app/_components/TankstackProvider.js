@@ -9,9 +9,7 @@ function TankstackProvider({ children }) {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
 
-      <main style={{ marginTop: "60px", flex: 1, overflow: "scroll" }}>
-        {children}
-      </main>
+      <main style={{ flexGrow: 1, overflowY: "auto" }}>{children}</main>
     </QueryClientProvider>
   );
 }

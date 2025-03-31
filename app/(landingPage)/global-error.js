@@ -8,8 +8,8 @@ import styles from "./not-found.module.css";
 export default function Error({ error, reset }) {
   return (
     <main className={`${styles.fourOfourmain} ${styles.fourText}`}>
-      <h1>Something went wrong!</h1>
-      <p>{error.message}!</p>
+      <h1 style={{ fontSize: "16px" }}>Something went wrong!</h1>
+      <p style={{ fontSize: "12px" }}>{error.message}!</p>
 
       <Button onClick={reset} type="fourOFour">
         Try again
