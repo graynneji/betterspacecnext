@@ -121,6 +121,7 @@
   .chatTextarea{
 border: none;
 resize: none;
+padding: 0rem 1rem;
   }
   
   .chatTextarea::after {

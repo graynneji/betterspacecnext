@@ -14,7 +14,7 @@ import TankstackProvider from "../_components/TankstackProvider";
 export default function RootLayout({ children }) {
   const queryClient = new QueryClient();
   return (
-    <html lang="en">
+    <html lang="en" style={{ overflowY: "hidden", height: "100dvh" }}>
       <body style={{ overflowY: "hidden", height: "100dvh" }}>
         <div className={styles.appLayout}>
           <AppNav />

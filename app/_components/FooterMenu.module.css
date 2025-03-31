@@ -48,10 +48,10 @@ text-align: right;
 .searchCon{
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #022c223b;
-    border-bottom:1px solid #022c223b;
+    border-top: 1px solid #022c2222;
+    border-bottom:1px solid #022c2222;
 border-left: none;
-/* margin: 10px 0px 10px 0px; */
-padding: 10px;
+margin: 5px 0px 10px 0px;
+padding: 5px;
 position: relative;
 }
