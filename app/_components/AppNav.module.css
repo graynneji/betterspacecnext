@@ -1,8 +1,8 @@
 .styledNav {
-    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-    background-color: rgba(255, 255, 255, 0.2); /* Transparent White */
-    backdrop-filter: blur(10px); /* Glassmorphism Blur Effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari Support */
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: rgb(255, 255, 255); /* Transparent White */
+    /* backdrop-filter: blur(10px); Glassmorphism Blur Effect */
+    /* -webkit-backdrop-filter: blur(10px); Safari Support */
     border-bottom: 1px solid rgba(255, 255, 255, 0.559); /* Subtle Border */
     display: flex;
     height: 50px;

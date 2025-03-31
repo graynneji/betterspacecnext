@@ -12,7 +12,14 @@ function TankstackProvider({ children }) {
 
       <main
         className={styles.safari}
-        style={{ flexGrow: 1, overflowY: "auto" }}
+        style={{
+          flexGrow: 1,
+          overflowY: "auto",
+          paddingTop: "60px",
+          paddingBottom: "60px",
+          paddingRight: "20px",
+          paddingLeft: "20px",
+        }}
       >
         {children}
       </main>
