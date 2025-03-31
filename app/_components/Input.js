@@ -77,7 +77,7 @@ function Input({
               className={`${styles.styledInputArea} ${
                 chat ? styles.chatTextarea : ""
               }`}
-              autocomplete="off"
+              // autocomplete="off"
               autoComplete="off"
               autofill="off"
               // {...register(id)}

@@ -21,7 +21,11 @@ function FooterMenu() {
   return (
     <div className={styles.rare}>
       <div className={styles.searchCon}>
-        <Input inputType="textarea" chat={true} />
+        <Input
+          inputType="textarea"
+          chat={true}
+          placeholder="Type your message here..."
+        />
         <div className={styles.sendCon}>
           <div className={styles.send}>
             {" "}

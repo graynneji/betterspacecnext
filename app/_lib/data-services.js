@@ -1,3 +1,4 @@
+"use server";
 // import { supabase } from "./supabase";
 import { redirect } from "next/navigation";
 import { createClient } from "../utils/supabase/server";

@@ -75,11 +75,10 @@ function Nav() {
           <Link href="/" className={styles.logoLnk}>
             <Image width={160} height={40} src={Logo} alt="Logo" />
           </Link>
-          {pathname === "/therapy" ? (
-            <div style={{ fontSize: "2rem", color: "black" }}>Gray</div>
-          ) : pathname !== "/get-started" ? (
-            <RenderNav />
-          ) : null}
+          {/* {pathname === "/therapy" ? (
+            <div style={{ fontSize: "2rem", color: "black" }}>Gray</div> */}
+          {/* ) : */}
+          {pathname !== "/get-started" ? <RenderNav /> : null}
         </div>
         {/* <div className={styles.navbarButtonContainer}>
           <Button href="/join" type="join">
