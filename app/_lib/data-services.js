@@ -5,14 +5,14 @@ import { createClient } from "../utils/supabase/server";
 
 export async function getPatients() {
   const supabase = createClient();
-  const { data: patientData, error: userError } = await supabase.auth.getUser();
+  const { data: userData, error: userError } = await supabase.auth.getUser();
 
-  const patientId = patientData.user.id;
+  const userId = userData.user.id;
 
   const { data, error } = await supabase
-    .from("patients")
-    .select("*")
-    .eq("user_id", patientId);
+    .from("users")
+    .select("*, therapist(*), patients(*)")
+    .eq("user_id", userId);
 
   if (error) {
     throw new Error("Patient could not get loaded");

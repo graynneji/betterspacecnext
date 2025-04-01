@@ -51,7 +51,6 @@ export async function submitForm(prevState, formData) {
 
 export async function login(formData) {
   const supabase = createClient();
-
   const validatedFields = loginSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -121,7 +120,7 @@ export async function signup(selectedQuesAnswers, formData) {
     country: location.geoplugin_countryName,
   };
 
-  const { error: InsertError } = await supabase.from("patients").insert([data]);
+  const { error: InsertError } = await supabase.from("users").insert([data]);
 
   if (InsertError) {
     console.log(InsertError);
@@ -142,3 +141,21 @@ export async function signOut() {
   revalidatePath("/", "layout");
   redirect(`/login`);
 }
+
+//////send message ////
+export const sendMessage = async (users, formData) => {
+  const newMessage = formData.get("message");
+  if (!newMessage.trim()) return; // Prevent empty messages
+
+  const { error } = await supabase.from("messages").insert([
+    {
+      message: newMessage,
+      sender_id: users?.senderId,
+      reciever_id: users?.recieverId,
+    },
+  ]);
+  console.log(newMessage, users?.senderId, users?.recieverId, users);
+  console.log(error);
+  if (error) `Error sending message: ${error}`;
+  // Clear input after sending
+};

@@ -2,12 +2,12 @@ import Care from "../../_components/Care";
 import { getPatients } from "../../_lib/data-services";
 
 export default async function Page() {
-  const patientInfo = await getPatients();
+  const userInfo = await getPatients();
 
   // const patientInfo = await getPatients();
-  console.log(patientInfo);
-  if (patientInfo) {
+  console.log(userInfo);
+  if (userInfo) {
     // return <Care />;
-    return <Care initialPatientInfo={patientInfo} />;
+    return <Care userInfo={userInfo} />;
   }
 }

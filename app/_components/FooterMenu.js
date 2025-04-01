@@ -1,6 +1,7 @@
+"use client";
 import Image from "next/image";
 import styles from "./FooterMenu.module.css";
-import React from "react";
+import React, { useRef, useState } from "react";
 import Chat from "@/public/applicationIcon/chat-bubble-bottom-center-text.svg";
 import calendar from "@/public/applicationIcon/calendar-days.svg";
 import User from "@/public/applicationIcon/user-group.svg";
@@ -16,23 +17,46 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import Input from "./Input";
 import Button from "./Button";
+import { sendMessage } from "../_lib/actions";
+import { useSelector } from "react-redux";
 
 function FooterMenu() {
+  const users = useSelector((state) => state.getUsers.users);
+  const userIds = {
+    senderId: users[0]?.user_id,
+    recieverId: users[0]?.therapist.therapist_id,
+  };
+  const messageSend = sendMessage.bind(null, userIds);
+  const [newMessage, setNewMessage] = useState("");
+  const formRef = useRef(null);
+
   return (
     <div className={styles.rare}>
-      <div className={styles.searchCon}>
-        <Input
-          inputType="textarea"
-          chat={true}
-          placeholder="Type your message here..."
-        />
-        <div className={styles.sendCon}>
-          <div className={styles.send}>
-            {" "}
-            <PaperPlaneRight size={18} color="white" />
+      <form
+        action={async (formData) => {
+          await messageSend(formData);
+          formRef.current.reset();
+        }}
+        ref={formRef}
+      >
+        <div className={styles.searchCon}>
+          <Input
+            inputType="textarea"
+            chat={true}
+            id="message"
+            name="message"
+            value={newMessage}
+            // onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message here..."
+          />
+          <div type="submit" className={styles.sendCon}>
+            <button className={styles.send}>
+              {" "}
+              <PaperPlaneRight size={18} color="white" />
+            </button>
           </div>
         </div>
-      </div>
+      </form>
       <nav className={styles.navCon}>
         <ul className={styles.navigation}>
           <li>

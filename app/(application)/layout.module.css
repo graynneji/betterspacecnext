@@ -4,6 +4,7 @@
    height : 100dvh;
 overflow: hidden;
 position: relative;
+background-color: #f9f7f3;
 }
 .safari{
     -webkit-overflow-scrolling: touch;

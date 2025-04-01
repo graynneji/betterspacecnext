@@ -122,6 +122,7 @@
 border: none;
 resize: none;
 padding: 0rem 1rem;
+background-color: #f9f7f3;
   }
   
   .chatTextarea::after {
@@ -133,6 +134,7 @@ padding: 0rem 1rem;
     cursor: nwse-resize; 
     color: gray;
     user-select: none;
+    background-color: #f9f7f3;
   }
   
  .chatTextarea::after {
