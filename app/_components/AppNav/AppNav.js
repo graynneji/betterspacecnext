@@ -23,9 +23,9 @@ function AppNav() {
       </h2>
       {/* </div> */}
       <div className={styles.rightNav}>
-        <VideoCamera size={24} color="#325343" weight="fill" />
+        <VideoCamera size={26} color="#325343" weight="fill" />
         {/* <Phone size={24} color="#B0B0B0" /> */}
-        <PhoneCall size={24} weight="fill" color="#325343" />
+        <PhoneCall size={26} weight="fill" color="#325343" />
         {/* <Sparkle size={24} color="#4CAF50" weight="fill" /> */}
       </div>
     </div>
