@@ -1,4 +1,4 @@
-import JoinWaitlist from "../../_components/JoinWaitlist";
+import JoinWaitlist from "../../_components/JoinWaitlist/JoinWaitlist";
 
 export const metadata = {
   title: "Join",

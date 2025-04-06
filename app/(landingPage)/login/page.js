@@ -1,4 +1,4 @@
-import Login from "../../_components/Login";
+import Login from "../../_components/Login/Login";
 export const metadata = {
   title: "Login",
 };

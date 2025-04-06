@@ -7,7 +7,7 @@ export async function getPatients() {
   const supabase = createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
 
-  const userId = userData.user.id;
+  const userId = userData?.user?.id;
 
   const { data, error } = await supabase
     .from("users")
@@ -15,7 +15,7 @@ export async function getPatients() {
     .eq("user_id", userId);
 
   if (error) {
-    throw new Error("Patient could not get loaded");
+    redirect(`/login`);
   }
 
   return data;

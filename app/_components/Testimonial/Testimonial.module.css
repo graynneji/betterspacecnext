@@ -1,0 +1,115 @@
+.testimonialContainer{
+/* background-color: rgba(2, 44, 34, 1); */
+background-color: #FFFBF4;
+/* background-color: #F8F4F0; */
+font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+/* color: ; */
+
+padding: 100px 200px 100px 200px;
+display: flex;
+flex-direction: column;
+gap: 6.4rem;
+color: #1B1B1B;
+}
+@media screen and (max-width: 990px) {
+    /* @media screen and (max-width: 685px) { */
+      .testimonialContainer {
+        padding: 40px 16px;
+      }
+    }
+.TestimonialBold{
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 52px;
+    letter-spacing: -0.01em;
+    margin-bottom: .8rem;
+}
+.testimonialLight{
+font-size: 1.8rem;
+line-height: 26px;
+letter-spacing: -0.004em;
+font-weight: 400;
+}
+.testyContainer{
+    /* padding: 2.4rem; */
+    display: flex;
+    gap: 2.4rem;
+    /* background-color: transparent; */
+    color: #1B1B1B;
+}
+.testyText{
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 26px;
+    letter-spacing: -0.01em;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 5px;
+
+
+}
+.testyName{
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+
+}
+.textyIconLeft{
+    align-self: flex-start;
+}
+.textyIconRight{
+    align-self: flex-end;
+}
+.testimonies{
+    align-items: center;
+}
+.recievedHelp{
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 52px;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+@media screen and (max-width: 685px) {
+    .testimonialContainer{
+        gap: 3.2rem;
+    }
+    .testyContainer {
+      flex-direction: column;
+    }
+    .TestimonialBold{
+        font-weight: 700;
+        font-size: 3.2rem;
+        line-height: 40px;
+        letter-spacing: -0.01em;
+        }
+    .testimonialLight{
+        font-size: 1.6rem;
+        line-height: 24px;
+        letter-spacing: -0.004em;
+     }
+     .recievedHelp{
+        font-size: 1.6rem;
+        line-height: 30px;
+     }
+  }
+.testy{
+    background-color: #ffffff;
+    border-radius:  16px;
+    Padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+/* text-align: center; */
+.profileTesty{
+    padding-bottom: 1.2rem;
+    text-align: left;
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+}
+

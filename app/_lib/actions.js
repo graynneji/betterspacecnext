@@ -7,6 +7,9 @@ import pool from "./db";
 import { supabase } from "./supabase";
 import { redirect } from "next/navigation";
 import { signUpschema, loginSchema } from "./validationSchema";
+import { ErrorMessages } from "@/app/enums/error.enums";
+
+////////////////////////// Contect Us & Join Us ////////////////////////////////////////////////////
 
 export async function submitForm(prevState, formData) {
   const response = await fetch(`http://www.geoplugin.net/json.gp`);
@@ -42,12 +45,9 @@ export async function submitForm(prevState, formData) {
   client.release();
 }
 
-///////////////////////////////////////////////////////////////////////// GET STARTED///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////
-/////////////////Signin/Signup/////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// Login /////////////////////////////////////////////
 
 export async function login(formData) {
   const supabase = createClient();
@@ -55,33 +55,34 @@ export async function login(formData) {
     email: formData.get("email"),
     password: formData.get("password"),
   });
+  try {
+    if (!validatedFields.success) {
+      return { error: "Invalid inputs, please check your inputs" };
+    }
+    // type-casting here for convenience
+    // in practice, you should validate your inputs
 
-  if (!validatedFields.success) {
-    return { error: "Invalid inputs, please check your inputs" };
-  }
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
+    console.log(data, error);
 
-  let { data, error } = await supabase.auth.signInWithPassword({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
-  console.log(data, error);
+    if (error) {
+      const message = ErrorMessages[error?.code] || ErrorMessages.default;
+      return { error: message };
+    }
 
-  if (error?.code == "email_not_confirmed") {
-    return { error: "Please confirm your email" };
+    return { redirectUrl: "/therapy" };
+  } catch (error) {
+    return `Server unresponsive ${error}`;
   }
-  if (error?.code == "invalid_credentials") {
-    return { error: "Invalid email and password" };
-  }
-  if (error) {
-    return { error: "Something went wrong try again" };
-  }
-
-  return { redirectUrl: "/therapy" };
 }
 
+//////////////////////////////////////////////////////////// Get started /////////////////////////////////////////////////////////////
+
 export async function signup(selectedQuesAnswers, formData) {
+  console.log(formData, selectedQuesAnswers);
   const supabase = createClient();
   const response = await fetch(`http://www.geoplugin.net/json.gp`);
   const location = await response.json();
@@ -94,7 +95,7 @@ export async function signup(selectedQuesAnswers, formData) {
   });
 
   if (!validatedFields.success) {
-    return "Invalid inputs, please check your inputs";
+    return `Invalid inputs, please check your inputs ${validatedFields.error}`;
   }
   const { data: signUpData, error } = await supabase.auth.signUp({
     email: formData.get("email"),
@@ -105,47 +106,87 @@ export async function signup(selectedQuesAnswers, formData) {
     console.log(error);
     return "Error, signing up please try again";
   }
+  const therapistId = Math.random() < 0.5 ? 1 : 2;
 
-  const data = {
+  const userData = {
     user_id: signUpData.user.id,
     name: formData.get("name"),
     phone: formData.get("phone"),
     email: formData.get("email"),
+    specialization: formData.get("specialization"),
+    role:
+      typeof selectedQuesAnswers === "string" ? selectedQuesAnswers : undefined,
+    license: formData.get("license"),
+    authority: formData.get("authority"),
+    gender: formData.get("gender"),
+    dob: formData.get("dob"),
     //convert to json string
     //use JSON.parse() to convert back to an object
-    selected: JSON.stringify(selectedQuesAnswers),
+    selected:
+      typeof selectedQuesAnswers !== "string"
+        ? JSON.stringify(selectedQuesAnswers)
+        : undefined,
+    therapist_id: selectedQuesAnswers !== "therapist" ? therapistId : null,
     ip: location.geoplugin_request,
     city: location.geoplugin_city,
     region: location.geoplugin_region,
     country: location.geoplugin_countryName,
   };
 
-  const { error: InsertError } = await supabase.from("users").insert([data]);
+  const { data: responseData, error: InsertError } = await supabase
+    .from("users")
+    .insert([userData])
+    .select();
 
   if (InsertError) {
     console.log(InsertError);
     return "An account is associated with the email";
+  }
+  if (selectedQuesAnswers === "therapist") {
+    const therapistData = {
+      therapist_id: signUpData.user.id,
+      name: formData.get("name"),
+      email: formData.get("email"),
+    };
 
-    // return { error: JSON.parse(JSON.stringify(InsertError)), source: "Insert data" };
+    await supabase.from("therapist").insert([therapistData]);
+  } else {
+    console.log(therapistId);
+    // await supabase
+    // .from('therapist')
+    // .select('*')
+    // .or(`id.eq.${therapistId}`);
+
+    const patientsData = {
+      patient_id: signUpData.user.id,
+      therapist: therapistId,
+      name: formData.get("name"),
+      email: formData.get("email"),
+    };
+    await supabase.from("patients").insert([patientsData]);
   }
 
   revalidatePath("/", "layout");
   redirect(`/verify/${formData.get("email")}`);
 }
 
-/////////////////////////////////////////////////
-// Logout
+/////////////////////////////////////////////////// Logout /////////////////////////////////////////////////////////////////
 export async function signOut() {
   const supabase = createClient();
-  let { error } = await supabase.auth.signOut();
-  revalidatePath("/", "layout");
-  redirect(`/login`);
+  try {
+    await supabase.auth.signOut();
+    // revalidatePath("/", "layout");
+    redirect(`/login`);
+  } catch (error) {
+    return `Error signingout ${error}`;
+  }
 }
 
-//////send message ////
+///////////////////////////////////////////// send message ////////////////////////////////////////////////////
+
 export const sendMessage = async (users, formData) => {
   const newMessage = formData.get("message");
-  if (!newMessage.trim()) return; // Prevent empty messages
+  if (!newMessage.trim()) return;
 
   const { error } = await supabase.from("messages").insert([
     {
@@ -157,5 +198,4 @@ export const sendMessage = async (users, formData) => {
   console.log(newMessage, users?.senderId, users?.recieverId, users);
   console.log(error);
   if (error) `Error sending message: ${error}`;
-  // Clear input after sending
 };

@@ -1,4 +1,4 @@
-import Terms from "../../_components/Terms";
+import Terms from "../../_components/Terms/Terms";
 
 export const metadata = {
   title: "Terms",

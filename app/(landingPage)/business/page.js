@@ -1,6 +1,6 @@
-import BusinessHeader from "../../_components/BusinessHeader";
+import BusinessHeader from "../../_components/BusinessHeader/BusinessHeader";
 import Background from "@/public/business-background.svg";
-import BusinessOffer from "../../_components/BusinessOffer";
+import BusinessOffer from "../../_components/BusinessOffer/BusinessOffer";
 
 export const metadata = {
   title: "Business",

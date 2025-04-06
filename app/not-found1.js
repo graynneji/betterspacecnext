@@ -1,6 +1,6 @@
 "use client";
 import styles from "./not-found.module.css";
-import Button from "./_components/Button";
+import Button from "./_components/Button/Button";
 
 console.log(Button);
 

@@ -1,14 +1,16 @@
 import { Provider } from "react-redux";
-import Footer from "../_components/Footer";
-import Header from "../_components/Header";
+import Footer from "../_components/Footer/Footer";
+import Header from "../_components/Header/Header";
 import "@/app/_styles/globalStyles.css";
 import styles from "./layout.module.css";
 import store from "../store/store";
 // import Cookies from "../_components/Cookies";
 import { Toaster } from "react-hot-toast";
-import PageTransition from "../_components/pageTransition";
+import PageTransition from "../_components/PageTransition/pageTransition";
 import dynamic from "next/dynamic";
-const Cookies = dynamic(() => import("../_components/Cookies"), { ssr: false });
+const Cookies = dynamic(() => import("../_components/Cookies/Cookies"), {
+  ssr: false,
+});
 
 export const metadata = {
   metadataBase: new URL("https://betterspace.ng"),

@@ -23,7 +23,7 @@ export const signUpschema = z.object({
     .string({
       invalid_type_error: "Password must be at least 6 characters",
     })
-    .min(8, "Password must be at least 6 characters"),
+    .min(6, "Password must be at least 6 characters"),
 });
 
 export const loginSchema = z.object({
@@ -33,9 +33,8 @@ export const loginSchema = z.object({
     })
     .email("Please enter a valid email"),
 
-  password: z
-    .string({
-      invalid_type_error: "Password must be at least 6 characters",
-    })
-    .min(8, "Password must be at least 6 characters"),
+  password: z.string({
+    invalid_type_error: "Password must be at least 6 characters",
+  }),
+  // .min(6, "Password must be at least 6 characters"),
 });

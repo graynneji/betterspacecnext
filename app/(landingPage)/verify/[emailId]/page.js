@@ -1,4 +1,4 @@
-import VerifyEmail from "@/app/_components/VerifyEmail";
+import VerifyEmail from "@/app/_components/VerifyEmail/VerifyEmail";
 
 // export async function generateStaticParams() {}
 

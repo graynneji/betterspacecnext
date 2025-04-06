@@ -1,7 +1,7 @@
-import AboutHero from "../../_components/AboutHero";
-import Features from "../../_components/Features";
-import Mission from "../../_components/Mission";
-import Team from "../../_components/Team";
+import AboutHero from "../../_components/AboutHero/AboutHero";
+import Features from "../../_components/Features/Features";
+import Mission from "../../_components/Mission/Mission";
+import Team from "../../_components/Team/Team";
 export const metadata = {
   title: "About",
 };
@@ -9,18 +9,12 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      {/* <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      > */}
       <div>
         <AboutHero />
         <Mission />
         <Features />
         <Team />
       </div>
-      {/* </motion.div> */}
     </>
   );
 }

@@ -1,7 +1,7 @@
-import Faq from "../../_components/Faq";
-import Questionaire from "../../_components/Questionaire";
-import QuestionCard from "../../_components/QuestionCard";
-import Testimonial from "../../_components/Testimonial";
+import Faq from "../../_components/Faq/Faq";
+import Questionaire from "../../_components/Questionaire/Questionaire";
+import QuestionCard from "../../_components/QuestionCard/QuestionCard";
+import Testimonial from "../../_components/Testimonial/Testimonial";
 
 export const metadata = {
   title: "Get-started",

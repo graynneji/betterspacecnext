@@ -1,5 +1,5 @@
 "use client";
-import Button from "../_components/Button";
+import Button from "../_components/Button/Button";
 import styles from "./not-found.module.css";
 //error boundary needs to be a client component
 //only rendering errors would be caught here errors from maybe call backs will not be caught here
