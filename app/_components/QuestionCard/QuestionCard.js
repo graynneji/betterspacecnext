@@ -1,6 +1,6 @@
 "use client";
 import Button from "../Button/Button";
-import styles from "./Questionaire/Questionaire.module.css";
+import styles from "../Questionaire/Questionaire.module.css";
 import { GrCircleInformation } from "react-icons/gr";
 import { useState } from "react";
 import Input from "../Input/Input";
