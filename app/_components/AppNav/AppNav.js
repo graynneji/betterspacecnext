@@ -18,7 +18,7 @@ function AppNav() {
     <div className={styles.styledNav}>
       {/* <div className={styles.proCon}> */}
       <h2 className={styles.profile}>
-        {users[0]?.patients ? " Therapy with" : "Patient - "}
+        {/* {users[0]?.patients ? " Therapy with" : "Patient - "} */}
         <span className={styles.therName}>{recieversName}</span>
       </h2>
       {/* </div> */}
