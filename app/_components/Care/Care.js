@@ -60,7 +60,7 @@ export default function Care({ userInfo }) {
             {msg.message}
           </div>
         ))}
-        <div ref={chatEndRef} style={{ marginBottom: "60px" }} />{" "}
+        <div ref={chatEndRef} style={{ marginBottom: "10px" }} />{" "}
         {/* ⬅️ Dummy div to scroll to */}
       </div>
     </div>
