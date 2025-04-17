@@ -9,28 +9,25 @@ import PageTransition from "../_components/PageTransition/pageTransition";
 import FooterMenu from "../_components/FooterMenu/FooterMenu";
 import AppNav from "../_components/AppNav/AppNav";
 import UserProvider from "../_provider/UserProvider";
+import SideBar from "../_components/SideBar/SideBar";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <UserProvider>
           <div className={styles.appLayout}>
-            <AppNav />
+            <SideBar />
 
             <main
               style={{
                 flexGrow: 1,
-                overflowY: "auto",
-                paddingTop: "60px",
-                paddingBottom: "60px",
-                paddingRight: "20px",
-                paddingLeft: "20px",
               }}
             >
+              {/* <AppNav /> */}
               {children}
             </main>
 
-            <FooterMenu />
+            {/* <FooterMenu /> */}
             <Toaster position="top-left" reverseOrder={false} />
 
             {/* <Cookies /> */}

@@ -50,7 +50,14 @@
     /* if the align of any form distoret remove this under */
     align-items: flex-start;
   }
-  
+  .inputLabel1{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    /* if the align of any form distoret remove this under */
+    align-items: flex-start;
+  }
   .joinHeroInput {
     border: none;
     flex: 1;
@@ -128,9 +135,11 @@ width: 100%;
 min-height: 40px;         /* ~2 lines */
 max-height: 160px;
 padding-bottom: 20px;
+margin-bottom: 5px;
       overflow-y: hidden;
       resize: none;
-      border: 1px solid #ccc;
+      /* border: 1px solid #ccc; */
+      background-color: #EEEEEE;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
       border-bottom-left-radius: 20px;
@@ -140,7 +149,7 @@ padding-bottom: 20px;
       box-sizing: border-box;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
-background-color: #f9f7f3;
+/* background-color: #f9f7f3; */
 position: relative;
 overflow-y: auto;
       overflow-x: hidden;
@@ -166,4 +175,42 @@ overflow-y: auto;
   
  .chatTextarea::after {
     color: black; /* Change color on hover */
+  }
+  .chatTextarea[placeholder]{
+color: black;
+  }
+
+
+  /* search input */
+  .searchContainer {
+    position: relative;
+    width: 300px;
+    /* margin: 20px auto; */
+    
+  }
+  
+  .searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+    padding-right: 100px;
+    padding-top: 7px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 5px 10px 5px 36px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.2s;
+    background-color: #f9f7f3;
+  }
+  
+  .searchInput:focus {
+    border-color: rgb(50, 83, 67);
   }

@@ -47,35 +47,39 @@ export async function submitForm(prevState, formData) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////// Login /////////////////////////////////////////////
+//////////////////////////////////////////// Login //////////////////////////////////////////
 
 export async function login(formData) {
+  console.log("loggingIn", formData);
   const supabase = createClient();
+
   const validatedFields = loginSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
-  try {
-    if (!validatedFields.success) {
-      return { error: "Invalid inputs, please check your inputs" };
-    }
-    // type-casting here for convenience
-    // in practice, you should validate your inputs
+  // try {
+  if (!validatedFields.success) {
+    // return "Invalid inputs, please check your inputs";
+    const message = "Invalid inputs, please check your inputs";
+    redirect(`/login?error=${encodeURIComponent(message)}`);
+  }
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
 
-    let { data, error } = await supabase.auth.signInWithPassword({
-      email: formData.get("email"),
-      password: formData.get("password"),
-    });
-    console.log(data, error);
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: formData.get("email"),
+    password: formData.get("password"),
+  });
 
-    if (error) {
-      const message = ErrorMessages[error?.code] || ErrorMessages.default;
-      return { error: message };
-    }
-
-    return { redirectUrl: "/therapy" };
-  } catch (error) {
-    return `Server unresponsive ${error}`;
+  console.log("data", error, data);
+  const designation = data?.user?.user_metadata?.designation == "therapist";
+  // console.log(designation);
+  if (!error) {
+    const redirectUrl = designation ? "/dashboard" : "/therapy";
+    return redirectUrl;
+  } else {
+    const message = ErrorMessages[error?.code] || ErrorMessages.default;
+    redirect(`/login?error=${encodeURIComponent(message)}`);
   }
 }
 
@@ -86,7 +90,9 @@ export async function signup(selectedQuesAnswers, formData) {
   const supabase = createClient();
   const response = await fetch(`http://www.geoplugin.net/json.gp`);
   const location = await response.json();
-
+  const options = typeof selectedQuesAnswers === "string";
+  const type = options ? selectedQuesAnswers : "patient";
+  console.log(formData, formData.get("email"));
   const validatedFields = signUpschema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -100,13 +106,18 @@ export async function signup(selectedQuesAnswers, formData) {
   const { data: signUpData, error } = await supabase.auth.signUp({
     email: formData.get("email"),
     password: formData.get("password"),
+    options: {
+      data: {
+        full_name: formData.get("name"),
+        designation: options ? selectedQuesAnswers : "patient",
+      },
+    },
   });
-  console.log(signUpData);
+
   if (error) {
-    console.log(error);
     return "Error, signing up please try again";
   }
-  const therapistId = Math.random() < 0.5 ? 1 : 2;
+  const therapistId = Math.random() < 0.5 ? 6 : 6;
 
   const userData = {
     user_id: signUpData.user.id,
@@ -114,27 +125,24 @@ export async function signup(selectedQuesAnswers, formData) {
     phone: formData.get("phone"),
     email: formData.get("email"),
     specialization: formData.get("specialization"),
-    role:
-      typeof selectedQuesAnswers === "string" ? selectedQuesAnswers : undefined,
+    role: options ? selectedQuesAnswers : undefined,
     license: formData.get("license"),
     authority: formData.get("authority"),
     gender: formData.get("gender"),
     dob: formData.get("dob"),
     //convert to json string
     //use JSON.parse() to convert back to an object
-    selected:
-      typeof selectedQuesAnswers !== "string"
-        ? JSON.stringify(selectedQuesAnswers)
-        : undefined,
-    therapist_id: selectedQuesAnswers !== "therapist" ? therapistId : null,
+    selected: !options ? JSON.stringify(selectedQuesAnswers) : undefined,
+    therapist_id: !options ? therapistId : null,
+    // therapist_id: selectedQuesAnswers !== "therapist" ? therapistId : null,
     ip: location.geoplugin_request,
     city: location.geoplugin_city,
     region: location.geoplugin_region,
     country: location.geoplugin_countryName,
   };
 
-  const { data: responseData, error: InsertError } = await supabase
-    .from("users")
+  const { error: InsertError } = await supabase
+    .from("user")
     .insert([userData])
     .select();
 
@@ -142,7 +150,8 @@ export async function signup(selectedQuesAnswers, formData) {
     console.log(InsertError);
     return "An account is associated with the email";
   }
-  if (selectedQuesAnswers === "therapist") {
+
+  if (options) {
     const therapistData = {
       therapist_id: signUpData.user.id,
       name: formData.get("name"),
@@ -151,7 +160,6 @@ export async function signup(selectedQuesAnswers, formData) {
 
     await supabase.from("therapist").insert([therapistData]);
   } else {
-    console.log(therapistId);
     // await supabase
     // .from('therapist')
     // .select('*')
@@ -167,10 +175,11 @@ export async function signup(selectedQuesAnswers, formData) {
   }
 
   revalidatePath("/", "layout");
-  redirect(`/verify/${formData.get("email")}`);
+  redirect(`/verify/${formData.get("email")}?type=${type}`);
 }
 
-/////////////////////////////////////////////////// Logout /////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////// Logout ///////////////////////////////////////////////////////
+
 export async function signOut() {
   const supabase = createClient();
   try {
@@ -195,7 +204,6 @@ export const sendMessage = async (users, formData) => {
       reciever_id: users?.recieverId,
     },
   ]);
-  console.log(newMessage, users?.senderId, users?.recieverId, users);
-  console.log(error);
+
   if (error) `Error sending message: ${error}`;
 };

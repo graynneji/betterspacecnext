@@ -7,26 +7,34 @@ import { supabase } from "../../_lib/supabase";
 import { signOut } from "../../_lib/actions";
 import { useEffect, useState, useTransition, useRef } from "react";
 import { useRealTime } from "../../hooks/useRealTime";
-import { useDispatch } from "react-redux";
-import { getUsers } from "../../store/getUsersSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getStoredUsers } from "../../store/getStoredUsersSlice";
+import { getTherapistPatients } from "@/app/store/getTherapistPatientsSlice";
 
 export default function Care({ userInfo }) {
+  // export default function Care({ userInfo, patientsTherapist = [] }) {
   const [newMessage, setNewMessage] = useState("");
   //ref to the last
   const chatEndRef = useRef(null);
   const chatContainerRef = useRef(null);
   const userId = userInfo[0]?.user_id;
-  // const therapistId = userInfo[0]?.therapist.therapist_id;
   const dispatch = useDispatch();
+  const patientRecieverId = useSelector(
+    (state) => state.getPatientRecvId.patientRecieverId
+  );
+  // useEffect(() => {
+  //   dispatch(getTherapistPatients(patientsTherapist));
+  // }, [patientsTherapist, dispatch]);
   useEffect(() => {
-    if (userInfo && userInfo.length > 0) {
-      dispatch(getUsers(userInfo)); // Dispatch users to Redux
-    }
+    dispatch(getStoredUsers(userInfo));
   }, [userInfo, dispatch]);
-  const messages = useRealTime(userId);
-  console.log(messages);
+  const recieverId = userInfo[0]?.therapist
+    ? userInfo[0]?.therapist?.therapist_id
+    : patientRecieverId?.patientId;
+  const messages = useRealTime(userId, recieverId);
+
   // receiverId
-  console.log("oa", userInfo);
+
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
@@ -35,9 +43,9 @@ export default function Care({ userInfo }) {
       chatEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
-
+  // signOut();
   const handleSignout = () => {
-    startTransition(signOut());
+    startTransition(() => signOut());
   };
 
   return (

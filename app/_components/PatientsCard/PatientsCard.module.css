@@ -1,0 +1,41 @@
+.profileCard {
+
+display: flex;
+/* justify-content: space-between; */
+align-items: center;
+    /* text-align: center; */
+    font-family: sans-serif;
+    gap: 5px;
+    padding: 5px 0px;
+    /* background-color: #aaa; */
+    border-radius: 10px;
+  cursor: pointer;
+  }
+  .profileAvatar {
+    width: 40px;
+    height: 40px;
+    /* margin: 0 auto 15px; */
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .profileName {
+    font-size: 1.5rem;
+    color: #444;
+    margin: 0;
+    font-weight: normal;
+  }
+  

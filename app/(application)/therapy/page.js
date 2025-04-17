@@ -1,13 +1,14 @@
+import TherapyForPatients from "@/app/_components/TherapyForPatients/TherapyForPatients";
 import Care from "../../_components/Care/Care";
-import { getPatients } from "../../_lib/data-services";
+import { getUsers } from "../../_lib/data-services";
 
 export default async function Page() {
-  const userInfo = await getPatients();
+  const userInfo = await getUsers();
 
   // const patientInfo = await getPatients();
-  console.log(userInfo);
+
   if (userInfo) {
     // return <Care />;
-    return <Care userInfo={userInfo} />;
+    return <TherapyForPatients userInfo={userInfo} />;
   }
 }

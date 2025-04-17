@@ -5,6 +5,10 @@
 import PropTypes from "prop-types";
 // import ErrorMessage from "./ErrorMessage";
 import styles from "./Input.module.css"; // Import the CSS module
+import {
+  ListMagnifyingGlass,
+  MagnifyingGlass,
+} from "@phosphor-icons/react/dist/ssr";
 
 function Input({
   type,
@@ -36,7 +40,7 @@ function Input({
           />
         </>
       )}
-      <div className={chat ?? styles.inputLabel}>
+      <div className={chat === "chat" ? styles.inputLabel : styles.inputLabel1}>
         {inputType === "text" && (
           <>
             <label htmlFor={id} className={styles.label}>
@@ -86,7 +90,7 @@ function Input({
               rows={chat ? "2" : "6"}
               placeholder={placeholder}
               className={`${styles.styledInputArea} ${
-                chat ? styles.chatTextarea : ""
+                chat == "chat" ? styles.chatTextarea : ""
               }`}
               // autocomplete="off"
               autoComplete="off"
@@ -118,7 +122,23 @@ function Input({
         </div>
       )}
 
+      {/* /////////////////////Select ////////////////////////////////////// */}
       {inputType === "select" && <option value={option}>{option}</option>}
+
+      {/* ////////////////////////////search ////////////////////////////////////// */}
+      {inputType == "search" && (
+        <div className={styles.searchContainer}>
+          <span className={styles.searchIcon}>
+            {/* 🔍 */}
+            <MagnifyingGlass size={20} />
+          </span>
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder={placeholder || "Search..."}
+          />
+        </div>
+      )}
     </>
   );
 }

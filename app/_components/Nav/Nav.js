@@ -14,7 +14,6 @@ import Button from "../Button/Button";
 
 function Nav() {
   const pathname = usePathname();
-  console.log(pathname);
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state) => state.menuModal.isMenuOpen);
 

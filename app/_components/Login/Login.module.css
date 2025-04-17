@@ -16,9 +16,27 @@ font-size: 16px;
 color: #022c22;
 }
 
-@media screen and (max-width: 685px) {
+@media screen and (max-width: 1310px) {
+    .loginCon{
+        padding: 0px 100px;
+    
+    }
+}
+/* @media screen and (max-width: 700px) {
+    .loginCon{
+        padding: 0px 100px;
+    
+    }
+} */
+@media screen and (max-width: 640px) {
     .loginCon{
         padding: 0px 0px;
     
     }
 }
+/* @media screen and (max-width: 700px) {
+    .loginCon{
+        padding: 0px 100px;
+    
+    }
+} */

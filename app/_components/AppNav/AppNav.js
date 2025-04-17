@@ -3,22 +3,28 @@ import React from "react";
 import styles from "./AppNav.module.css";
 import Profile from "@/public/applicationIcon/confident-b.png";
 import Image from "next/image";
-import { useSelector } from "react-redux";
-import { Phone, Sparkle, VideoCamera } from "@phosphor-icons/react";
+// import { useSelector } from "react-redux";
+import { Phone, Sparkle, VideoCamera } from "@phosphor-icons/react/dist/ssr";
 import { PhoneCall } from "@phosphor-icons/react/dist/ssr";
+import { getUsers } from "@/app/_lib/data-services";
+import { useSelector } from "react-redux";
 
-function AppNav() {
-  const users = useSelector((state) => state.getUsers.users);
-
-  const recieversName = users[0]?.patients
-    ? users[0]?.patients?.name
-    : users[0]?.therapist?.name;
+function AppNav({ userInfo }) {
+  // const userInfo = useSelector((state) => state.getuserInfo.userInfo);
+  // const userInfo = await getUsers();
+  const patientRecieverId = useSelector(
+    (state) => state.getPatientRecvId.patientRecieverId
+  );
+  console.log("pahhhh", patientRecieverId);
+  const recieversName = userInfo[0]?.therapist
+    ? userInfo[0]?.name
+    : patientRecieverId?.patientName;
 
   return (
     <div className={styles.styledNav}>
       {/* <div className={styles.proCon}> */}
       <h2 className={styles.profile}>
-        {/* {users[0]?.patients ? " Therapy with" : "Patient - "} */}
+        {userInfo[0]?.therapist ? "Therapy with " : "Patient - "}
         <span className={styles.therName}>{recieversName}</span>
       </h2>
       {/* </div> */}

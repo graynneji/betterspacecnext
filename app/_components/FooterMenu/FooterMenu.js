@@ -20,32 +20,34 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import { sendMessage } from "../../_lib/actions";
 import { useSelector } from "react-redux";
+import MessageInput from "../MessageInput/MessageInput";
 
 function FooterMenu() {
-  const users = useSelector((state) => state.getUsers.users);
-  const userIds = {
-    senderId: users[0]?.user_id,
-    recieverId:
-      users[0]?.therapist?.therapist_id ||
-      "44fb5edf-1191-4dc1-8fa4-ec4a8d852691",
-  };
-  const messageSend = sendMessage.bind(null, userIds);
-  const [newMessage, setNewMessage] = useState("");
-  const formRef = useRef(null);
+  // const users = useSelector((state) => state.getUsers.users);
+  // const userIds = {
+  //   senderId: users[0]?.user_id,
+  //   recieverId:
+  //     users[0]?.therapist?.therapist_id ||
+  //     "44fb5edf-1191-4dc1-8fa4-ec4a8d852691",
+  // };
+  // const messageSend = sendMessage.bind(null, userIds);
+  // const [newMessage, setNewMessage] = useState("");
+  // const formRef = useRef(null);
 
-  return (
-    <div className={styles.rare}>
-      <form
-        action={async (formData) => {
-          await messageSend(formData);
-          formRef.current.reset();
-        }}
-        ref={formRef}
-      >
-        <div className={styles.searchCon}>
+  // return (
+  // <div className={styles.rare}>
+  //   <form
+  //     action={async (formData) => {
+  //       await messageSend(formData);
+  //       formRef.current.reset();
+  //     }}
+  //     ref={formRef}
+  //   >
+  {
+    /* <div className={styles.searchCon}>
           <Input
             inputType="textarea"
-            chat={true}
+            chat="chat"
             id="message"
             name="message"
             value={newMessage}
@@ -58,42 +60,42 @@ function FooterMenu() {
               <PaperPlaneRight size={18} color="white" />
             </button>
           </div>
-        </div>
-      </form>
-      <nav className={styles.navCon}>
-        <ul className={styles.navigation}>
-          <li>
-            {/* <Image src={Chat} alt="chat icon" className={styles.IconImages} /> */}
-            <ChatTeardropText size={24} color="#022C22" />
-            <span>Sessions</span>
-          </li>
-          <li>
-            <Image
-              src={calendar}
-              alt="chat icon"
-              className={styles.IconImages}
-            />
-            {/* <CalendarDots size={24} /> */}
-            <span>Schedule</span>
-          </li>
-          <li>
-            <Image src={User} alt="chat icon" className={styles.IconImages} />
-            {/* <UsersThree size={24} /> */}
-            <span>Community</span>
-          </li>
-          <li>
-            <Image
-              src={MenuSquare}
-              alt="chat icon"
-              className={styles.IconImages}
-            />
-            {/* <List size={24} /> */}
-            <span>More</span>
-          </li>
-        </ul>
-      </nav>
-    </div>
+        </div> */
+  }
+  //   <MessageInput newMessage={newMessage} />
+  // </form>
+  return (
+    <nav className={styles.navCon}>
+      <ul className={styles.navigation}>
+        <li>
+          {/* <Image src={Chat} alt="chat icon" className={styles.IconImages} /> */}
+          <ChatTeardropText size={24} color="#022C22" />
+          <span>Sessions</span>
+        </li>
+        <li>
+          <Image src={calendar} alt="chat icon" className={styles.IconImages} />
+          {/* <CalendarDots size={24} /> */}
+          <span>Schedule</span>
+        </li>
+        <li>
+          <Image src={User} alt="chat icon" className={styles.IconImages} />
+          {/* <UsersThree size={24} /> */}
+          <span>Community</span>
+        </li>
+        <li>
+          <Image
+            src={MenuSquare}
+            alt="chat icon"
+            className={styles.IconImages}
+          />
+          {/* <List size={24} /> */}
+          <span>More</span>
+        </li>
+      </ul>
+    </nav>
   );
+  // </div>
+  // );
 }
 
 export default FooterMenu;

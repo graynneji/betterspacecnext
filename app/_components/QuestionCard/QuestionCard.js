@@ -372,7 +372,7 @@ export default function QuestionCard() {
               <div className={styles.contaErrorInputWidth}>
                 <Input
                   type="text"
-                  inputType="create"
+                  inputType="text"
                   label="First Name"
                   id="name"
                   name="name"
@@ -390,7 +390,7 @@ export default function QuestionCard() {
               <div className={styles.contaErrorInputWidth}>
                 <Input
                   type="email"
-                  inputType="create"
+                  inputType="text"
                   label="Email Address"
                   id="email"
                   name="email"
@@ -408,7 +408,7 @@ export default function QuestionCard() {
               <div className={styles.contaErrorInputWidth}>
                 <Input
                   type="text"
-                  inputType="create"
+                  inputType="text"
                   label="Phone Number"
                   id="phone"
                   name="phone"
@@ -426,7 +426,7 @@ export default function QuestionCard() {
               <div className={styles.contaErrorInputWidth}>
                 <Input
                   type="password"
-                  inputType="create"
+                  inputType="text"
                   label="Create Password"
                   id="password"
                   name="password"

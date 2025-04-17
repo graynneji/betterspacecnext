@@ -1,0 +1,15 @@
+
+    .appLayout{
+        display: flex;
+        flex-direction: column ;  
+        height : 100dvh;
+     overflow: hidden;
+     position: relative;
+     background-color: #f9f7f3;
+     color:#1B1B1B;
+     }
+    
+    .safari{
+        -webkit-overflow-scrolling: touch;
+      
+    }
