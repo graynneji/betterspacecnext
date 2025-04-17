@@ -16,7 +16,7 @@ export async function getUserId() {
 
 export async function getUsers() {
   const { userId } = await getUserId();
-
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("user")
     .select(
@@ -33,6 +33,7 @@ export async function getUsers() {
 
 export async function getAllPatientsAttachedToTherapist() {
   const { userId, desgn } = await getUserId();
+  const supabase = createClient();
   if (desgn === "patient") return;
   const { data: therapistData, error: therapistError } = await supabase
     .from("therapist")
