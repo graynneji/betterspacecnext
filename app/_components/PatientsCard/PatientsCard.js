@@ -15,7 +15,9 @@ const PatientsCard = ({ image = null }) => {
   const handleSelectPatient = (patientId) => {
     dispatch(getPatientRecvId(patientId));
   };
-
+  if (!therapistPatients) {
+    return <p>No patients found</p>;
+  }
   return (
     <>
       {therapistPatients?.map((item, index) => (

@@ -154,7 +154,7 @@
 .SocialContactCon {
   display: flex;
   gap: 1.6rem;
-  justify-content: start;
+  justify-content: flex-start;
 
   /* img {
   max-width: 48px;

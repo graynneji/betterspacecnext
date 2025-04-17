@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation";
 import { createClient } from "../utils/supabase/server";
 
-const supabase = createClient();
 export async function getUserId() {
+  const supabase = createClient();
   const { data: userData, error: userError } = await supabase.auth.getUser();
   if (!userData?.user) {
     redirect("/login");
