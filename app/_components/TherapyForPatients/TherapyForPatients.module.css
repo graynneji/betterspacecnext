@@ -13,3 +13,19 @@
         -webkit-overflow-scrolling: touch;
       
     }
+
+    /* collected from footermenu can delete when you see everything works */
+    .rare{
+        display: flex;
+        flex-direction: column;
+        /* height: 70px; */
+        /* justify-self: flex-end;
+        flex-shrink: 0; */
+        position: fixed;
+        z-index: 10000;
+        bottom: 0;
+        width: 100vw;
+       
+        background-color: #f9f7f3;
+      
+    }

@@ -1,9 +1,9 @@
 .sideBarCon{
     overflow: hidden;
-    height: 98vh;
+    /* height: 98vh; */
     background-color: #EEEEEE;
     /* background-color: #edf2f4; */
-    margin: 1vh 10px 1vh 10px;
+    /* margin: 1vh 10px 1vh 10px; */
     border-radius: 10px;
     min-width: 300px;
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */

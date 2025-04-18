@@ -9,15 +9,15 @@ const PatientsCard = ({ image = null }) => {
   const therapistPatients = useSelector(
     (state) => state.getTherapistPatients.therapistPatients
   );
-  console.log(therapistPatients);
+
   const dispatch = useDispatch();
 
   const handleSelectPatient = (patientId) => {
     dispatch(getPatientRecvId(patientId));
   };
-  if (!therapistPatients) {
-    return <p>No patients found</p>;
-  }
+  // if (!therapistPatients) {
+  //   return <p>No patients found</p>;
+  // }
   return (
     <>
       {therapistPatients?.map((item, index) => (

@@ -17,7 +17,7 @@ function AppNav({ userInfo }) {
   );
   console.log("pahhhh", patientRecieverId);
   const recieversName = userInfo[0]?.therapist
-    ? userInfo[0]?.name
+    ? userInfo[0]?.therapist?.name
     : patientRecieverId?.patientName;
 
   return (

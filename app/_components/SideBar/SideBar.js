@@ -25,9 +25,41 @@ const messNav = [
   { menuName: "Schedule", MenuIcon: CalendarDots },
 ];
 
+const RenderPatientList = () => {
+  return (
+    <>
+      <div>
+        <h3 className={styles.chatHeader}>Messages</h3>
+        <Input inputType="search" placeholder="Search..." />
+        <div className={styles.chatNav}>
+          {messNav.map((item, index) => (
+            <p className={styles.chatOptions} key={item.menuName}>
+              <item.MenuIcon size={20} />
+              {item.menuName}
+            </p>
+          ))}
+        </div>
+      </div>
+      <div className={styles.patientsCon}>
+        <div></div>
+        <PatientsCard />
+      </div>
+      <div className={styles.profileDown}>
+        <Image src={MenuSquare} alt="chat icon" className={styles.IconImages} />
+        <span className={styles.settings}>More</span>
+      </div>
+    </>
+  );
+};
+
+const RenderTherapistDetails = ({ users }) => {
+  return <div>Therapist details</div>;
+};
+
 function SideBar() {
   const dispatch = useDispatch();
   const sidebar = useSelector((state) => state.sideBar.sidebar);
+  const users = useSelector((state) => state.getStoredUsers.users);
   console.log("sideBar", sidebar);
   const handleSidebarToggle = () => {
     dispatch(sideBarToggle());
@@ -73,30 +105,13 @@ function SideBar() {
           </Link>
           <Sidebar size={28} weight="fill" onClick={handleSidebarToggle} />
         </div>
-
-        <div>
-          <h3 className={styles.chatHeader}>Messages</h3>
-          <Input inputType="search" placeholder="Search..." />
-          <div className={styles.chatNav}>
-            {messNav.map((item, index) => (
-              <p className={styles.chatOptions} key={item.menuName}>
-                <item.MenuIcon size={20} />
-                {item.menuName}
-              </p>
-            ))}
-          </div>
-        </div>
       </div>
 
-      <div className={styles.patientsCon}>
-        <div></div>
-        <PatientsCard />
-      </div>
-
-      <div className={styles.profileDown}>
-        <Image src={MenuSquare} alt="chat icon" className={styles.IconImages} />
-        <span className={styles.settings}>More</span>
-      </div>
+      {users[0]?.therapist ? (
+        <RenderPatientList />
+      ) : (
+        <RenderTherapistDetails users={users} />
+      )}
     </section>
   );
 }

@@ -64,8 +64,10 @@ function TherapistDash({ userInfo, patientsTherapist }) {
         {/* <Care userInfo={userInfo} patientsTherapist={patientsTherapist} /> */}
         <Care userInfo={userInfo} />
       </div>
-      <MessageInput patientsTherapist={patientsTherapist} />
-      <FooterMenu />
+      <div className={styles.rare}>
+        <MessageInput patientsTherapist={patientsTherapist} />
+        <FooterMenu />
+      </div>
     </section>
   );
 }

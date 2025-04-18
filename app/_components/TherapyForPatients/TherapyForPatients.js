@@ -21,8 +21,10 @@ function TherapyForPatients({ userInfo }) {
       >
         <Care userInfo={userInfo} />
       </div>
-      <MessageInput />
-      <FooterMenu />
+      <div className={styles.rare}>
+        <MessageInput />
+        <FooterMenu />
+      </div>
     </section>
   );
 }
