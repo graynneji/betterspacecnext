@@ -13,12 +13,17 @@ import {
   CalendarDots,
   SidebarSimple,
   UserCircle,
+  SealCheck,
+  VideoCamera,
+  ChatTeardropText,
 } from "@phosphor-icons/react/dist/ssr";
 import Input from "../Input/Input";
 import { getTherapistPatients } from "@/app/store/getTherapistPatientsSlice";
 import { getUsers } from "@/app/_lib/data-services";
 import { useDispatch, useSelector } from "react-redux";
 import { sideBarToggle } from "@/app/store/sideBarSlice";
+import { PhoneCall } from "@phosphor-icons/react";
+import ProfilePicsThera from "@/public/t.jpg";
 
 const messNav = [
   { menuName: "Sessions", MenuIcon: ChatCircleText },
@@ -53,14 +58,90 @@ const RenderPatientList = () => {
 };
 
 const RenderTherapistDetails = ({ users }) => {
-  return <div>Therapist details</div>;
+  const therapist = {
+    name: "Dr. Maya Thompson",
+    isVerified: true,
+    profileImage: "/maya.jpg",
+    bio: "Licensed therapist with 10+ years of experience helping individuals with anxiety, depression, and trauma recovery.",
+    license: "LCSW #123456 (California)",
+    communication: ["Video", "Phone", "Chat"],
+    specialties: ["Anxiety", "Depression", "PTSD"],
+    location: "Los Angeles, CA",
+  };
+
+  const getIcon = (method) => {
+    switch (method) {
+      case "Video":
+        return <VideoCamera size={24} color="#1E90FF" />;
+      case "Phone":
+        return <PhoneCall size={24} color="#2E8B57" />;
+      case "Chat":
+        return <ChatTeardropText size={24} color="#6A5ACD" />;
+      default:
+        return null;
+    }
+  };
+  return (
+    <div>
+      <div className={styles.card}>
+        <PatientsCard image={ProfilePicsThera} />
+        <h2 className={styles.name}>
+          {therapist.name}
+          {therapist.isVerified && (
+            <SealCheck size={24} color="#1da1f2" weight="fill" />
+          )}
+        </h2>
+        <p className={styles.bio}>{therapist.bio}</p>
+
+        <div className={styles.infoSection}>
+          <p>
+            <strong>License:</strong> {therapist.license}
+          </p>
+          <p>
+            <strong>Specialties:</strong> {therapist.specialties.join(", ")}
+          </p>
+          <p>
+            <strong>Location:</strong> {therapist.location}
+          </p>
+          <p className={styles.communcations}>
+            {/* <strong>Communication:</strong> */}
+            <ul className={styles.commMethods}>
+              {therapist.communication.map((method) => (
+                <li key={method}>
+                  {getIcon(method)} {method}
+                </li>
+              ))}
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      {/* Action Buttons Section */}
+      <div className={styles.actionButtons}>
+        <button className={`${styles.btn} ${styles.primary}`}>
+          Book Appointment
+        </button>
+
+        <button className={`${styles.btn} ${styles.tertiary}`}>
+          Change Therapist
+        </button>
+        <button className={`${styles.btn} ${styles.textLink}`}>
+          View Reviews
+        </button>
+        <button className={`${styles.btn} ${styles.textLink} ${styles.danger}`}>
+          Report Profile
+        </button>
+        <button className={`${styles.btn} ${styles.secondary}`}>Logout</button>
+      </div>
+    </div>
+  );
 };
 
 function SideBar() {
   const dispatch = useDispatch();
   const sidebar = useSelector((state) => state.sideBar.sidebar);
   const users = useSelector((state) => state.getStoredUsers.users);
-  console.log("sideBar", sidebar);
+  console.log("sideBar", users);
   const handleSidebarToggle = () => {
     dispatch(sideBarToggle());
   };
@@ -71,8 +152,8 @@ function SideBar() {
         style={{
           position: "absolute",
           marginTop: "80px",
-          width: "40px",
-          height: "40px",
+          width: "50px",
+          height: "50px",
           backgroundColor: "#EEEEEE",
           borderTopRightRadius: "10px",
           borderBottomRightRadius: "10px",
@@ -83,7 +164,12 @@ function SideBar() {
           zIndex: "999999",
         }}
       >
-        <Sidebar size={28} weight="fill" onClick={handleSidebarToggle} />
+        <Sidebar
+          size={28}
+          weight="fill"
+          onClick={handleSidebarToggle}
+          color="#325343"
+        />
       </div>
     );
   }
@@ -103,11 +189,16 @@ function SideBar() {
           <Link href="/">
             <Image width={160} height={40} src={Logo} alt="Logo" />
           </Link>
-          <Sidebar size={28} weight="fill" onClick={handleSidebarToggle} />
+          <Sidebar
+            size={28}
+            weight="fill"
+            onClick={handleSidebarToggle}
+            color="#325343"
+          />
         </div>
       </div>
 
-      {users[0]?.therapist ? (
+      {!users[0]?.therapist ? (
         <RenderPatientList />
       ) : (
         <RenderTherapistDetails users={users} />

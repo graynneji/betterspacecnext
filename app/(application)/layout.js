@@ -9,14 +9,14 @@ import PageTransition from "../_components/PageTransition/pageTransition";
 import FooterMenu from "../_components/FooterMenu/FooterMenu";
 import AppNav from "../_components/AppNav/AppNav";
 import UserProvider from "../_provider/UserProvider";
-// import SideBar from "../_components/SideBar/SideBar";
+import SideBar from "../_components/SideBar/SideBar";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <UserProvider>
           <div className={styles.appLayout}>
-            {/* <SideBar /> */}
+            <SideBar />
 
             <main
               style={{

@@ -51,7 +51,7 @@ function TherapistDash({ userInfo, patientsTherapist }) {
   return (
     <section style={{ width: "auto" }} className={styles.appLayout}>
       <AppNav userInfo={userInfo} />
-      <div
+      {/* <div
         style={{
           flexGrow: 1,
           overflowY: "auto",
@@ -60,10 +60,10 @@ function TherapistDash({ userInfo, patientsTherapist }) {
           paddingRight: "20px",
           paddingLeft: "20px",
         }}
-      >
-        {/* <Care userInfo={userInfo} patientsTherapist={patientsTherapist} /> */}
-        <Care userInfo={userInfo} />
-      </div>
+      > */}
+      {/* <Care userInfo={userInfo} patientsTherapist={patientsTherapist} /> */}
+      <Care userInfo={userInfo} />
+      {/* </div> */}
       <div className={styles.rare}>
         <MessageInput patientsTherapist={patientsTherapist} />
         <FooterMenu />

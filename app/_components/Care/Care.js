@@ -54,22 +54,22 @@ export default function Care({ userInfo }) {
       <button onClick={handleSignout} disabled={isPending}>
         {isPending ? "Signing Out..." : "Sign Out"}
       </button>
-      <div className={styles.chatCon} ref={chatContainerRef}>
-        {messages?.map((msg) => (
-          <div
-            key={msg.id}
-            className={styles.message}
-            style={{
-              alignSelf: msg.sender_id === userId ? "flex-end" : "flex-start",
-              backgroundColor: msg.reciever_id === userId ? "#325343" : "#ddd",
-              color: msg.reciever_id === userId ? "#ffffff" : "",
-            }}
-          >
-            {msg.message}
-          </div>
-        ))}
-        <div ref={chatEndRef} /> {/* ⬅️ Dummy div to scroll to */}
-      </div>
+      {/* <div className={styles.chatCon} ref={chatContainerRef}> */}
+      {messages?.map((msg) => (
+        <div
+          key={msg.id}
+          className={styles.message}
+          style={{
+            alignSelf: msg.sender_id === userId ? "flex-end" : "flex-start",
+            backgroundColor: msg.reciever_id === userId ? "#325343" : "#ddd",
+            color: msg.reciever_id === userId ? "#ffffff" : "",
+          }}
+        >
+          {msg.message}
+        </div>
+      ))}
+      <div ref={chatEndRef} /> {/* ⬅️ Dummy div to scroll to */}
+      {/* </div> */}
     </div>
   );
   //   return <p>Hello {data.user.email}</p>;

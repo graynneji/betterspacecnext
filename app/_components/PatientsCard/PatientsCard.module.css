@@ -39,3 +39,12 @@ align-items: center;
     font-weight: normal;
   }
   
+
+  .profilePic {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #cce4f7;
+    margin-bottom: 8px;
+  }

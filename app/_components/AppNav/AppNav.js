@@ -17,14 +17,15 @@ function AppNav({ userInfo }) {
   );
   console.log("pahhhh", patientRecieverId);
   const recieversName = userInfo[0]?.therapist
-    ? userInfo[0]?.therapist?.name
-    : patientRecieverId?.patientName;
+    ? "Dr. Maya Thompson"
+    : // ? userInfo[0]?.therapist?.name
+      patientRecieverId?.patientName;
 
   return (
     <div className={styles.styledNav}>
       {/* <div className={styles.proCon}> */}
       <h2 className={styles.profile}>
-        {userInfo[0]?.therapist ? "Therapy with " : "Patient - "}
+        {userInfo[0]?.therapist ? "Therapy with -  " : "Patient - "}
         <span className={styles.therName}>{recieversName}</span>
       </h2>
       {/* </div> */}

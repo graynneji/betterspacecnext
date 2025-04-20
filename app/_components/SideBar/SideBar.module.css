@@ -4,7 +4,7 @@
     background-color: #EEEEEE;
     /* background-color: #edf2f4; */
     /* margin: 1vh 10px 1vh 10px; */
-    border-radius: 10px;
+    /* border-radius: 10px; */
     min-width: 300px;
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.153);
@@ -12,7 +12,7 @@
     padding: 10px 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     color:#1b1b1bd4;
 }
 .patientsCon{
@@ -68,3 +68,137 @@
    color: #325343;
    cursor: pointer;
 }
+
+/* ////therapist infor card ///// */
+
+.card {
+    width: 320px;
+    margin: 20px auto;
+    padding: 16px;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
+    /* background: #fff; */
+    font-family: inter, sans-serif;
+    text-align: center;
+  }
+  
+
+  
+  .name {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+  }
+  
+  .verifiedIcon {
+    color: #1E90FF;
+    font-size: 18px;
+  }
+  
+  .bio {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 16px;
+  }
+  
+  .infoSection {
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:3px;
+  }
+  
+  .commMethods {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+    justify-content: center;
+  }
+  
+  .commMethods li {
+ display: flex;
+ align-items: center;
+gap: 5px;
+  }
+  .communcations{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 5px;
+  }
+
+
+
+  /* Button Area */
+.actionButtons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .btn {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .primary {
+    background-color: #1e90ff;
+    color: white;
+  }
+  
+  .primary:hover {
+    background-color: #167ddc;
+  }
+  
+  .secondary {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .secondary:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .tertiary {
+    background-color: #fafafa;
+    color: #444;
+  }
+  
+  .tertiary:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .textLink {
+    background: none;
+    color: #1e90ff;
+    padding: 4px;
+    font-size: 13px;
+    text-align: left;
+  }
+  
+  .textLink:hover {
+    text-decoration: underline;
+  }
+  
+  .danger {
+    color: #cc0000;
+  }
