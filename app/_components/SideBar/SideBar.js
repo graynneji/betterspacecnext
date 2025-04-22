@@ -24,6 +24,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { sideBarToggle } from "@/app/store/sideBarSlice";
 import { PhoneCall } from "@phosphor-icons/react";
 import ProfilePicsThera from "@/public/t.jpg";
+import { useTransition } from "react";
+import { signOut } from "@/app/_lib/actions";
 
 const messNav = [
   { menuName: "Sessions", MenuIcon: ChatCircleText },
@@ -58,6 +60,10 @@ const RenderPatientList = () => {
 };
 
 const RenderTherapistDetails = ({ users }) => {
+  const [isPending, startTransition] = useTransition();
+  const handleSignout = () => {
+    startTransition(() => signOut());
+  };
   const therapist = {
     name: "Dr. Maya Thompson",
     isVerified: true,
@@ -131,7 +137,12 @@ const RenderTherapistDetails = ({ users }) => {
         <button className={`${styles.btn} ${styles.textLink} ${styles.danger}`}>
           Report Profile
         </button>
-        <button className={`${styles.btn} ${styles.secondary}`}>Logout</button>
+        <button
+          className={`${styles.btn} ${styles.secondary}`}
+          onClick={handleSignout}
+        >
+          {isPending ? "Logging out..." : "Logout"}
+        </button>
       </div>
     </div>
   );
@@ -145,7 +156,6 @@ function SideBar() {
   const handleSidebarToggle = () => {
     dispatch(sideBarToggle());
   };
-
   if (sidebar) {
     return (
       <div

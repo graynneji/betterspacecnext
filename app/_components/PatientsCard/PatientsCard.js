@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-import styles from "./PatientsCard.module.css"; // Optional CSS file for styling
+import styles from "./PatientsCard.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientRecvId } from "@/app/store/getPatientRecvIdSlice";
+import { getRandomColor } from "@/app/utils/color";
 
-const PatientsCard = ({ image = null }) => {
+const PatientsCard = ({ name = null, image = null }) => {
   const therapistPatients = useSelector(
     (state) => state.getTherapistPatients.therapistPatients
   );
@@ -24,6 +25,17 @@ const PatientsCard = ({ image = null }) => {
       />
     );
   }
+
+  if (name) {
+    return (
+      <div className={styles.profileCard}>
+        <div className={styles.profileAvatar}>
+          {name.charAt(0).toUpperCase()}
+        </div>
+        <h2 className={styles.profileName}>{name.split(" ")[0]}</h2>
+      </div>
+    );
+  }
   return (
     <>
       {therapistPatients?.map((item, index) => (
@@ -37,7 +49,12 @@ const PatientsCard = ({ image = null }) => {
             })
           }
         >
-          <div className={styles.profileAvatar}>
+          <div
+            className={styles.profileAvatar}
+            style={{
+              backgroundColor: `${getRandomColor()}`,
+            }}
+          >
             {item?.name?.charAt(0).toUpperCase()}
           </div>
           <h2 className={styles.profileName}>{item?.name}</h2>

@@ -1,0 +1,30 @@
+.dropdownMenu {
+    position: absolute;
+    right: 0;
+    top: 55px;
+    /* background-color: white; */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 260px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    background-color: #EEEEEE;
+  }
+  
+  .dropdownItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .dropdownItem:hover {
+    background-color: #f2f2f2;
+  }

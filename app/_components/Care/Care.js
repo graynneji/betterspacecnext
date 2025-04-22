@@ -4,7 +4,7 @@ import styles from "./Care.module.css";
 import Header from "../Header/Header";
 import Nav from "../Nav/Nav";
 import { supabase } from "../../_lib/supabase";
-import { signOut } from "../../_lib/actions";
+// import { signOut } from "../../_lib/actions";
 import { useEffect, useState, useTransition, useRef } from "react";
 import { useRealTime } from "../../hooks/useRealTime";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,8 +35,6 @@ export default function Care({ userInfo }) {
 
   // receiverId
 
-  const [isPending, startTransition] = useTransition();
-
   useEffect(() => {
     // scroll to the last message
     if (chatEndRef.current) {
@@ -44,16 +42,13 @@ export default function Care({ userInfo }) {
     }
   }, [messages]);
   // signOut();
-  const handleSignout = () => {
-    startTransition(() => signOut());
-  };
 
   return (
     <div className={styles.careContainer}>
-      <p>Hello {userInfo[0]?.name}</p>
+      {/* <p>Hello {userInfo[0]?.name}</p>
       <button onClick={handleSignout} disabled={isPending}>
         {isPending ? "Signing Out..." : "Sign Out"}
-      </button>
+      </button> */}
       {/* <div className={styles.chatCon} ref={chatContainerRef}> */}
       {messages?.map((msg) => (
         <div

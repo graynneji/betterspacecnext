@@ -18,11 +18,11 @@ align-items: center;
     background-color: #4a90e2;
     color: white;
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: normal;
   }
   .profile-image {
     width: 100px;
