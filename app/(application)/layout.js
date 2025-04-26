@@ -10,6 +10,9 @@ import FooterMenu from "../_components/FooterMenu/FooterMenu";
 import AppNav from "../_components/AppNav/AppNav";
 import UserProvider from "../_provider/UserProvider";
 import SideBar from "../_components/SideBar/SideBar";
+import IncomingCallModal from "../_components/IncomingCallModal.js/IncomingCallModal";
+import CallUI from "../_components/CallUI/CallUI-v1";
+import Stream from "../_components/Stream/Stream";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -32,6 +35,8 @@ export default function RootLayout({ children }) {
 
             {/* <Cookies /> */}
           </div>
+          <IncomingCallModal />
+          <Stream />
         </UserProvider>
       </body>
     </html>

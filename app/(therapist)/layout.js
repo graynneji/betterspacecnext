@@ -5,13 +5,15 @@ import {
   getAllPatientsAttachedToTherapist,
   getTherapistsPatients,
 } from "../_lib/data-services";
-import { signOut } from "../_lib/actions";
+
 import styles from "./layout.module.css";
+import IncomingCallModal from "../_components/IncomingCallModal.js/IncomingCallModal";
+import CallUI from "../_components/CallUI/CallUI-v1";
+import Stream from "../_components/Stream/Stream";
 
 export default async function DashboardLayout({ children }) {
   const therepistPatient = await getAllPatientsAttachedToTherapist();
 
-  // signOut();
   return (
     <>
       <html lang="en">
@@ -33,6 +35,8 @@ export default async function DashboardLayout({ children }) {
                 {children}
               </main>
             </div>
+            <IncomingCallModal />
+            <Stream />
           </UserProvider>
         </body>
       </html>

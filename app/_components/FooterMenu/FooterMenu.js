@@ -3,9 +3,9 @@ import Image from "next/image";
 import styles from "./FooterMenu.module.css";
 import React, { useRef, useState } from "react";
 import Chat from "@/public/applicationIcon/chat-bubble-bottom-center-text.svg";
-import calendar from "@/public/applicationIcon/calendar-days.svg";
-import User from "@/public/applicationIcon/user-group.svg";
-import MenuSquare from "@/public/applicationIcon/squares-2x2.svg";
+// import calendar from "@/public/applicationIcon/calendar-days.svg";
+// import User from "@/public/applicationIcon/user-group.svg";
+// import MenuSquare from "@/public/applicationIcon/squares-2x2.svg";
 import {
   ChatText,
   Heart,
@@ -21,8 +21,14 @@ import Button from "../Button/Button";
 import { sendMessage } from "../../_lib/actions";
 import { useSelector } from "react-redux";
 import MessageInput from "../MessageInput/MessageInput";
+import Calendar from "@/app/_components/Calendar/Calendar";
+import { usePathname } from "next/navigation";
+import More from "../More/More";
 
 function FooterMenu() {
+  const pathname = usePathname();
+  console.log(pathname);
+  const paths = ["/community", "/therapy", "/more", "/schedule"];
   // const users = useSelector((state) => state.getUsers.users);
   // const userIds = {
   //   senderId: users[0]?.user_id,
@@ -68,27 +74,19 @@ function FooterMenu() {
     <nav className={styles.navCon}>
       <ul className={styles.navigation}>
         <li>
-          {/* <Image src={Chat} alt="chat icon" className={styles.IconImages} /> */}
           <ChatTeardropText size={24} color="#022C22" />
           <span>Sessions</span>
         </li>
         <li>
-          <Image src={calendar} alt="chat icon" className={styles.IconImages} />
-          {/* <CalendarDots size={24} /> */}
+          <Calendar weight={``} />
           <span>Schedule</span>
         </li>
         <li>
-          <Image src={User} alt="chat icon" className={styles.IconImages} />
-          {/* <UsersThree size={24} /> */}
+          {/* <Community /> */}
           <span>Community</span>
         </li>
         <li>
-          <Image
-            src={MenuSquare}
-            alt="chat icon"
-            className={styles.IconImages}
-          />
-          {/* <List size={24} /> */}
+          <More />
           <span>More</span>
         </li>
       </ul>

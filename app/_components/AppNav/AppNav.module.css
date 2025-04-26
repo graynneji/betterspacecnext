@@ -24,6 +24,7 @@
   /* flex-shrink: 0; */
   position: relative;
   justify-self: flex-start;
+  border: 1px solid #ccc;
   }
   .profile{
       font-size: 16px;

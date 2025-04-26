@@ -6,6 +6,7 @@ import getStoredUsersReducer from "./getStoredUsersSlice";
 import getTherapistPatientsReducer from "./getTherapistPatientsSlice";
 import getPatientRecvIdReducer from "./getPatientRecvIdSlice";
 import sideBarReducer from "./sideBarSlice";
+import callReducer from "./callSlice";
 const store = configureStore({
   reducer: {
     menuModal: menuModalReducer,
@@ -14,6 +15,7 @@ const store = configureStore({
     getTherapistPatients: getTherapistPatientsReducer,
     getPatientRecvId: getPatientRecvIdReducer,
     sideBar: sideBarReducer,
+    call: callReducer,
   },
 });
 

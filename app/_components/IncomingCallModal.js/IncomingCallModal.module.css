@@ -1,0 +1,86 @@
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .callModal {
+    /* background-color: #fff; */
+    background-color: #EEEEEE;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeInScale 0.3s ease;
+    border: 1px solid #ccc;
+  }
+  
+  .callModal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #1B1B1B;
+  }
+  
+  .callModal p {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  .callButtons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .callButtons button {
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .callButtons .accept {
+    background-color: #2ecc71;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .callButtons .accept:hover {
+    background-color: #27ae60;
+  }
+  
+  .callButtons .reject {
+    background-color: #e74c3c;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .callButtons .reject:hover {
+    background-color: #c0392b;
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

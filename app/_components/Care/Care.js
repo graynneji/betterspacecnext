@@ -32,6 +32,7 @@ export default function Care({ userInfo }) {
     ? userInfo[0]?.therapist?.therapist_id
     : patientRecieverId?.patientId;
   const messages = useRealTime(userId, recieverId);
+  console.log(messages);
 
   // receiverId
 

@@ -157,6 +157,7 @@ overflow-y: auto;
       -ms-overflow-style: none; 
       /* gap: 0; */
       padding-right: 50px;
+      border: 1px solid #ccc;
   }
   .chatTextarea::-webkit-scrollbar {
     display: none; /* Chrome, Safari */

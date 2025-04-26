@@ -94,7 +94,8 @@ const RenderTherapistDetails = ({ users }) => {
         <h2 className={styles.name}>
           {therapist.name}
           {therapist.isVerified && (
-            <SealCheck size={24} color="#1da1f2" weight="fill" />
+            <SealCheck size={24} color="#1D9BF0" weight="fill" />
+            // <SealCheck size={24} color="#1da1f2" weight="fill" />
           )}
         </h2>
         <p className={styles.bio}>{therapist.bio}</p>
@@ -109,7 +110,7 @@ const RenderTherapistDetails = ({ users }) => {
           <p>
             <strong>Location:</strong> {therapist.location}
           </p>
-          <p className={styles.communcations}>
+          <div className={styles.communcations}>
             {/* <strong>Communication:</strong> */}
             <ul className={styles.commMethods}>
               {therapist.communication.map((method) => (
@@ -118,7 +119,7 @@ const RenderTherapistDetails = ({ users }) => {
                 </li>
               ))}
             </ul>
-          </p>
+          </div>
         </div>
       </div>
 
