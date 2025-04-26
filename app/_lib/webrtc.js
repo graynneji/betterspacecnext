@@ -12,7 +12,12 @@ const config = {
 // Implement better connection state tracking to prevent errors when WebRTC functions are called
 // in incorrect sequence or multiple times
 
-export function createPeerConnection(onTrack, onCandidate) {
+// Update in createPeerConnection function in the WebRTC module
+export function createPeerConnection(
+  onTrack,
+  onCandidate,
+  onConnectionStateChange
+) {
   // Close any existing connection first
   if (peerConnection && peerConnection.connectionState !== "closed") {
     peerConnection.close();
@@ -27,11 +32,24 @@ export function createPeerConnection(onTrack, onCandidate) {
   // Add connection state logging for debugging
   peerConnection.onconnectionstatechange = () => {
     console.log("Connection state changed:", peerConnection.connectionState);
+    // Call the callback with the new state
+    if (onConnectionStateChange) {
+      onConnectionStateChange(peerConnection.connectionState);
+    }
   };
 
   // Add ice connection state logging
   peerConnection.oniceconnectionstatechange = () => {
     console.log("ICE connection state:", peerConnection.iceConnectionState);
+    // Also update the connection state based on ICE state
+    if (
+      peerConnection.iceConnectionState === "connected" ||
+      peerConnection.iceConnectionState === "completed"
+    ) {
+      if (onConnectionStateChange) {
+        onConnectionStateChange("connected");
+      }
+    }
   };
 
   peerConnection.onicecandidate = (event) => {
@@ -163,7 +181,19 @@ export async function handleOffer(offer) {
   }
 
   try {
+    // Check if we're in the right signaling state to set a remote description
+    if (
+      peerConnection.signalingState !== "stable" &&
+      peerConnection.signalingState !== "have-local-offer"
+    ) {
+      console.warn(
+        `Unexpected signaling state: ${peerConnection.signalingState}, resetting connection`
+      );
+      // Consider resetting connection here if needed
+    }
+
     await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+    console.log("Remote description set successfully from offer");
     remoteDescriptionSet = true;
 
     // Process any pending candidates
@@ -174,6 +204,7 @@ export async function handleOffer(offer) {
 
     const answer = await peerConnection.createAnswer();
     await peerConnection.setLocalDescription(answer);
+    console.log("Local description (answer) set successfully");
     return answer;
   } catch (error) {
     console.error("Error handling offer:", error);
@@ -193,9 +224,18 @@ export async function handleAnswer(answer) {
   }
 
   try {
+    // Check signaling state
+    if (peerConnection.signalingState !== "have-local-offer") {
+      console.warn(
+        `Unexpected signaling state for handling answer: ${peerConnection.signalingState}`
+      );
+      // Consider handling this case - maybe don't set remote description
+    }
+
     await peerConnection.setRemoteDescription(
       new RTCSessionDescription(answer)
     );
+    console.log("Remote description set successfully from answer");
     remoteDescriptionSet = true;
 
     // Process any pending candidates

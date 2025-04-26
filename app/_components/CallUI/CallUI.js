@@ -162,6 +162,11 @@ export default function CallUI({ inCall, caller, type, channel }) {
         }
 
         setLocalStream(stream);
+        console.log(
+          "Local stream tracks:",
+          stream.getTracks().map((t) => `${t.kind}:${t.label}:${t.enabled}`)
+        );
+
         setCurrentMediaType(mediaType);
 
         if (mediaType === "audio" && type === "video") {
@@ -177,7 +182,7 @@ export default function CallUI({ inCall, caller, type, channel }) {
         createPeerConnection(
           (event) => {
             if (!isComponentMounted) return;
-
+            console.log("Remote track received", event.streams[0]);
             if (remoteRef.current && event.streams[0]) {
               remoteRef.current.srcObject = event.streams[0];
               setConnectionState("connected");
@@ -198,7 +203,7 @@ export default function CallUI({ inCall, caller, type, channel }) {
                 .from("call_requests")
                 .select("*")
                 .eq("channel", channel)
-                .single();
+                .maybeSingle();
 
               if (!callData.data) {
                 console.error("No call data found");
@@ -213,12 +218,26 @@ export default function CallUI({ inCall, caller, type, channel }) {
             } catch (error) {
               console.error("Error sending ICE candidate:", error);
             }
+          },
+          // Add the connection state change callback
+          (newState) => {
+            if (!isComponentMounted) return;
+            console.log("Connection state update:", newState);
+
+            setConnectionState(newState);
+
+            // Start timer when connected
+            if (newState === "connected" && !timerRef.current) {
+              timerRef.current = setInterval(() => {
+                setCallTimeElapsed((prev) => prev + 1);
+              }, 1000);
+            }
           }
         );
 
         // Add tracks to peer connection
         addTracks(stream);
-
+        console.log("Added local tracks to peer connection");
         // Handle signaling (offer/answer)
         const isCaller = caller === userId;
 
@@ -248,16 +267,27 @@ export default function CallUI({ inCall, caller, type, channel }) {
             if (!offer) {
               throw new Error("No offer received");
             }
-
             const answer = await handleOffer(offer);
+            console.log(
+              "check for both sender and reciever",
+              callRow,
+              offer,
+              answer
+            );
             if (!answer) {
               throw new Error("Failed to create answer");
             }
 
-            await supabase
+            const { error } = await supabase
               .from("call_requests")
               .update({ answer, status: "answered" })
               .eq("channel", channel);
+            ////here/////
+            console.log(error);
+            if (error) {
+              console.error("Error updating call_requests:", error);
+              throw error;
+            }
           }
         } catch (error) {
           console.error("Signaling error:", error);
@@ -289,7 +319,30 @@ export default function CallUI({ inCall, caller, type, channel }) {
                 endCall();
                 return;
               }
+              ///////////////////////////////////////////////////////////////////
+              if (candidates?.length) {
+                try {
+                  // Get previously processed candidates count
+                  const processedCount = payload.old?.candidates?.length || 0;
 
+                  // Only process new candidates
+                  const newCandidates = candidates.slice(processedCount);
+
+                  if (newCandidates.length > 0) {
+                    console.log(
+                      `Processing ${newCandidates.length} new ICE candidates`
+                    );
+
+                    for (let candidate of newCandidates) {
+                      await addIceCandidate(candidate);
+                    }
+                  }
+                } catch (error) {
+                  console.error("Error handling ICE candidates:", error);
+                }
+              }
+
+              //////////////////////////////////////////////////////////////////
               // Handle answer if we're the caller
               if (answer && isCaller) {
                 try {
@@ -323,6 +376,25 @@ export default function CallUI({ inCall, caller, type, channel }) {
 
     setup();
 
+    ////////////////////////clean up//////////////////////////
+
+    let connectionTimeoutId = null;
+
+    // Set a connection timeout
+    connectionTimeoutId = setTimeout(() => {
+      if (connectionState === "connecting" && isComponentMounted) {
+        console.log(
+          "Connection timeout - still connecting after timeout period"
+        );
+        setErrorMessage("Connection timed out. Please try again.");
+        setConnectionState("failed");
+
+        // Optionally trigger cleanup/reconnect here
+      }
+    }, 30000);
+
+    ///////////////////////////////////////////////////////
+
     return () => {
       isComponentMounted = false;
 
@@ -340,6 +412,13 @@ export default function CallUI({ inCall, caller, type, channel }) {
         controlsTimerRef.current = null;
       }
 
+      ///////////////////////cleanup setTimeOut/////////////////
+
+      if (connectionTimeoutId) {
+        clearTimeout(connectionTimeoutId);
+      }
+
+      //////////////////////////////////////////////////////////
       // Make sure we stop all tracks
       if (localStream) {
         localStream.getTracks().forEach((track) => {
@@ -352,6 +431,30 @@ export default function CallUI({ inCall, caller, type, channel }) {
       setConnectionState("disconnected");
     };
   }, [channel, inCall, type, caller, userId]);
+
+  ////////////Debug Log/////////////////
+
+  const logConnectionState = () => {
+    if (!peerConnection) return "No peer connection";
+
+    return {
+      signalingState: peerConnection.signalingState,
+      iceConnectionState: peerConnection.iceConnectionState,
+      iceGatheringState: peerConnection.iceGatheringState,
+      connectionState: peerConnection.connectionState,
+      remoteDescription: peerConnection.remoteDescription ? "set" : "not set",
+      localDescription: peerConnection.localDescription ? "set" : "not set",
+    };
+  };
+
+  // Add periodic logging in your setup function:
+  const debugIntervalId = setInterval(() => {
+    console.log("Connection debug:", logConnectionState());
+  }, 5000);
+
+  // Clear in cleanup
+  clearInterval(debugIntervalId);
+  //////////////////////////////////////
 
   if (!inCall) {
     return null;
