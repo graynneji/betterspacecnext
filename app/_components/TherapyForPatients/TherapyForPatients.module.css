@@ -2,7 +2,8 @@
     .appLayout{
         display: flex;
         flex-direction: column ;  
-        height : 100vh;
+        height: 100%;
+        min-height: -webkit-fill-available; /* For iOS Safari */
      overflow: hidden;
      position: relative;
      background-color: #f9f7f3;
