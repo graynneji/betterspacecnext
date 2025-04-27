@@ -7,7 +7,7 @@ import styles from "./layout.module.css";
 import { Toaster } from "react-hot-toast";
 import PageTransition from "../_components/PageTransition/pageTransition";
 import FooterMenu from "../_components/FooterMenu/FooterMenu";
-import AppNav from "../_components/AppNav/AppNav";
+import AppNav from "../_components/AppNav/AppNav-v1";
 import UserProvider from "../_provider/UserProvider";
 import SideBar from "../_components/SideBar/SideBar";
 import IncomingCallModal from "../_components/IncomingCallModal.js/IncomingCallModal";

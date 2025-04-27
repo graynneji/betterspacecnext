@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
+import Input from "../Input/Input";
 import styles from "./MessageInput.module.css";
 import { PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
 import { useSelector } from "react-redux";
@@ -19,41 +20,29 @@ function MessageInput() {
   const messageSend = sendMessage.bind(null, userIds);
   const [newMessage, setNewMessage] = useState("");
   const formRef = useRef(null);
-
-  const handleChange = (e) => {
-    setNewMessage(e.target.value);
-  };
-
   return (
-    <div className={styles.messageInputContainer}>
+    <div className={styles.searchCon}>
       <form
-        className={styles.messageForm}
         action={async (formData) => {
           await messageSend(formData);
-          setNewMessage("");
           formRef.current.reset();
         }}
         ref={formRef}
       >
-        <div className={styles.textareaWrapper}>
-          <textarea
-            id="message"
-            name="message"
-            value={newMessage}
-            onChange={handleChange}
-            placeholder="Type your message here..."
-            className={styles.messageTextarea}
-            rows="1"
-            autoComplete="off"
-          />
+        <Input
+          inputType="textarea"
+          chat="chat"
+          id="message"
+          name="message"
+          value={newMessage}
+          placeholder="Type your message here..."
+        />
+        <div type="submit" className={styles.sendCon}>
+          <button className={styles.send}>
+            {" "}
+            <PaperPlaneRight size={18} color="white" />
+          </button>
         </div>
-        <button
-          type="submit"
-          className={styles.sendButton}
-          aria-label="Send message"
-        >
-          <PaperPlaneRight size={18} weight="fill" />
-        </button>
       </form>
     </div>
   );

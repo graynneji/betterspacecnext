@@ -1,72 +1,121 @@
 "use client";
 import { createClient, RealtimeChannel } from "@supabase/supabase-js";
-import styles from "./Care.module.css";
-import Header from "../Header/Header";
-import Nav from "../Nav/Nav";
-import { supabase } from "../../_lib/supabase";
-// import { signOut } from "../../_lib/actions";
 import { useEffect, useState, useTransition, useRef } from "react";
-import { useRealTime } from "../../hooks/useRealTime";
 import { useDispatch, useSelector } from "react-redux";
 import { getStoredUsers } from "../../store/getStoredUsersSlice";
 import { getTherapistPatients } from "@/app/store/getTherapistPatientsSlice";
+import { supabase } from "../../_lib/supabase";
+import Header from "../Header/Header";
+import Nav from "../Nav/Nav";
+import styles from "./Care.module.css";
+import { useRealTime } from "../../hooks/useRealTime";
 
 export default function Care({ userInfo }) {
-  // export default function Care({ userInfo, patientsTherapist = [] }) {
   const [newMessage, setNewMessage] = useState("");
-  //ref to the last
   const chatEndRef = useRef(null);
   const chatContainerRef = useRef(null);
   const userId = userInfo[0]?.user_id;
   const dispatch = useDispatch();
+
   const patientRecieverId = useSelector(
     (state) => state.getPatientRecvId.patientRecieverId
   );
-  // useEffect(() => {
-  //   dispatch(getTherapistPatients(patientsTherapist));
-  // }, [patientsTherapist, dispatch]);
+
   useEffect(() => {
     dispatch(getStoredUsers(userInfo));
   }, [userInfo, dispatch]);
+
   const recieverId = userInfo[0]?.therapist
     ? userInfo[0]?.therapist?.therapist_id
     : patientRecieverId?.patientId;
+
   const messages = useRealTime(userId, recieverId);
   console.log(messages);
 
-  // receiverId
-
   useEffect(() => {
-    // scroll to the last message
     if (chatEndRef.current) {
       chatEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
-  // signOut();
+
+  const formatTime = (timestamp) => {
+    if (!timestamp) return "";
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
+
+  const isToday = (timestamp) => {
+    if (!timestamp) return false;
+    const today = new Date();
+    const messageDate = new Date(timestamp);
+    return (
+      messageDate.getDate() === today.getDate() &&
+      messageDate.getMonth() === today.getMonth() &&
+      messageDate.getFullYear() === today.getFullYear()
+    );
+  };
+
+  // Group messages by date
+  const groupMessagesByDate = () => {
+    const groups = {};
+    messages?.forEach((msg) => {
+      const date = msg.created_at
+        ? new Date(msg.created_at).toLocaleDateString()
+        : "Unknown Date";
+      if (!groups[date]) {
+        groups[date] = [];
+      }
+      groups[date].push(msg);
+    });
+    return groups;
+  };
+
+  const messageGroups = groupMessagesByDate();
 
   return (
     <div className={styles.careContainer}>
-      {/* <p>Hello {userInfo[0]?.name}</p>
-      <button onClick={handleSignout} disabled={isPending}>
-        {isPending ? "Signing Out..." : "Sign Out"}
-      </button> */}
-      {/* <div className={styles.chatCon} ref={chatContainerRef}> */}
-      {messages?.map((msg) => (
-        <div
-          key={msg.id}
-          className={styles.message}
-          style={{
-            alignSelf: msg.sender_id === userId ? "flex-end" : "flex-start",
-            backgroundColor: msg.reciever_id === userId ? "#325343" : "#ddd",
-            color: msg.reciever_id === userId ? "#ffffff" : "",
-          }}
-        >
-          {msg.message}
+      <div className={styles.chatWrapper}>
+        <div className={styles.chatContent} ref={chatContainerRef}>
+          {Object.entries(messageGroups).map(([date, msgs]) => (
+            <div key={date} className={styles.dateGroup}>
+              <div className={styles.dateHeader}>
+                <span className={styles.dateLabel}>
+                  {isToday(msgs[0]?.created_at) ? "Today" : date}
+                </span>
+              </div>
+
+              {msgs.map((msg) => {
+                const isSender = msg.sender_id === userId;
+
+                return (
+                  <div
+                    key={msg.id}
+                    className={`${styles.messageRow} ${
+                      isSender ? styles.senderRow : styles.receiverRow
+                    }`}
+                  >
+                    <div
+                      className={`${styles.messageBubble} ${
+                        isSender ? styles.senderBubble : styles.receiverBubble
+                      }`}
+                    >
+                      <div className={styles.messageText}>{msg.message}</div>
+                      <div
+                        className={`${styles.messageTime} ${
+                          isSender ? styles.senderTime : styles.receiverTime
+                        }`}
+                      >
+                        {formatTime(msg.created_at)}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+          <div ref={chatEndRef} />
         </div>
-      ))}
-      <div ref={chatEndRef} /> {/* ⬅️ Dummy div to scroll to */}
-      {/* </div> */}
+      </div>
     </div>
   );
-  //   return <p>Hello {data.user.email}</p>;
 }

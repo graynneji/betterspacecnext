@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPatientRecvId } from "@/app/store/getPatientRecvIdSlice";
 import { getRandomColor } from "@/app/utils/color";
 
-const PatientsCard = ({ name = null, image = null }) => {
+const PatientsCard = ({ name = null, image = null, type = null }) => {
   const therapistPatients = useSelector(
     (state) => state.getTherapistPatients.therapistPatients
   );
@@ -28,7 +28,9 @@ const PatientsCard = ({ name = null, image = null }) => {
 
   if (name) {
     return (
-      <div className={styles.profileCard}>
+      <div
+        className={`${type ? styles.profileResponsive : styles.profileCard}`}
+      >
         <div className={styles.profileAvatar}>
           {name.charAt(0).toUpperCase()}
         </div>

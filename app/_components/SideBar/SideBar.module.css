@@ -1,204 +1,609 @@
-.sideBarCon{
-    overflow: hidden;
-    /* height: 98vh; */
-    background-color: #EEEEEE;
-    /* background-color: #edf2f4; */
-    /* margin: 1vh 10px 1vh 10px; */
-    /* border-radius: 10px; */
-    min-width: 300px;
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.153);
-    border: 1px solid #ccc;
-    padding: 10px 10px;
+/* SideBar.module.css */
+.sideBarContainer {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    color:#1b1b1bd4;
-}
-.patientsCon{
-    /* max-height: auto; */
-    flex: 1;
-    height: 100%;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-}
-@media screen and (max-width: 650px) {
-    .sideBarCon{
+    min-width: 340px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    position: relative;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d4 transparent;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .sideBarContainer{
         position: absolute;
         z-index: 9999999;
-        height: 100%;
+        /* height: 100%; */
 
     }
 }
-.chatNav{
-
-    margin: 10px 0px;
-    display: flex;
-    gap: 10px;
-}
-.chatHeader{
-    margin-bottom: 12px;
-    font-size: 18px;
-
-}
-.chatOptions{
-    padding: 2px 10px;
-    border-radius: 20px;
-    background-color: #3253436c;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.profileDown{
-    padding: 20px 0px 0px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 5px;
-    cursor: pointer;
-}
-.settings{
-   font-family: Inter, sans-serif;
-   font-weight: 500;
-   letter-spacing: -0.004em;
-   font-size: 1.5rem;
-   color: #325343;
-   cursor: pointer;
-}
-
-/* ////therapist infor card ///// */
-
-.card {
-    width: 320px;
-    margin: 20px auto;
-    padding: 16px;
+  .sideBarContainer::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .sideBarContainer::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
     border-radius: 10px;
-    /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
-    /* background: #fff; */
-    font-family: inter, sans-serif;
-    text-align: center;
   }
   
-
-  
-  .name {
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    margin: 0;
-  }
-  
-  .verifiedIcon {
-    color: #1E90FF;
-    font-size: 18px;
-  }
-  
-  .bio {
-    font-size: 14px;
-    color: #555;
-    margin: 10px 0 16px;
-  }
-  
-  .infoSection {
-    text-align: left;
-    font-size: 16px;
-    color: #333;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap:3px;
-  }
-  
-  .commMethods {
-    list-style: none;
-    padding: 0;
-    margin: 5px 0 0;
+  .sideBarHeader {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-top: 4px;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
   }
   
-  .commMethods li {
- display: flex;
- align-items: center;
-gap: 5px;
-  }
-  .communcations{
+  .logoLink {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    margin-top: 5px;
-  }
-
-
-
-  /* Button Area */
-.actionButtons {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
   }
   
-  .btn {
-    padding: 10px 14px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
+  .logo {
+    object-fit: contain;
+  }
+  
+  .toggleIcon {
+    color: #325343;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
   }
   
-  .primary {
-    background-color: #1e90ff;
+  .toggleIcon:hover {
+    transform: scale(1.1);
+  }
+  
+  .collapsedSidebar {
+    position: absolute;
+    margin-top: 80px;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    transition: all 0.3s ease;
+  }
+  
+  .collapsedSidebar:hover {
+    background-color: #f5f5f5;
+    transform: translateX(3px);
+  }
+  
+  /* ====== Patient List Styling ====== */
+  .patientListContainer {
+    padding: 0 20px 16px;
+  }
+  
+  .chatHeader {
+    margin: 20px 0 16px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d3748;
+    letter-spacing: -0.01em;
+  }
+  
+  .searchContainer {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 12px;
+    border: none;
+    background-color: #f7f7f7;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .searchInput:focus {
+    background-color: #f0f0f0;
+    box-shadow: 0 0 0 2px rgba(50, 83, 67, 0.2);
+  }
+  
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8a9199;
+  }
+  
+  .navigationTabs {
+    display: flex;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+  }
+  
+  .navTab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin-right: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8a9199;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .navTab span {
+    margin-left: 8px;
+  }
+  
+  .activeTab {
+    color: #325343;
+    font-weight: 600;
+  }
+  
+  .activeIndicator {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #325343;
+    border-radius: 2px;
+  }
+  
+  .filterChips {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .chip {
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .chip:hover {
+    background-color: #e5e5e5;
+  }
+  
+  .activeChip {
+    background-color: #325343;
     color: white;
   }
   
-  .primary:hover {
-    background-color: #167ddc;
+  .patientsList {
+    padding: 0 20px;
   }
   
-  .secondary {
+  .patientsListHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .patientsListHeader h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+  }
+  
+  .viewAll {
+    font-size: 12px;
+    color: #325343;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .addNewChat {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 16px 0;
+    border-radius: 12px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .addNewChat:hover {
     background-color: #f0f0f0;
-    color: #333;
   }
   
-  .secondary:hover {
-    background-color: #e0e0e0;
+  .addIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #325343;
+    color: white;
+    margin-right: 12px;
   }
   
-  .tertiary {
+  .addNewChat span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  .profileDown {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid #f0f0f0;
     background-color: #fafafa;
-    color: #444;
   }
   
-  .tertiary:hover {
-    background-color: #f2f2f2;
+  .quickActions {
+    display: flex;
+    justify-content: space-between;
   }
   
-  .textLink {
+  .actionItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .actionItem:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .actionItem span {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #4a5568;
+  }
+  
+  /* ====== Therapist Profile Styling ====== */
+  .therapistProfileContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .profileHeader {
+    position: relative;
+    padding-bottom: 20px;
+  }
+  
+  .coverImage {
+    height: 60px;
+    /* height: 120px; */
+    /* background: linear-gradient(135deg, #B1D8FC 0%, #b1d8fcc0 100%); */
+    /* background: linear-gradient(135deg, #325343 0%, #5a896e 100%); */
+    /* border-radius: 0 0 16px 16px; */
+  }
+  
+  .profileImageContainer {
+    position: relative;
+    margin: -45px auto 0;
+    width: 90px;
+    height: 90px;
+  }
+  
+  .therapistImage {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+  }
+  
+  .statusIndicator {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #10b981;
+    border: 2px solid white;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .nameVerification {
+    text-align: center;
+    margin-top: 12px;
+  }
+  
+  .therapistName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: #1a202c;
+  }
+  
+  .verifiedBadge {
+    margin-left: 8px;
+  }
+  
+  .ratingBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  
+  .stars {
+    display: flex;
+    margin-right: 8px;
+  }
+  
+  .ratingText {
+    font-size: 12px;
+    color: #718096;
+  }
+  
+  .bioCard {
+    margin: 0 20px 24px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    border-left: 4px solid #325343;
+    max-width: 340px;
+  }
+  
+  .bioText {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4a5568;
+  }
+  
+  .infoCards {
+    padding: 0 20px;
+    margin-bottom: 24px;
+  }
+  
+  .infoCard {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    align-items: center;
+  }
+  
+  .infoCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+  
+  .infoIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #f0f7f4;
+    border-radius: 8px;
+    margin-right: 12px;
+    color: #325343;
+  }
+  
+  .infoContent {
+    flex: 1;
+  }
+  
+  .infoLabel {
+    font-size: 12px;
+    font-weight: 500;
+    color: #718096;
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .infoValue {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2d3748;
+    margin: 0;
+  }
+  
+  .specialtyTags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4px;
+    gap: 8px;
+  }
+  
+  .specialtyTag {
+    padding: 4px 10px;
+    background-color: #edf7f0;
+    color: #325343;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .communicationSection {
+    padding: 0 20px;
+    margin-bottom: 24px;
+  }
+  
+  .sectionTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 16px;
+  }
+  
+  .commMethods {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .commMethod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .commMethod:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+  
+  .commIcon {
+    margin-bottom: 8px;
+  }
+  
+  .commMethod span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  .actionButtonsContainer {
+    padding: 20px;
+    margin-top: auto;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .actionButton {
+    width: 100%;
+    padding: 0;
+    border: none;
     background: none;
-    color: #1e90ff;
-    padding: 4px;
-    font-size: 13px;
-    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
   }
   
-  .textLink:hover {
-    text-decoration: underline;
+  .primaryButton {
+    padding: 12px;
+    background-color: #325343;
+    color: white;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(50, 83, 67, 0.2);
   }
   
-  .danger {
-    color: #cc0000;
+  .primaryButton:hover {
+    background-color: #264235;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(50, 83, 67, 0.3);
+  }
+  
+  .secondaryActions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .secondaryButton {
+    flex: 1;
+    padding: 12px;
+    background-color: #f0f7f4;
+    color: #325343;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .secondaryButton:hover {
+    background-color: #e1efe7;
+  }
+  
+  .utilityActions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .utilityButton, .logoutButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .utilityButton {
+    color: #6b7280;
+  }
+  
+  .utilityButton:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .logoutButton {
+    color: #f56565;
+  }
+  
+  .logoutButton:hover {
+    background-color: #fff5f5;
+  }
+  
+  .utilityButton svg, .logoutButton svg {
+    margin-right: 8px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .sideBarContainer {
+      width: 280px;
+    }
+    
+    .commMethods {
+      flex-direction: column;
+    }
+    
+    .secondaryActions {
+      flex-direction: column;
+    }
+    
+    .utilityActions {
+      flex-direction: column;
+      gap: 8px;
+    }
   }

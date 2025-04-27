@@ -76,28 +76,28 @@ function IncomingCallModal() {
 
   if (!incoming) return null;
 
-  // Get first letter of caller's name for the avatar
-  const getCallerInitial = () => {
-    const callerName = "Gray Ukaegbu"; // In production, use: incoming.caller_name or similar
-    return callerName.charAt(0);
-  };
-
   return (
+    // <div className={styles.modal}>
+    //   <p>{/* {incoming.from_user} is calling you ({incoming.type}) */}</p>
+    //   <button onClick={acceptCall}>Accept</button>
+    //   <button onClick={rejectCall}>Reject</button>
+    // </div>
+
     <div className={styles.modalOverlay}>
       <div className={styles.callModal}>
-        <div className={styles.callerImage}>
-          <span className={styles.callerInitial}>{getCallerInitial()}</span>
-        </div>
+        {/* <h2>
+          {incoming.from_user} is calling you ({incoming.type})
+        </h2> */}
         <h2>Gray Ukaegbu</h2>
         <p>Incoming call</p>
         <div className={styles.callButtons}>
           <button className={styles.reject} onClick={rejectCall}>
             <PhoneDisconnect size={18} weight="fill" />
-            <span>Decline</span>
+            <span> Decline</span>
           </button>
           <button className={styles.accept} onClick={acceptCall}>
             <Phone size={18} weight="fill" />
-            <span>Answer</span>
+            <span> Answer</span>
           </button>
         </div>
       </div>

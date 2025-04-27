@@ -1,4 +1,4 @@
-import Care from "@/app/_components/Care/Care";
+import Care from "@/app/_components/Care/Care-v1";
 import TherapistDash from "@/app/_components/TherapistDash/TherapistDash";
 import {
   getAllPatientsAttachedToTherapist,

@@ -8,7 +8,7 @@ import {
 
 import styles from "./layout.module.css";
 import IncomingCallModal from "../_components/IncomingCallModal.js/IncomingCallModal";
-import CallUI from "../_components/CallUI/CallUI-v1";
+// import CallUI from "../_components/CallUI/CallUI-v1";
 import Stream from "../_components/Stream/Stream";
 
 export default async function DashboardLayout({ children }) {

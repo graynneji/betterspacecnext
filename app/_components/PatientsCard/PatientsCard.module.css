@@ -11,6 +11,19 @@ align-items: center;
     border-radius: 10px;
   cursor: pointer;
   }
+  .profileResponsive{
+    display: flex;
+/* justify-content: space-between; */
+align-items: center;
+    /* text-align: center; */
+    font-family: sans-serif;
+    gap: 5px;
+    padding: 5px 0px;
+    /* background-color: #aaa; */
+    border-radius: 10px;
+  cursor: pointer;
+  }
+
   .profileAvatar {
     width: 40px;
     height: 40px;
@@ -48,3 +61,10 @@ align-items: center;
     border: 3px solid #cce4f7;
     margin-bottom: 8px;
   }
+
+  @media screen and (max-width: 650px) {
+    .profileResponsive{
+        display: none;
+    
+    }
+}

@@ -1,0 +1,32 @@
+.sendCon{
+ 
+    display: flex;
+place-content: flex-end;
+position: absolute;
+right: 0;
+bottom: 0;
+margin-right: 10px;
+margin-bottom: 5px;
+}
+.send{
+width: 32px;
+height: 32px;
+border-radius: 100px;
+background-color: #325343;
+justify-content: center;
+align-items: center;
+display: flex;
+text-align: right;
+margin: .5rem;
+border: none;
+}
+.searchCon{
+    /* display: flex;
+    flex-direction: column; */
+    /* border-top: 1px solid #022c2222;
+    border-bottom:1px solid #022c2222; */
+border-left: none;
+margin: 0px 0px 5px 0px;
+padding: 0 5px;
+position: relative;
+}
