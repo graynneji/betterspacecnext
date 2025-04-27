@@ -1,11 +1,11 @@
 .appLayout{
    display: flex;
-   /* flex-direction: column ;   */
-   max-height: 100vh;
+   max-height: 100dvh;
    /* min-height: -webkit-fill-available; For iOS Safari */
 overflow: hidden;
 position: relative;
 background-color: #f9f7f3;
+
 }
 .safari{
     -webkit-overflow-scrolling: touch;

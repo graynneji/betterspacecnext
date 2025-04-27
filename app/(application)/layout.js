@@ -13,6 +13,12 @@ import SideBar from "../_components/SideBar/SideBar";
 import IncomingCallModal from "../_components/IncomingCallModal.js/IncomingCallModal";
 import CallUI from "../_components/CallUI/CallUI-v1";
 import Stream from "../_components/Stream/Stream";
+
+// In your app/layout.js or similar
+export const metadata = {
+  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
+  // other metadata...
+};
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

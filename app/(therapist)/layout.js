@@ -11,6 +11,12 @@ import IncomingCallModal from "../_components/IncomingCallModal.js/IncomingCallM
 // import CallUI from "../_components/CallUI/CallUI-v1";
 import Stream from "../_components/Stream/Stream";
 
+// In your app/layout.js or similar
+export const metadata = {
+  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
+  // other metadata...
+};
+
 export default async function DashboardLayout({ children }) {
   const therepistPatient = await getAllPatientsAttachedToTherapist();
 

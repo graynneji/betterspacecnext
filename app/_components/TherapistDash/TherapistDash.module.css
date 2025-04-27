@@ -8,6 +8,7 @@
  background-color: #f9f7f3;
  color:#1B1B1B;
  width: auto;
+ justify-content: center;
  }
  .safari{
      -webkit-overflow-scrolling: touch;
