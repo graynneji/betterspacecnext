@@ -1,6 +1,6 @@
 .appLayout{
    display: flex;
-   min-height: 100dvh;
+   max-height: 100dvh;
    /* min-height: -webkit-fill-available; For iOS Safari */
 overflow: hidden;
 position: relative;
