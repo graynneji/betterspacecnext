@@ -19,7 +19,9 @@ function TherapyForPatients({ userInfo }) {
           paddingLeft: "20px",
         }}
       > */}
+      {/* <div className={styles.contentContainer}> */}
       <Care userInfo={userInfo} />
+      {/* </div> */}
       {/* </div> */}
       <div className={styles.rare}>
         <MessageInput />
