@@ -22,6 +22,7 @@ import {
   Bookmark,
   SignOut,
   DotsThreeOutline,
+  Wallet,
 } from "@phosphor-icons/react/dist/ssr";
 import { PhoneCall, Star } from "@phosphor-icons/react";
 import ProfilePicsThera from "@/public/t.jpg";
@@ -29,108 +30,151 @@ import { useTransition } from "react";
 import { signOut } from "@/app/_lib/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { sideBarToggle } from "@/app/store/sideBarSlice";
+import TherapistSidebar from "../TherapistSideBar/TherapistSideBar";
 
-const messNav = [
-  { menuName: "Sessions", MenuIcon: ChatCircleText },
-  { menuName: "Schedule", MenuIcon: CalendarDots },
+// const messNav = [
+//   { menuName: "Sessions", MenuIcon: ChatCircleText },
+//   { menuName: "Schedule", MenuIcon: CalendarDots },
+// ];
+
+const patientsData = [
+  {
+    id: "p1",
+    name: "Sarah Johnson",
+    lastMessage: "Thank you for the session yesterday, it was very helpful.",
+    time: "10:24 AM",
+    unread: 2,
+    status: "online",
+  },
+  {
+    id: "p2",
+    name: "Michael Reynolds",
+    lastMessage: "Can we reschedule our appointment for next week?",
+    time: "Yesterday",
+    unread: 0,
+    status: "offline",
+  },
+  {
+    id: "p3",
+    name: "Emma Thompson",
+    lastMessage: "I've been practicing the techniques you suggested.",
+    time: "Yesterday",
+    unread: 3,
+    status: "online",
+  },
+  {
+    id: "p4",
+    name: "David Wilson",
+    lastMessage: "Looking forward to our next session on Friday.",
+    time: "Monday",
+    unread: 0,
+    status: "offline",
+  },
 ];
 
-const RenderPatientList = () => {
-  return (
-    <>
-      <div className={styles.patientListContainer}>
-        <h3 className={styles.chatHeader}>Messages</h3>
+// const messNav = [
+//   { menuName: "Chats", MenuIcon: ChatText },
+//   { menuName: "Patients", MenuIcon: Users },
+//   { menuName: "Schedule", MenuIcon: Calendar },
+// ];
+// const RenderPatientList = () => {
+//   return (
+//     <>
+//       <div className={styles.patientListContainer}>
+//         <h3 className={styles.chatHeader}>Messages</h3>
 
-        {/* Modern search input */}
-        <div className={styles.searchContainer}>
-          <MagnifyingGlass
-            size={18}
-            weight="bold"
-            className={styles.searchIcon}
-          />
-          <input
-            type="text"
-            placeholder="Search conversations..."
-            className={styles.searchInput}
-          />
-        </div>
+//         {/* Modern search input */}
+//         <div className={styles.searchContainer}>
+//           <MagnifyingGlass
+//             size={18}
+//             weight="bold"
+//             className={styles.searchIcon}
+//           />
+//           <input
+//             type="text"
+//             placeholder="Search conversations..."
+//             className={styles.searchInput}
+//           />
+//         </div>
 
-        {/* Navigation tabs with animated indicator */}
-        <div className={styles.navigationTabs}>
-          {messNav.map((item, index) => (
-            <div
-              className={`${styles.navTab} ${
-                index === 0 ? styles.activeTab : ""
-              }`}
-              key={item.menuName}
-            >
-              <item.MenuIcon size={20} weight="bold" />
-              <span>{item.menuName}</span>
-              {index === 0 && <div className={styles.activeIndicator}></div>}
-            </div>
-          ))}
-        </div>
+//         {/* Navigation tabs with animated indicator */}
+//         <div className={styles.navigationTabs}>
+//           {messNav.map((item, index) => (
+//             <div
+//               className={`${styles.navTab} ${
+//                 index === 0 ? styles.activeTab : ""
+//               }`}
+//               key={item.menuName}
+//             >
+//               <item.MenuIcon size={20} weight="bold" />
+//               <span>{item.menuName}</span>
+//               {index === 0 && <div className={styles.activeIndicator}></div>}
+//             </div>
+//           ))}
+//         </div>
 
-        {/* Filter chips */}
-        <div className={styles.filterChips}>
-          <div className={`${styles.chip} ${styles.activeChip}`}>
-            <span>All</span>
-          </div>
-          <div className={styles.chip}>
-            <span>Unread</span>
-          </div>
-          <div className={styles.chip}>
-            <span>Recent</span>
-          </div>
-        </div>
-      </div>
+//         {/* Filter chips */}
+//         <div className={styles.filterChips}>
+//           <div className={`${styles.chip} ${styles.activeChip}`}>
+//             <span>All</span>
+//           </div>
+//           <div className={styles.chip}>
+//             <span>Unread</span>
+//           </div>
+//           <div className={styles.chip}>
+//             <span>Recent</span>
+//           </div>
+//         </div>
+//       </div>
 
-      {/* Patient conversations with visual indicators */}
-      <div className={styles.patientsList}>
-        <div className={styles.patientsListHeader}>
-          <h4
-            style={{
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Recent Conversations
-          </h4>
-          <span className={styles.viewAll}>
-            View all <CaretRight size={14} />
-          </span>
-        </div>
+//       {/* Patient conversations with visual indicators */}
+//       <div className={styles.patientsList}>
+//         <div className={styles.patientsListHeader}>
+//           <h4
+//             style={{
+//               letterSpacing: "-0.01em",
+//             }}
+//           >
+//             Recent Conversations
+//           </h4>
+//           <span className={styles.viewAll}>
+//             View all <CaretRight size={14} />
+//           </span>
+//         </div>
 
-        <PatientsCard />
+//         <PatientsCard />
 
-        <div className={styles.addNewChat}>
-          <div className={styles.addIcon}>
-            <Plus size={20} weight="bold" />
-          </div>
-          <span>Start new conversation</span>
-        </div>
-      </div>
+//         <div className={styles.addNewChat}>
+//           <div className={styles.addIcon}>
+//             <Wallet size={20} weight="bold" />
+//           </div>
+//           <Link href="/dashboard/wallet">
+//             <span>Wallet</span>
+//           </Link>
+//         </div>
+//       </div>
 
-      <div className={styles.profileDown}>
-        <div className={styles.quickActions}>
-          <div className={styles.actionItem}>
-            <Clock size={20} weight="bold" />
-            <span>History</span>
-          </div>
-          <div className={styles.actionItem}>
-            <Bookmark size={20} weight="bold" />
-            <span>Saved</span>
-          </div>
-          <div className={styles.actionItem}>
-            <GearSix size={20} weight="bold" />
-            <span>Settings</span>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+//       <div className={styles.profileDown}>
+//         <div className={styles.quickActions}>
+//           <div className={styles.actionItem}>
+//             <Clock size={20} weight="bold" />
+//             <span>History</span>
+//           </div>
+//           <div className={styles.actionItem}>
+//             <Bookmark size={20} weight="bold" />
+//             <span>Saved</span>
+//           </div>
+//           <div className={styles.actionItem}>
+//             <GearSix size={20} weight="bold" />
+//             <span>Settings</span>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
 
-const RenderTherapistDetails = ({ users }) => {
+const RenderTherapistDetails = () => {
   const [isPending, startTransition] = useTransition();
   const handleSignout = () => {
     startTransition(() => signOut());
@@ -355,7 +399,8 @@ function SideBar() {
       </div>
 
       {!users[0]?.therapist ? (
-        <RenderPatientList />
+        // <RenderPatientList />
+        <TherapistSidebar users={users} />
       ) : (
         <RenderTherapistDetails users={users} />
       )}

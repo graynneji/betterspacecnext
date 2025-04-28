@@ -10,6 +10,8 @@ import { getTherapistPatients } from "@/app/store/getTherapistPatientsSlice";
 import Image from "next/image";
 import Logo from "@/public/Company Logo.svg";
 import Button from "../Button/Button";
+import Welcome from "../Welcome/Welcome";
+import { getStoredUsers } from "@/app/store/getStoredUsersSlice";
 function TherapistDash({ userInfo, patientsTherapist }) {
   const dispatch = useDispatch();
   const patientRecieverId = useSelector(
@@ -18,34 +20,16 @@ function TherapistDash({ userInfo, patientsTherapist }) {
   useEffect(() => {
     dispatch(getTherapistPatients(patientsTherapist));
   }, [patientsTherapist, dispatch]);
-  console.log(patientRecieverId, "watchhhhoeur there");
+
+  useEffect(() => {
+    dispatch(getStoredUsers(userInfo));
+  }, [userInfo, dispatch]);
+
   if (Object.keys(patientRecieverId).length === 0) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh", // full screen height
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "5px", // more spacious
-            padding: "32px",
-            textAlign: "center",
-          }}
-        >
-          <Image width={200} height={80} src={Logo} alt="Logo" />
-          <p style={{ maxWidth: "400px", fontSize: "16px", lineHeight: "1.5" }}>
-            Start therapy with patients by clicking on a patient by the sidebar
-          </p>
-          <Button>Logout</Button>
-        </div>
-      </div>
+      <>
+        <Welcome />;
+      </>
     );
   }
   return (
@@ -63,7 +47,7 @@ function TherapistDash({ userInfo, patientsTherapist }) {
       > */}
       {/* <Care userInfo={userInfo} patientsTherapist={patientsTherapist} /> */}
       {/* <div className={styles.contentContainer}> */}
-      <Care userInfo={userInfo} />
+      <Care />
       {/* </div> */}
       {/* </div> */}
       <div className={styles.rare}>

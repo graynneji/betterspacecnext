@@ -9,24 +9,25 @@ import Header from "../Header/Header";
 import Nav from "../Nav/Nav";
 import styles from "./Care.module.css";
 import { useRealTime } from "../../hooks/useRealTime";
+import { formatTime } from "@/app/utils/formatTime";
 
-export default function Care({ userInfo }) {
+export default function Care() {
   const [newMessage, setNewMessage] = useState("");
   const chatEndRef = useRef(null);
   const chatContainerRef = useRef(null);
-  const userId = userInfo[0]?.user_id;
   const dispatch = useDispatch();
 
   const patientRecieverId = useSelector(
     (state) => state.getPatientRecvId.patientRecieverId
   );
+  const users = useSelector((state) => state.getStoredUsers.users);
+  const userId = users[0]?.user_id;
+  // useEffect(() => {
+  //   dispatch(getStoredUsers(userInfo));
+  // }, [userInfo, dispatch]);
 
-  useEffect(() => {
-    dispatch(getStoredUsers(userInfo));
-  }, [userInfo, dispatch]);
-
-  const recieverId = userInfo[0]?.therapist
-    ? userInfo[0]?.therapist?.therapist_id
+  const recieverId = users[0]?.therapist
+    ? users[0]?.therapist?.therapist_id
     : patientRecieverId?.patientId;
 
   const messages = useRealTime(userId, recieverId);
@@ -38,11 +39,11 @@ export default function Care({ userInfo }) {
     }
   }, [messages]);
 
-  const formatTime = (timestamp) => {
-    if (!timestamp) return "";
-    const date = new Date(timestamp);
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  };
+  // const formatTime = (timestamp) => {
+  //   if (!timestamp) return "";
+  //   const date = new Date(timestamp);
+  //   return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  // };
 
   const isToday = (timestamp) => {
     if (!timestamp) return false;

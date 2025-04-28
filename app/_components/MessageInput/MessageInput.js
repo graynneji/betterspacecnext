@@ -4,6 +4,7 @@ import styles from "./MessageInput.module.css";
 import { PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
 import { useSelector } from "react-redux";
 import { sendMessage } from "@/app/_lib/actions";
+import { useTypingStatus } from "@/app/hooks/useTypingStatus";
 
 function MessageInput() {
   const users = useSelector((state) => state.getStoredUsers.users);
@@ -20,7 +21,13 @@ function MessageInput() {
   const [newMessage, setNewMessage] = useState("");
   const formRef = useRef(null);
 
+  const { sendTyping } = useTypingStatus(
+    userIds?.senderId,
+    userIds?.recieverId
+  );
+
   const handleChange = (e) => {
+    sendTyping();
     setNewMessage(e.target.value);
   };
 

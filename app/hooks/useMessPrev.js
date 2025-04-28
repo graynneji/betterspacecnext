@@ -41,32 +41,44 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../_lib/supabase";
 
-export function useRealTime(userId, receiverId = null) {
-  const [messages, setMessages] = useState([]);
+export function useMessPrev(userId) {
+  const [conversations, setConversations] = useState({}); // { otherUserId: latestMessage }
 
   useEffect(() => {
-    if (!userId || !receiverId) return;
+    if (!userId) return;
 
-    setMessages([]); // Reset when switching users
+    setConversations({});
 
-    const fetchMessages = async () => {
+    const fetchConversations = async () => {
       const { data, error } = await supabase
         .from("messages")
         .select("*")
-        .or(
-          `and(sender_id.eq.${userId},reciever_id.eq.${receiverId}),and(sender_id.eq.${receiverId},reciever_id.eq.${userId})`
-        )
-        .order("created_at", { ascending: true })
-        .range(0, 30); //to limit the amount of messages that are retrieved
+        .or(`sender_id.eq.${userId},reciever_id.eq.${userId}`)
+        .order("created_at", { ascending: false }); // newest first
 
-      if (data) setMessages(data);
-      if (error) console.error(error);
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      const latestPerConversation = {};
+
+      data.forEach((msg) => {
+        const otherUserId =
+          msg.sender_id === userId ? msg.reciever_id : msg.sender_id;
+
+        if (!latestPerConversation[otherUserId]) {
+          latestPerConversation[otherUserId] = msg; // First (newest) message with this other user
+        }
+      });
+
+      setConversations(latestPerConversation);
     };
 
-    fetchMessages();
+    fetchConversations();
 
     const channel = supabase
-      .channel(`chat-${userId}-${receiverId}`)
+      .channel(`chat-${userId}`)
       .on(
         "postgres_changes",
         {
@@ -77,15 +89,33 @@ export function useRealTime(userId, receiverId = null) {
         (payload) => {
           const newMessage = payload.new;
 
-          const isBetweenCurrentUsers =
-            (newMessage.sender_id === userId &&
-              newMessage.reciever_id === receiverId) ||
-            (newMessage.sender_id === receiverId &&
-              newMessage.reciever_id === userId);
+          // Only interested if the user is sender or receiver
+          if (
+            newMessage.sender_id !== userId &&
+            newMessage.reciever_id !== userId
+          )
+            return;
 
-          if (isBetweenCurrentUsers) {
-            setMessages((prev) => [...prev, newMessage]);
-          }
+          const otherUserId =
+            newMessage.sender_id === userId
+              ? newMessage.reciever_id
+              : newMessage.sender_id;
+
+          setConversations((prev) => {
+            const prevMessage = prev[otherUserId];
+
+            // Update if no message yet or the new one is newer
+            if (
+              !prevMessage ||
+              new Date(newMessage.created_at) > new Date(prevMessage.created_at)
+            ) {
+              return {
+                ...prev,
+                [otherUserId]: newMessage,
+              };
+            }
+            return prev;
+          });
         }
       )
       .subscribe();
@@ -93,7 +123,7 @@ export function useRealTime(userId, receiverId = null) {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [userId, receiverId]);
+  }, [userId]);
 
-  return messages;
+  return conversations; // { otherUserId: latestMessage }
 }

@@ -1,0 +1,420 @@
+/* Main container styles */
+.patientListContainer {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .chatHeader {
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d3748;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Search input styles */
+  .searchContainer {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background-color: #f7fafc;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .searchInput:focus {
+    outline: none;
+    border-color: #325343;
+    box-shadow: 0 0 0 2px rgba(50, 83, 67, 0.1);
+  }
+  
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8a9199;
+  }
+  
+  /* Navigation tabs styles */
+  .navigationTabs {
+    display: flex;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+  }
+  
+  .navTab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin-right: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8a9199;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .navTab span {
+    margin-left: 8px;
+  }
+  
+  .activeTab {
+    color: #325343;
+    font-weight: 600;
+  }
+  
+  .activeIndicator {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #325343;
+    border-radius: 2px 2px 0 0;
+    animation: slideIn 0.3s ease;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: scaleX(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+  
+  /* Filter chips styles */
+  .filterChips {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .chip {
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .chip:hover {
+    background-color: #e5e5e5;
+  }
+  
+  .activeChip {
+    background-color: #325343;
+    color: white;
+  }
+  
+  /* Patients list styles */
+  .patientsList {
+    padding: 16px 20px;
+  }
+  
+  .patientsListHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .patientsListHeader h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+  }
+  
+  .viewAll {
+    font-size: 12px;
+    color: #325343;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  /* Patient cards container */
+  .patientCardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+    max-height: 360px;
+    overflow-y: auto;
+  }
+  
+  .patientCardsContainer::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .patientCardsContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .patientCardsContainer::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  .patientCardsContainer::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+  
+  /* No results message */
+  .noResults {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    color: #a0aec0;
+    font-size: 14px;
+  }
+  
+  /* Patient card styles */
+  .patientCard {
+    display: flex;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .patientCard:hover {
+    background-color: #f7fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .patientAvatar {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .avatarInitial {
+    font-size: 20px;
+    font-weight: 600;
+    color: #325343;
+  }
+  
+  .statusDot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  
+  .online {
+    background-color: #10b981;
+  }
+  
+  .offline {
+    background-color: #9ca3af;
+  }
+  
+  .patientInfo {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .patientHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  
+  .patientName {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .messageTime {
+    font-size: 12px;
+    color: #8a9199;
+    white-space: nowrap;
+  }
+  
+  .lastMessage {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: #6b7280;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  
+  .messageFooter {
+    display: flex;
+    align-items: center;
+  }
+  
+  .unreadBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    border-radius: 9px;
+    background-color: #325343;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  
+  /* Add new chat button */
+  .addNewChat {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: 10px;
+    background-color: #f7fafc;
+    border: 1px dashed #cbd5e0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .addNewChat:hover {
+    background-color: #edf2f7;
+    border-color: #a0aec0;
+  }
+  
+  .addIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #325343;
+    color: white;
+    margin-right: 12px;
+  }
+  
+  .addNewChat span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  /* Wallet shortcut styles */
+  .walletShortcut {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #ebf4ef;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .walletShortcut:hover {
+    background-color: #dbeadf;
+  }
+  
+  .walletIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #325343;
+    color: white;
+    margin-right: 12px;
+  }
+  
+  .walletInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .walletLabel {
+    font-size: 13px;
+    color: #4a5568;
+    margin-bottom: 4px;
+  }
+  
+  .walletBalance {
+    font-size: 16px;
+    font-weight: 600;
+    color: #325343;
+  }
+  
+  .walletArrow {
+    color: #8a9199;
+  }
+  
+  /* Profile/quick actions area */
+  .profileDown {
+    position: sticky;
+    bottom: 0;
+    padding: 16px 20px;
+    border-top: 1px solid #f0f0f0;
+    background-color: #fafafa;
+    margin-top: auto;
+  }
+  
+  .quickActions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .actionItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .actionItem:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .actionItem span {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #4a5568;
+  }

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { call } from "@/app/store/callSlice";
 import { supabase } from "@/app/_lib/supabase";
 import Profile from "@/public/applicationIcon/confident-b.png";
+import { useListenTypingStatus } from "@/app/hooks/useListenTypingStatus";
 
 function AppNav({ userInfo }) {
   const dispatch = useDispatch();
@@ -19,6 +20,8 @@ function AppNav({ userInfo }) {
   const userId = userInfo[0]?.user_id;
   const toUserId =
     userInfo[0]?.therapist?.therapist_id || patientRecieverId?.patientId;
+
+  const { isTyping } = useListenTypingStatus(userId, toUserId);
 
   const recieversName = userInfo[0]?.therapist
     ? "Dr. Thompson"
@@ -52,7 +55,17 @@ function AppNav({ userInfo }) {
             <span className={styles.highlightName}>{recieversName}</span>
           </h2>
           <p className={styles.userRole}>
-            Session {userInfo[0]?.therapist ? "Provider" : "Client"}
+            {!isTyping ? (
+              `Session ${userInfo[0]?.therapist ? "Provider" : "Client"}`
+            ) : (
+              <span
+                style={{
+                  color: "green",
+                }}
+              >
+                <i>is typing</i>
+              </span>
+            )}
           </p>
         </div>
       </div>
