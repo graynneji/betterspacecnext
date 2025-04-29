@@ -383,7 +383,7 @@ function SideBar() {
       <div className={styles.sideBarHeader}>
         <Link href="/" className={styles.logoLink}>
           <Image
-            width={160}
+            width={130}
             height={40}
             src={Logo}
             alt="Logo"

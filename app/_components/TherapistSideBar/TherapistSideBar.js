@@ -13,7 +13,7 @@ import {
   Plus,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import styles from "./TherapistSidebar.module.css";
+import styles from "./TherapistSideBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useRealTime } from "@/app/hooks/useRealTime";
 import { useMessPrev } from "@/app/hooks/useMessPrev";

@@ -14,13 +14,13 @@ const Welcome = () => {
     <div className={styles.welcomeContainer}>
       <div className={styles.welcomeContent}>
         <div className={styles.logoSection}>
-          <Image
+          {/* <Image
             width={220}
             height={90}
             src={Logo}
             alt="Logo"
             className={styles.logo}
-          />
+          /> */}
           <h1 className={styles.welcomeHeading}>Welcome back, Dr. Thompson</h1>
           <p className={styles.welcomeSubtext}>
             Your patient dashboard is ready. Select a patient from the sidebar
