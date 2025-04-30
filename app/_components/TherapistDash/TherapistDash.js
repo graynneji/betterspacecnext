@@ -52,7 +52,7 @@ function TherapistDash({ userInfo, patientsTherapist }) {
       {/* </div> */}
       <div className={styles.rare}>
         <MessageInput patientsTherapist={patientsTherapist} />
-        <FooterMenu />
+        {/* <FooterMenu /> */}
       </div>
     </section>
   );

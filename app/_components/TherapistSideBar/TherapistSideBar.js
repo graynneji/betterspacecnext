@@ -65,10 +65,6 @@ const patientsData = [
 
 // Patient card component
 const PatientCard = ({ patient, collectedMsg, onHandleClick }) => {
-  const therapistPatients = useSelector(
-    (state) => state.getTherapistPatients.therapistPatients
-  );
-
   return (
     // <Link href={`/dashboard/messages/${patient.id}`}>
     <div
@@ -82,9 +78,12 @@ const PatientCard = ({ patient, collectedMsg, onHandleClick }) => {
     >
       <>
         <div className={styles.patientAvatar}>
-          <div className={styles.avatarInitial}>{patient.name.charAt(0)}</div>
+          <div className={styles.avatarInitial}>
+            {patient.name.charAt(0).toUpperCase()}
+          </div>
           <div
-            className={`${styles.statusDot} ${styles[patient.status]}`}
+            className={`${styles.statusDot} ${styles.online}`}
+            // className={`${styles.statusDot} ${styles[patient.status]}`}
           ></div>
         </div>
         <div className={styles.patientInfo}>
@@ -128,7 +127,8 @@ const TherapistSidebar = ({ users }) => {
   //   );
   const conversations = useMessPrev(userId);
   const conversationEntries = Object.entries(conversations);
-  console.log(conversationEntries);
+  const messageMap = new Map(conversationEntries); // id => message
+  console.log(conversationEntries, messageMap, "Glory");
   const therapistPatients = useSelector(
     (state) => state.getTherapistPatients.therapistPatients
   );
@@ -225,16 +225,11 @@ const TherapistSidebar = ({ users }) => {
         {/* Patient cards */}
         <div className={styles.patientCardsContainer}>
           {filteredPatients.length > 0 ? (
-            filteredPatients.map((patient, idx) => {
-              //   const msg = conversationEntries[idx];
-              const msg = conversationEntries[idx] || []; // fallback empty array
-
-              const collectedMsg = msg[1] || null; // fallback null if msg[1] missing
-              console.log("meeeesss", msg[1]);
-              //   const collectedMsg = msg[1];
+            filteredPatients.map((patient) => {
+              const collectedMsg = messageMap.get(patient.patient_id) || null;
               return (
                 <PatientCard
-                  key={patient.id}
+                  key={patient?.patient_id}
                   patient={patient}
                   collectedMsg={collectedMsg}
                   onHandleClick={handleSelectPatient}

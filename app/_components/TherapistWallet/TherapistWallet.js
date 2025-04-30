@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TherapistWallet.module.css";
 import {
   Bank,
@@ -17,7 +17,26 @@ function TherapistWallet() {
   const [showBalance, setShowBalance] = useState(true);
   const [showAddBankModal, setShowAddBankModal] = useState(false);
 
-  // Mock data - would be replaced with real data from API
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check for mobile viewport on load and resize
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check initially
+    checkIfMobile();
+
+    // Add event listener
+    window.addEventListener("resize", checkIfMobile);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
+
   const walletData = {
     balance: 5240.75,
     pendingPayouts: 680.5,
@@ -73,10 +92,14 @@ function TherapistWallet() {
   const toggleShowBalance = () => setShowBalance(!showBalance);
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    // Format the number with commas and decimal places
+    const formattedNumber = new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     }).format(amount);
+
+    // Add the Naira symbol manually
+    return `₦${formattedNumber}`;
   };
 
   const handleWithdraw = () => {
@@ -116,7 +139,7 @@ function TherapistWallet() {
         <div className={styles.statsCards}>
           <div className={styles.statCard}>
             <div className={styles.statIcon}>
-              <Clock weight="fill" />
+              <Clock weight="fill" size={isMobile ? 18 : 20} />
             </div>
             <div className={styles.statInfo}>
               <div className={styles.statLabel}>Pending</div>
@@ -127,7 +150,7 @@ function TherapistWallet() {
           </div>
           <div className={styles.statCard}>
             <div className={styles.statIcon}>
-              <Wallet weight="fill" />
+              <Wallet weight="fill" size={isMobile ? 18 : 20} />
             </div>
             <div className={styles.statInfo}>
               <div className={styles.statLabel}>Total Earnings</div>
@@ -184,9 +207,14 @@ function TherapistWallet() {
                           <ArrowDown
                             weight="fill"
                             className={styles.payoutIcon}
+                            size={isMobile ? 16 : 18}
                           />
                         ) : (
-                          <Plus weight="fill" className={styles.earningIcon} />
+                          <Plus
+                            weight="fill"
+                            className={styles.earningIcon}
+                            size={isMobile ? 16 : 18}
+                          />
                         )}
                       </div>
                       <div className={styles.transactionInfo}>

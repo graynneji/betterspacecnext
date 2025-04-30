@@ -32,7 +32,7 @@ function TherapyForPatients({ userInfo }) {
       {/* </div> */}
       <div className={styles.rare}>
         <MessageInput />
-        <FooterMenu />
+        {/* <FooterMenu /> */}
       </div>
     </section>
   );

@@ -46,9 +46,25 @@ function AppNav({ userInfo }) {
   return (
     <nav className={styles.navContainer}>
       <div className={styles.profileSection}>
-        <div className={styles.profileImageContainer}>
-          <Image src={Profile} alt="Profile" layout="fill" objectFit="cover" />
-        </div>
+        {!userInfo[0]?.therapist ? (
+          <div className={styles.patientAvatar}>
+            <div className={styles.avatarInitial}>
+              {recieversName.charAt(0).toUpperCase()}
+            </div>
+            <div
+            // className={`${styles.statusDot} ${styles[patient.status]}`}
+            ></div>
+          </div>
+        ) : (
+          <div className={styles.profileImageContainer}>
+            <Image
+              src={Profile}
+              alt="Profile"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        )}
         <div className={styles.userInfo}>
           <h2 className={styles.userName}>
             {userInfo[0]?.therapist ? "Therapy with" : "Patient"}{" "}

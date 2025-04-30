@@ -14,6 +14,7 @@ import IncomingCallModal from "../_components/IncomingCallModal.js/IncomingCallM
 import CallUI from "../_components/CallUI/CallUI-v1";
 import Stream from "../_components/Stream/Stream";
 import SideBar from "../_components/SideBar/SideBar";
+import PricingModal from "../_components/PricingModal/PricingModal";
 
 export default function RootLayout({ children }) {
   return (
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
 
             {/* <Cookies /> */}
           </div>
+          <PricingModal />
           <IncomingCallModal />
           <Stream />
         </UserProvider>
