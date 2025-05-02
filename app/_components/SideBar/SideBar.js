@@ -31,6 +31,7 @@ import { signOut } from "@/app/_lib/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { sideBarToggle } from "@/app/store/sideBarSlice";
 import TherapistSidebar from "../TherapistSideBar/TherapistSideBar";
+import { RiSidebarFoldFill, RiSidebarUnfoldFill } from "react-icons/ri";
 
 // const messNav = [
 //   { menuName: "Sessions", MenuIcon: ChatCircleText },
@@ -368,9 +369,14 @@ function SideBar() {
   if (sidebar) {
     return (
       <div className={styles.collapsedSidebar}>
-        <Sidebar
+        {/* <Sidebar
           size={28}
           weight="fill"
+          onClick={handleSidebarToggle}
+          className={styles.toggleIcon}
+          /> */}
+        <RiSidebarUnfoldFill
+          size={24}
           onClick={handleSidebarToggle}
           className={styles.toggleIcon}
         />
@@ -390,9 +396,14 @@ function SideBar() {
             className={styles.logo}
           />
         </Link>
-        <Sidebar
+        {/* <Sidebar
           size={24}
           weight="fill"
+          onClick={handleSidebarToggle}
+          className={styles.toggleIcon}
+          /> */}
+        <RiSidebarFoldFill
+          size={24}
           onClick={handleSidebarToggle}
           className={styles.toggleIcon}
         />

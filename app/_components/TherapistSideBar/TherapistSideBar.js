@@ -19,6 +19,8 @@ import { useRealTime } from "@/app/hooks/useRealTime";
 import { useMessPrev } from "@/app/hooks/useMessPrev";
 import { formatTime } from "@/app/utils/formatTime";
 import { getPatientRecvId } from "@/app/store/getPatientRecvIdSlice";
+import { usePathname, useRouter } from "next/navigation";
+import PatientList from "../PatientList/PatientList";
 
 // Navigation tabs data
 const messNav = [
@@ -117,14 +119,10 @@ const TherapistSidebar = ({ users }) => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
+  const pathname = usePathname();
+  const route = useRouter();
   const userId = users[0]?.user_id;
-  console.log("hhdjdfkjd", users);
-  // Filter patients based on search term
-  //   const filteredPatients = patientsData.filter(
-  //     (patient) =>
-  //       patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //       patient.lastMessage.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
+
   const conversations = useMessPrev(userId);
   const conversationEntries = Object.entries(conversations);
   const messageMap = new Map(conversationEntries); // id => message
@@ -133,9 +131,9 @@ const TherapistSidebar = ({ users }) => {
     (state) => state.getTherapistPatients.therapistPatients
   );
   const filteredPatients = therapistPatients.filter(
-    (patient) =>
-      patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      patient.lastMessage.toLowerCase().includes(searchTerm.toLowerCase())
+    (patient) => patient?.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    // ||
+    //   patient?.lastMessage?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Handle filter change
@@ -145,14 +143,33 @@ const TherapistSidebar = ({ users }) => {
   };
 
   const handleSelectPatient = (patientId) => {
-    dispatch(getPatientRecvId(patientId));
+    if (pathname != "/dashboard") {
+      route.push("/dashboard");
+      dispatch(getPatientRecvId(patientId));
+      console.log("/it is dash");
+    } else {
+      dispatch(getPatientRecvId(patientId));
+      console.log("/it is not dash");
+    }
   };
 
   return (
     <>
       <div className={styles.patientListContainer}>
+        <h3 className={styles.chatHeader}>Earnings</h3>
+        <Link href="/dashboard/wallet">
+          <div className={styles.walletShortcut}>
+            <div className={styles.walletIcon}>
+              <Wallet size={20} weight="bold" />
+            </div>
+            <div className={styles.walletInfo}>
+              <span className={styles.walletLabel}>Your Wallet</span>
+              <span className={styles.walletBalance}>$1,450.00</span>
+            </div>
+            <CaretRight size={16} className={styles.walletArrow} />
+          </div>
+        </Link>
         <h3 className={styles.chatHeader}>Messages</h3>
-
         {/* Modern search input */}
         <div className={styles.searchContainer}>
           <MagnifyingGlass
@@ -162,13 +179,12 @@ const TherapistSidebar = ({ users }) => {
           />
           <input
             type="text"
-            placeholder="Search conversations..."
+            placeholder="Search patients..."
             className={styles.searchInput}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-
         {/* Navigation tabs with animated indicator */}
         <div className={styles.navigationTabs}>
           {messNav.map((item, index) => (
@@ -190,44 +206,64 @@ const TherapistSidebar = ({ users }) => {
             </div>
           ))}
         </div>
-
         {/* Filter chips */}
-        <div className={styles.filterChips}>
-          {["All", "Unread", "Recent"].map((filter) => (
-            <div
-              key={filter}
-              className={`${styles.chip} ${
-                activeFilter === filter ? styles.activeChip : ""
-              }`}
-              onClick={() => handleFilterChange(filter)}
+
+        {activeTab == 1 ? (
+          <div className={styles.forPatient}>
+            <h4
+              style={{
+                letterSpacing: "-0.01em",
+              }}
             >
-              <span>{filter}</span>
-            </div>
-          ))}
-        </div>
+              Patients
+            </h4>
+          </div>
+        ) : (
+          <div className={styles.filterChips}>
+            {["All", "Unread", "Recent"].map((filter) => (
+              <div
+                key={filter}
+                className={`${styles.chip} ${
+                  activeFilter === filter ? styles.activeChip : ""
+                }`}
+                onClick={() => handleFilterChange(filter)}
+              >
+                <span>{filter}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Patient conversations with visual indicators */}
       <div className={styles.patientsList}>
-        <div className={styles.patientsListHeader}>
-          <h4
-            style={{
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Recent Conversations
-          </h4>
-          <span className={styles.viewAll}>
-            View all <CaretRight size={14} />
-          </span>
-        </div>
+        {!activeTab == 1 && (
+          <div className={styles.patientsListHeader}>
+            <h4
+              style={{
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Recent Conversations
+            </h4>
+            <span className={styles.viewAll}>
+              View all <CaretRight size={14} />
+            </span>
+          </div>
+        )}
 
         {/* Patient cards */}
         <div className={styles.patientCardsContainer}>
           {filteredPatients.length > 0 ? (
             filteredPatients.map((patient) => {
               const collectedMsg = messageMap.get(patient.patient_id) || null;
-              return (
+              return activeTab == 1 ? (
+                <PatientList
+                  key={patient?.patient_id}
+                  patient={patient}
+                  filteredPatients={filteredPatients}
+                />
+              ) : (
                 <PatientCard
                   key={patient?.patient_id}
                   patient={patient}
@@ -250,20 +286,6 @@ const TherapistSidebar = ({ users }) => {
           </div>
           <span>Start New Conversation</span>
         </div>
-
-        {/* Wallet shortcut */}
-        <Link href="/dashboard/wallet">
-          <div className={styles.walletShortcut}>
-            <div className={styles.walletIcon}>
-              <Wallet size={20} weight="bold" />
-            </div>
-            <div className={styles.walletInfo}>
-              <span className={styles.walletLabel}>Your Wallet</span>
-              <span className={styles.walletBalance}>$1,450.00</span>
-            </div>
-            <CaretRight size={16} className={styles.walletArrow} />
-          </div>
-        </Link>
       </div>
 
       {/* Quick actions at the bottom */}
