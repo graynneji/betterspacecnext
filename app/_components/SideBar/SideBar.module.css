@@ -386,7 +386,8 @@
   
   .infoCards {
     padding: 0 20px;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
+    /* margin-bottom: 24px; */
   }
   
   .infoCard {
@@ -454,8 +455,10 @@
   }
   
   .communicationSection {
-    padding: 0 20px;
+    padding: 16px 20px;
     margin-bottom: 24px;
+    /* border-top: 1px solid #f0f0f0; */
+    margin-top: 20px;
   }
   
   .sectionTitle {
@@ -480,6 +483,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     flex: 1;
     transition: all 0.3s ease;
+    cursor: pointer;
   }
   
   .commMethod:hover {
@@ -500,7 +504,7 @@
   .actionButtonsContainer {
     padding: 20px;
     margin-top: auto;
-    border-top: 1px solid #f0f0f0;
+    /* border-top: 1px solid #f0f0f0; */
   }
   
   .actionButton {

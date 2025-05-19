@@ -26,12 +26,13 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { PhoneCall, Star } from "@phosphor-icons/react";
 import ProfilePicsThera from "@/public/t.jpg";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { signOut } from "@/app/_lib/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { sideBarToggle } from "@/app/store/sideBarSlice";
 import TherapistSidebar from "../TherapistSideBar/TherapistSideBar";
 import { RiSidebarFoldFill, RiSidebarUnfoldFill } from "react-icons/ri";
+import SidebarSkeleton from "../SideBarSkeleton/SidebarSkeleton";
 
 // const messNav = [
 //   { menuName: "Sessions", MenuIcon: ChatCircleText },
@@ -175,8 +176,9 @@ const patientsData = [
 //   );
 // };
 
-const RenderTherapistDetails = () => {
+const RenderTherapistDetails = ({ users }) => {
   const [isPending, startTransition] = useTransition();
+  const [isOpen, setIsOpen] = useState(false);
   const handleSignout = () => {
     startTransition(() => signOut());
   };
@@ -233,7 +235,7 @@ const RenderTherapistDetails = () => {
 
         <div className={styles.nameVerification}>
           <h2 className={styles.therapistName}>
-            {therapist.name}
+            {users[0]?.therapist?.name}
             {therapist.isVerified && (
               <SealCheck
                 size={22}
@@ -245,11 +247,11 @@ const RenderTherapistDetails = () => {
           </h2>
           <div className={styles.ratingBar}>
             <div className={styles.stars}>
-              <Star size={16} weight="fill" color="#FFD700" />
-              <Star size={16} weight="fill" color="#FFD700" />
-              <Star size={16} weight="fill" color="#FFD700" />
-              <Star size={16} weight="fill" color="#FFD700" />
-              <Star size={16} weight="fill" color="#FFD700" />
+              <Star size={16} weight="fill" color="#fbbf24" />
+              <Star size={16} weight="fill" color="#fbbf24" />
+              <Star size={16} weight="fill" color="#fbbf24" />
+              <Star size={16} weight="fill" color="#fbbf24" />
+              <Star size={16} weight="fill" color="#fbbf24" />
             </div>
             <span className={styles.ratingText}>5.0 (126 reviews)</span>
           </div>
@@ -269,7 +271,9 @@ const RenderTherapistDetails = () => {
           </div>
           <div className={styles.infoContent}>
             <span className={styles.infoLabel}>License</span>
-            <p className={styles.infoValue}>{therapist.license}</p>
+            <p className={styles.infoValue}>
+              {users[0]?.therapist?.license} ({users[0]?.therapist?.authority})
+            </p>
           </div>
         </div>
 
@@ -288,45 +292,55 @@ const RenderTherapistDetails = () => {
             </div>
           </div>
         </div>
-
+        {/* 
         <div className={styles.infoCard}>
           <div className={styles.infoIconContainer}>
             <MapPin size={20} weight="fill" className={styles.infoIcon} />
           </div>
           <div className={styles.infoContent}>
             <span className={styles.infoLabel}>Location</span>
-            <p className={styles.infoValue}>{therapist.location}</p>
+            <p className={styles.infoValue}>{users[0]?.therapist?.authority}</p>
           </div>
-        </div>
-      </div>
-
-      {/* Communication methods with modern styling */}
-      <div className={styles.communicationSection}>
-        <h3 className={styles.sectionTitle}>Communication Methods</h3>
-        <div className={styles.commMethods}>
-          {therapist.communication.map((method) => (
-            <div key={method} className={styles.commMethod}>
-              {getIcon(method)}
-              <span>{method}</span>
-            </div>
-          ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Action buttons with enhanced styling */}
       <div className={styles.actionButtonsContainer}>
-        <button className={`${styles.actionButton} ${styles.primaryButton}`}>
-          Book Appointment
-        </button>
+        <Link href="/therapy/appointment">
+          <button className={`${styles.actionButton} ${styles.primaryButton}`}>
+            Book Appointment
+          </button>
+        </Link>
 
         <div className={styles.secondaryActions}>
-          <button className={styles.secondaryButton}>Change Therapist</button>
+          <button className={styles.secondaryButton}>
+            {" "}
+            <Link href="/therapy/change">Change Therapist </Link>
+          </button>
 
-          <button className={styles.secondaryButton}>View Reviews</button>
+          <button className={styles.secondaryButton}>
+            <Link href="/therapy/review">View Reviews </Link>
+          </button>
+        </div>
+
+        {/* Communication methods with modern styling */}
+        <div className={styles.communicationSection}>
+          <h3 className={styles.sectionTitle}>Communication Methods</h3>
+          <div className={styles.commMethods}>
+            {therapist.communication.map((method) => (
+              <Link href="/therapy" key={method} className={styles.commMethod}>
+                {getIcon(method)}
+                <span>{method}</span>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className={styles.utilityActions}>
-          <button className={styles.utilityButton}>
+          <button
+            className={styles.utilityButton}
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
             <DotsThreeOutline size={20} weight="bold" />
             More Options
           </button>
@@ -335,6 +349,8 @@ const RenderTherapistDetails = () => {
             <SignOut size={20} weight="bold" />
             {isPending ? "Logging out..." : "Logout"}
           </button>
+
+          {isOpen && <div>kjdffffffffffffffffffffffffffff</div>}
         </div>
       </div>
     </div>
@@ -356,6 +372,19 @@ function MapPin(props) {
     </svg>
   );
 }
+
+const RenderComponent = ({ users }) => {
+  const therapist = users[0]?.therapist;
+
+  return therapist ? (
+    <RenderTherapistDetails users={users} />
+  ) : therapist === undefined ? (
+    // <p>Loading or unknown role...</p>
+    <SidebarSkeleton />
+  ) : (
+    <TherapistSidebar users={users} />
+  );
+};
 
 function SideBar() {
   const dispatch = useDispatch();
@@ -388,13 +417,13 @@ function SideBar() {
     <section className={styles.sideBarContainer}>
       <div className={styles.sideBarHeader}>
         <Link href="/" className={styles.logoLink}>
-          <Image
+          {/* <Image
             width={130}
             height={40}
             src={Logo}
             alt="Logo"
             className={styles.logo}
-          />
+          /> */}
         </Link>
         {/* <Sidebar
           size={24}
@@ -409,12 +438,7 @@ function SideBar() {
         />
       </div>
 
-      {!users[0]?.therapist ? (
-        // <RenderPatientList />
-        <TherapistSidebar users={users} />
-      ) : (
-        <RenderTherapistDetails users={users} />
-      )}
+      <RenderComponent users={users} />
     </section>
   );
 }

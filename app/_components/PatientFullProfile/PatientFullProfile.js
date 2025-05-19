@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Calendar,
   Clock,
@@ -10,9 +10,13 @@ import {
 import styles from "./PatientFullProfile.module.css";
 import QuestionaireModal from "../QuestionaireModal/QuestionaireModal";
 import { useSearchParams } from "next/navigation";
+import AddNotes from "../AddNotes/AddNotes";
+import { getNote, getQuestionaire } from "@/app/_lib/data-services";
+import { formatNoteDate } from "@/app/utils/formatTime";
 
 export default function PatientFullProfile() {
   // Sample patient data
+
   const [patient, setPatient] = useState({
     name: "Sarah Johnson",
     age: 32,
@@ -21,23 +25,7 @@ export default function PatientFullProfile() {
       time: "10:30 AM",
       type: "Regular Session",
     },
-    notes: [
-      {
-        id: 1,
-        text: "Experiencing work-related anxiety. Using breathing techniques discussed in previous sessions.",
-        color: styles.noteAmber,
-      },
-      {
-        id: 2,
-        text: "Sleep has improved after establishing regular bedtime routine. Continue monitoring.",
-        color: styles.noteBlue,
-      },
-      {
-        id: 3,
-        text: "Discussed family dynamics. Patient shows progress in setting boundaries.",
-        color: styles.noteGreen,
-      },
-    ],
+
     intakeResponses: [
       {
         question: "What brings you to therapy at this time?",
@@ -69,40 +57,26 @@ export default function PatientFullProfile() {
   const [newNote, setNewNote] = useState("");
   const [formVisible, setFormVisible] = useState(false);
   const [questionnaireVisible, setQuestionnaireVisible] = useState(false);
+  const [questionnaire, setQuestionnaire] = useState([]);
   const searchParams = useSearchParams();
   const patientId = searchParams.get("id");
   const patientName = searchParams.get("name") || "";
   const filteredName = patientName.replace(/[^a-zA-Z0-9]/g, " ");
-  console.log(patientId, patientName);
-  // Note color classes
-  const noteColors = [
-    styles.noteAmber,
-    styles.noteBlue,
-    styles.noteGreen,
-    styles.notePurple,
-    styles.notePink,
-  ];
-
-  // Add new note
-  const addNote = () => {
-    if (newNote.trim() !== "") {
-      const randomColor =
-        noteColors[Math.floor(Math.random() * noteColors.length)];
-      setPatient({
-        ...patient,
-        notes: [
-          ...patient.notes,
-          {
-            id: patient.notes.length + 1,
-            text: newNote,
-            color: randomColor,
-          },
-        ],
-      });
-      setNewNote("");
-      setFormVisible(false);
+  const [notes, setNotes] = useState([]);
+  console.log(questionnaire);
+  useEffect(() => {
+    async function fetchNotes() {
+      const data = await getNote(patientId);
+      console.log(data);
+      if (data?.notes) {
+        setNotes(data?.notes || []);
+      }
     }
-  };
+    fetchNotes();
+  }, [newNote, patientId]);
+  // }, [newNote]);
+
+  console.log(notes);
 
   // Delete note
   const deleteNote = (id) => {
@@ -112,15 +86,24 @@ export default function PatientFullProfile() {
     });
   };
 
+  const handleQuestionaire = async (id) => {
+    console.log(id, "heeeee");
+    const data = await getQuestionaire(id);
+    console.log(data);
+    setQuestionnaire(JSON.parse(data[0]?.selected));
+    setQuestionnaireVisible(true);
+  };
+
   return (
     <div className={styles.container}>
       {/* Main Container */}
       <div className={styles.mainWrapper}>
         {/* Header with brand styling */}
         <div className={styles.header}>
-          <h1 className={styles.headerTitle}>Patient Profile</h1>
+          <h1 className={styles.headerTitle}>Patient history</h1>
           <button
-            onClick={() => setQuestionnaireVisible(true)}
+            onClick={() => handleQuestionaire(patientId)}
+            // onClick={() => setQuestionnaireVisible(true)}
             className={styles.viewIntakeBtn}
           >
             <FileText size={18} className={styles.icon} />
@@ -133,7 +116,7 @@ export default function PatientFullProfile() {
           {/* Patient Basic Info */}
           <div className={styles.basicInfo}>
             <h2 className={styles.patientName}>{filteredName}</h2>
-            <p className={styles.patientAge}>{patient.age} years old</p>
+            <p className={styles.subscribed}>Subscribed</p>
           </div>
 
           {/* Upcoming Appointment */}
@@ -173,46 +156,40 @@ export default function PatientFullProfile() {
 
             {/* Notes Grid */}
             <div className={styles.notesGrid}>
-              {patient.notes.map((note) => (
+              {/* {patient.notes.map((note) => ( */}
+              {notes.map((note) => (
                 <div
                   key={note.id}
                   className={`${styles.noteCard} ${note.color}`}
+                  style={{
+                    backgroundColor: `${note?.color ? note?.color : "#dbeafe"}`,
+                  }}
                 >
-                  <button
+                  {/* <button
                     onClick={() => deleteNote(note.id)}
                     className={styles.deleteNoteBtn}
                   >
                     <X size={16} />
-                  </button>
-                  <p className={styles.noteText}>{note.text}</p>
+                  </button> */}
+                  <p className={styles.noteText}>{note?.text}</p>
+                  <p className={styles.noteDate}>
+                    {/* 12/04/2035 4:00pm */}
+                    {note?.timestamp
+                      ? formatNoteDate(note?.timestamp)
+                      : "No timestamp"}
+                  </p>
                 </div>
               ))}
             </div>
 
             {/* Add Note Form */}
             {formVisible && (
-              <div className={styles.modalOverlay}>
-                <div className={styles.modalContent}>
-                  <h3 className={styles.modalTitle}>Add New Note</h3>
-                  <textarea
-                    value={newNote}
-                    onChange={(e) => setNewNote(e.target.value)}
-                    placeholder="Enter your note here..."
-                    className={styles.noteTextarea}
-                  />
-                  <div className={styles.modalActions}>
-                    <button
-                      onClick={() => setFormVisible(false)}
-                      className={styles.cancelBtn}
-                    >
-                      Cancel
-                    </button>
-                    <button onClick={addNote} className={styles.saveBtn}>
-                      Save Note
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <AddNotes
+                setFormVisible={setFormVisible}
+                setNewNote={setNewNote}
+                newNote={newNote}
+                patientId={patientId}
+              />
             )}
           </div>
 
@@ -221,6 +198,7 @@ export default function PatientFullProfile() {
             setQuestionnaireVisible={setQuestionnaireVisible}
             questionnaireVisible={questionnaireVisible}
             patient={patient}
+            questionnaire={questionnaire}
           />
         </div>
       </div>

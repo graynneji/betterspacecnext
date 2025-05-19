@@ -28,7 +28,7 @@ function MessageInput() {
 
   const handleChange = (e) => {
     sendTyping();
-    setNewMessage(e.target.value);
+    // setNewMessage(e.target.value);
   };
 
   return (
@@ -37,7 +37,7 @@ function MessageInput() {
         className={styles.messageForm}
         action={async (formData) => {
           await messageSend(formData);
-          setNewMessage("");
+          // setNewMessage("");
           formRef.current.reset();
         }}
         ref={formRef}
@@ -46,7 +46,7 @@ function MessageInput() {
           <textarea
             id="message"
             name="message"
-            value={newMessage}
+            // value={newMessage}
             onChange={handleChange}
             placeholder="Type your message here..."
             className={styles.messageTextarea}

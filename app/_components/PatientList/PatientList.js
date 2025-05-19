@@ -10,7 +10,8 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import styles from "./PatientList.module.css";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 // Mock data for patients
 const mockPatients = [
   {
@@ -66,6 +67,10 @@ const formatTime = (dateString) => {
   const options = { hour: "numeric", minute: "numeric", hour12: true };
   return new Date(dateString).toLocaleTimeString("en-US", options);
 };
+// const formatDate = (dateString) => {
+//   const options = { day: "numeric", month: "numeric", year: "numeric" };
+//   return new Date(dateString).toLocaleDateString("en-US", options);
+// };
 
 // Calculate days until appointment
 const getDaysUntil = (dateString) => {
@@ -103,13 +108,9 @@ export default function PatientList({ patient, filteredPatients }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPatient, setSelectedPatient] = useState(null);
   const route = useRouter();
-
-  console.log("123", patient);
-  // useEffect(() => {
-  //   // Simulate API fetch
-  //   setPatients(mockPatients);
-  //   setFilteredPatients(mockPatients);
-  // }, []);
+  const searchParams = useSearchParams();
+  const patientId = searchParams.get("id" || "");
+  console.log("the patient", patient);
 
   // const handleSearch = (e) => {
   //   const query = e.target.value.toLowerCase();
@@ -127,6 +128,10 @@ export default function PatientList({ patient, filteredPatients }) {
   const handleFullProfile = (id, name) => {
     route.push(`/dashboard/patient?id=${id}&name=${name}`);
   };
+  const notes =
+    "The boy have been having some improvment from the first time we started theres a lot of improvment apparently";
+  const splitNote = notes.split(" ").slice(0, 6).join(" ");
+
   return (
     <>
       <div className={styles.listContainer}>
@@ -134,12 +139,14 @@ export default function PatientList({ patient, filteredPatients }) {
           // {filteredPatients.length === 0 ? (
           <div className={styles.emptyMessage}>No patients found</div>
         ) : (
-          <ul className={styles.patientList}>
+          <ul className={`${styles.patientList}  `}>
             {/* {filteredPatients.map((patient) => ( */}
             <li
               key={patient.id}
               className={`${styles.patientItem} ${
                 selectedPatient === patient.id ? styles.selectedPatient : ""
+              } ${
+                patientId == patient?.patient_id ? styles.activePatient : ""
               }`}
               onClick={() =>
                 setSelectedPatient(
@@ -173,14 +180,17 @@ export default function PatientList({ patient, filteredPatients }) {
                       <span>
                         {/* Next: {formatDate(patient.upcomingAppointment)} (
                         {getDaysUntil(patient.upcomingAppointment)}) */}
-                        {/* Wednesday, 24 April 2025 */} No appointments
+                        {/* Wednesday, 24 April 2025 */}
+                        {/* No appointments */}
+                        {formatDate(patient?.appointment)}
                       </span>
                     </div>
                     <div className={styles.appointmentDate}>
                       <Clock size={14} className={styles.appointmentIcon} />{" "}
                       <span>
                         {/* 10:00 am CST */}
-                        No appointments
+                        {/* No appointments */}
+                        {formatTime(patient?.appointment)}
                       </span>
                     </div>
                   </div>
@@ -198,10 +208,7 @@ export default function PatientList({ patient, filteredPatients }) {
                     <div className={styles.detailSection}>
                       <span className={styles.detailLabel}>Notes:</span>
                       {/* <p className={styles.detailContent}>{patient.notes}</p> */}
-                      <p>
-                        The boy have been having some improvment from the first
-                        time we started theres a lot of improvment apparently
-                      </p>
+                      <p>{splitNote}...</p>
                     </div>
                     {/* <Link href="/dashboard/patient"> */}
                     <button

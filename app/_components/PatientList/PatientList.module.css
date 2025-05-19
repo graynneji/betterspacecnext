@@ -18,6 +18,11 @@
     border-radius: 12px;
 }
 
+.activePatient{
+  border: 1px solid var(--primary);
+  border-radius: 12px;
+}
+
 .patientItem {
     /* border-bottom: 1px solid #e5e7eb; */
     cursor: pointer;
@@ -34,6 +39,8 @@
     border-radius: 12px;
   }
   
+
+
   .patientCard {
     padding: 16px;
     font-size: 14px;

@@ -21,12 +21,13 @@ import { formatTime } from "@/app/utils/formatTime";
 import { getPatientRecvId } from "@/app/store/getPatientRecvIdSlice";
 import { usePathname, useRouter } from "next/navigation";
 import PatientList from "../PatientList/PatientList";
+import CallHistory from "../CallHistory/CallHistory";
 
 // Navigation tabs data
 const messNav = [
   { menuName: "Chats", MenuIcon: ChatText },
   { menuName: "Patients", MenuIcon: Users },
-  { menuName: "Schedule", MenuIcon: Calendar },
+  // { menuName: "Schedule", MenuIcon: Calendar },
 ];
 
 // Sample patient data - in a real app, this would come from an API
@@ -66,11 +67,14 @@ const patientsData = [
 ];
 
 // Patient card component
-const PatientCard = ({ patient, collectedMsg, onHandleClick }) => {
+const PatientCard = ({ patient, collectedMsg, onHandleClick, isActive }) => {
+  const pathname = usePathname();
   return (
     // <Link href={`/dashboard/messages/${patient.id}`}>
     <div
-      className={styles.patientCard}
+      className={`${styles.patientCard} ${
+        isActive && pathname == "/dashboard" ? styles.activePatient : ""
+      }`}
       onClick={() =>
         onHandleClick({
           patientId: patient?.patient_id,
@@ -99,7 +103,7 @@ const PatientCard = ({ patient, collectedMsg, onHandleClick }) => {
 
           <p className={styles.lastMessage}>
             {/* {patient.lastMessage || "Hello Gray"} */}
-            {collectedMsg?.message}
+            {collectedMsg?.message?.split(" ").slice(0, 6).join(" ")}
           </p>
 
           <div className={styles.messageFooter}>
@@ -118,15 +122,15 @@ const TherapistSidebar = ({ users }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectPatient, setSelectPatient] = useState("");
   const dispatch = useDispatch();
   const pathname = usePathname();
+  console.log("pathname", pathname);
   const route = useRouter();
   const userId = users[0]?.user_id;
-
   const conversations = useMessPrev(userId);
   const conversationEntries = Object.entries(conversations);
   const messageMap = new Map(conversationEntries); // id => message
-  console.log(conversationEntries, messageMap, "Glory");
   const therapistPatients = useSelector(
     (state) => state.getTherapistPatients.therapistPatients
   );
@@ -143,13 +147,12 @@ const TherapistSidebar = ({ users }) => {
   };
 
   const handleSelectPatient = (patientId) => {
+    setSelectPatient(patientId);
     if (pathname != "/dashboard") {
       route.push("/dashboard");
       dispatch(getPatientRecvId(patientId));
-      console.log("/it is dash");
     } else {
       dispatch(getPatientRecvId(patientId));
-      console.log("/it is not dash");
     }
   };
 
@@ -158,7 +161,11 @@ const TherapistSidebar = ({ users }) => {
       <div className={styles.patientListContainer}>
         <h3 className={styles.chatHeader}>Earnings</h3>
         <Link href="/dashboard/wallet">
-          <div className={styles.walletShortcut}>
+          <div
+            className={`${styles.walletShortcut} ${
+              pathname == "/dashboard/wallet" ? styles.activeWallet : ""
+            }`}
+          >
             <div className={styles.walletIcon}>
               <Wallet size={20} weight="bold" />
             </div>
@@ -261,6 +268,7 @@ const TherapistSidebar = ({ users }) => {
                 <PatientList
                   key={patient?.patient_id}
                   patient={patient}
+                  isActive={patient?.patient_id == selectPatient?.patientId}
                   filteredPatients={filteredPatients}
                 />
               ) : (
@@ -268,6 +276,7 @@ const TherapistSidebar = ({ users }) => {
                   key={patient?.patient_id}
                   patient={patient}
                   collectedMsg={collectedMsg}
+                  isActive={patient?.patient_id == selectPatient?.patientId}
                   onHandleClick={handleSelectPatient}
                 />
               );

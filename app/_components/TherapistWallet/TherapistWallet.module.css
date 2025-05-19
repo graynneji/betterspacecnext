@@ -681,13 +681,19 @@
     max-width: 100vw;
     overflow-y: auto;
     margin: 0 auto;
-    height: 100vh;
-    padding: 24px 16px;
+    min-height: 100vh;
+    padding: 1rem;
+    /* padding: 24px 16px; */
     color: #1a1a1a;
-    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: #f9fafb;
+    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   }
   
+.walletWrapper{
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
   .walletHeader {
     display: flex;
     justify-content: space-between;
@@ -695,12 +701,14 @@
     margin-bottom: 24px;
     flex-wrap: wrap;
     gap: 16px;
+ 
   }
   
   .walletTitle {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #2d3748;
+    /* color: #1a1a1a; */
     margin: 0;
   }
   
@@ -708,7 +716,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: #5046e5;
+    /* background-color: #5046e5; */
+    background-color: var(--primary);
     color: white;
     border: none;
     border-radius: 8px;
@@ -735,7 +744,7 @@
   
   @media (min-width: 768px) {
     .walletContainer {
-      padding: 24px;
+      /* padding: 24px; */
     }
     
     .balanceCards {
@@ -745,7 +754,9 @@
   
   .mainBalanceCard {
     flex: 2;
-    background: linear-gradient(135deg, #5046e5, #7367ff);
+    /* background: linear-gradient(135deg, #5046e5, #7367ff); */
+    background: linear-gradient(135deg, #325343 0%, #4E6F5B 50%, #7D9989 100%);
+
     border-radius: 16px;
     padding: 24px;
     color: white;
@@ -971,8 +982,31 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    overflow-y: auto;
+    height: 250px;
+    padding-right: 10px;
   }
+
+
+   .transactionList::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .transactionList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .transactionList::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  .transactionList::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+
   
   .transactionItem {
     display: flex;
@@ -1231,8 +1265,29 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    height: 250px;
+    overflow-y: auto;
+    padding-right: 10px;
   }
   
+ .fullTransactionList::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .fullTransactionList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .fullTransactionList::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  .fullTransactionList::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+
   .bankAccountsFullList {
     display: grid;
     grid-template-columns: 1fr;

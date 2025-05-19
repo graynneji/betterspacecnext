@@ -4,6 +4,7 @@ function QuestionaireModal({
   setQuestionnaireVisible,
   questionnaireVisible,
   patient,
+  questionnaire,
 }) {
   return (
     <>
@@ -22,12 +23,16 @@ function QuestionaireModal({
             </div>
 
             <div className={styles.questionList}>
-              {patient.intakeResponses.map((item, index) => (
-                <div key={index} className={styles.questionItem}>
-                  <h4 className={styles.question}>{item.question}</h4>
-                  <p className={styles.answer}>{item.answer}</p>
-                </div>
-              ))}
+              {/* [6,7,10,11] */}
+
+              {questionnaire
+                .filter((_, idx) => ![2, 4, 6, 7, 10, 11].includes(idx))
+                ?.map((item, index) => (
+                  <div key={index} className={styles.questionItem}>
+                    <h4 className={styles.question}>{item.question}</h4>
+                    <p className={styles.answer}>{item.answer}</p>
+                  </div>
+                ))}
             </div>
 
             <div className={styles.questionnaireFooter}>

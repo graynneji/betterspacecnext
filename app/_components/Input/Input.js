@@ -139,6 +139,17 @@ function Input({
           />
         </div>
       )}
+
+      {inputType == "addnote" && (
+        <textarea
+          // value={newNote}
+          // onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          className={styles.noteTextarea}
+          name={id}
+          id={id}
+        />
+      )}
     </>
   );
 }

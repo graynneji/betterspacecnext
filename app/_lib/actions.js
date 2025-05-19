@@ -8,6 +8,7 @@ import { supabase } from "./supabase";
 import { redirect } from "next/navigation";
 import { signUpschema, loginSchema } from "./validationSchema";
 import { ErrorMessages } from "@/app/enums/error.enums";
+import { updateNote } from "./data-services";
 
 ////////////////////////// Contect Us & Join Us ////////////////////////////////////////////////////
 
@@ -124,17 +125,9 @@ export async function signup(selectedQuesAnswers, formData) {
     name: formData.get("name"),
     phone: formData.get("phone"),
     email: formData.get("email"),
-    specialization: formData.get("specialization"),
-    role: options ? selectedQuesAnswers : undefined,
-    license: formData.get("license"),
-    authority: formData.get("authority"),
-    gender: formData.get("gender"),
-    dob: formData.get("dob"),
-    //convert to json string
-    //use JSON.parse() to convert back to an object
-    selected: !options ? JSON.stringify(selectedQuesAnswers) : undefined,
+    // role: options ? selectedQuesAnswers : undefined,
+    // selected: !options ? JSON.stringify(selectedQuesAnswers) : undefined,
     therapist_id: !options ? therapistId : null,
-    // therapist_id: selectedQuesAnswers !== "therapist" ? therapistId : null,
     ip: location.geoplugin_request,
     city: location.geoplugin_city,
     region: location.geoplugin_region,
@@ -156,20 +149,21 @@ export async function signup(selectedQuesAnswers, formData) {
       therapist_id: signUpData.user.id,
       name: formData.get("name"),
       email: formData.get("email"),
+      license: formData.get("license"),
+      authority: formData.get("authority"),
+      gender: formData.get("gender"),
+      dob: formData.get("dob"),
+      specialization: formData.get("specialization"),
     };
 
     await supabase.from("therapist").insert([therapistData]);
   } else {
-    // await supabase
-    // .from('therapist')
-    // .select('*')
-    // .or(`id.eq.${therapistId}`);
-
     const patientsData = {
       patient_id: signUpData.user.id,
       therapist: therapistId,
       name: formData.get("name"),
       email: formData.get("email"),
+      selected: JSON.stringify(selectedQuesAnswers),
     };
     await supabase.from("patients").insert([patientsData]);
   }
@@ -207,3 +201,13 @@ export const sendMessage = async (users, formData) => {
 
   if (error) `Error sending message: ${error}`;
 };
+
+export async function updateViewNotes(patientId, formData) {
+  const newNote = formData.get("note");
+  if (newNote.length > 40) {
+    console.log("error");
+  }
+  const color = formData.get("color");
+  const data = await updateNote(patientId, newNote, color);
+  return data;
+}

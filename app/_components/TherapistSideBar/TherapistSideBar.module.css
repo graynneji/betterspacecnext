@@ -164,6 +164,7 @@
     max-height: 600px;
     /* max-height: 360px; */
     overflow-y: auto;
+    padding-top: 5px;
   }
   
   .patientCardsContainer::-webkit-scrollbar {
@@ -214,6 +215,11 @@
 
   }
   
+.activePatient{
+  border-color: var(--primary);
+  /* box-shadow: 0 0 5px rgba(24, 144, 255, 0.5); */
+}
+
   .patientAvatar {
     position: relative;
     width: 48px;
@@ -353,8 +359,13 @@
     margin: 0 0 20px 0;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid #ebf4ef;
   }
   
+.activeWallet{
+  border-color: var(--primary);
+}
+
   .walletShortcut:hover {
     background-color: #dbeadf;
   }

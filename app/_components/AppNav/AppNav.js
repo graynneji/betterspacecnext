@@ -9,6 +9,7 @@ import { call } from "@/app/store/callSlice";
 import { supabase } from "@/app/_lib/supabase";
 import Profile from "@/public/applicationIcon/confident-b.png";
 import { useListenTypingStatus } from "@/app/hooks/useListenTypingStatus";
+import ProfilePicsThera from "@/public/t.jpg";
 
 function AppNav({ userInfo }) {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function AppNav({ userInfo }) {
   const { isTyping } = useListenTypingStatus(userId, toUserId);
 
   const recieversName = userInfo[0]?.therapist
-    ? "Dr. Thompson"
+    ? userInfo[0]?.therapist?.name
     : patientRecieverId?.patientName;
 
   // Initiate audio or video call
@@ -39,8 +40,16 @@ function AppNav({ userInfo }) {
         channel,
       },
     ]);
-    console.log("dispatch");
     dispatch(call({ inCall: true, channel, type, caller: userId }));
+
+    // await supabase.from("messages").insert([
+    //   {
+    //     message: "pending",
+    //     sender_id: userId,
+    //     reciever_id: toUserId,
+    //     channel,
+    //   },
+    // ]);
   };
 
   return (
@@ -58,7 +67,7 @@ function AppNav({ userInfo }) {
         ) : (
           <div className={styles.profileImageContainer}>
             <Image
-              src={Profile}
+              src={ProfilePicsThera}
               alt="Profile"
               layout="fill"
               objectFit="cover"
