@@ -47,8 +47,8 @@
   }
   
   .otpInput:focus {
-    border-color: #325343;
-    box-shadow: 0 0 0 1px #32534338;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary)38;
   }
   @media screen and (max-width: 350px) {
     .otpInput{
@@ -59,7 +59,7 @@
 }
   .verifyButton {
     padding: 0.6rem 1.5rem;
-    background-color: #325343;
+    background-color: var(--primary);
     color: white;
     border: none;
     border-radius: 6px;

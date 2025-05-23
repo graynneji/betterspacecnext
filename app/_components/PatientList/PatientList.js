@@ -11,6 +11,7 @@ import {
 import styles from "./PatientList.module.css";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { capitalizeFirstLetter } from "@/app/utils/capitalizeFirstLetter";
 
 // Mock data for patients
 const mockPatients = [
@@ -161,7 +162,9 @@ export default function PatientList({ patient, filteredPatients }) {
                     <div className={styles.patientIcon}>
                       <User size={16} />
                     </div>
-                    <h3 className={styles.patientName}>{patient.name}</h3>
+                    <h3 className={styles.patientName}>
+                      {capitalizeFirstLetter(patient?.name)}
+                    </h3>
                   </div>
                   <CaretRight
                     size={16}

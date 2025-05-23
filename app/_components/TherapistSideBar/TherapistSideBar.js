@@ -22,6 +22,8 @@ import { getPatientRecvId } from "@/app/store/getPatientRecvIdSlice";
 import { usePathname, useRouter } from "next/navigation";
 import PatientList from "../PatientList/PatientList";
 import CallHistory from "../CallHistory/CallHistory";
+import { formatCurrency } from "@/app/utils/formatCurrency";
+import { capitalizeFirstLetter } from "@/app/utils/capitalizeFirstLetter";
 
 // Navigation tabs data
 const messNav = [
@@ -94,7 +96,9 @@ const PatientCard = ({ patient, collectedMsg, onHandleClick, isActive }) => {
         </div>
         <div className={styles.patientInfo}>
           <div className={styles.patientHeader}>
-            <h4 className={styles.patientName}>{patient.name}</h4>
+            <h4 className={styles.patientName}>
+              {capitalizeFirstLetter(patient?.name)}
+            </h4>
             <span className={styles.messageTime}>
               {/* {patient.time || "1:00am"} */}
               {formatTime(collectedMsg?.created_at)}
@@ -118,14 +122,13 @@ const PatientCard = ({ patient, collectedMsg, onHandleClick, isActive }) => {
   );
 };
 
-const TherapistSidebar = ({ users }) => {
+const TherapistSidebar = ({ users, therapistInfo }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectPatient, setSelectPatient] = useState("");
   const dispatch = useDispatch();
   const pathname = usePathname();
-  console.log("pathname", pathname);
   const route = useRouter();
   const userId = users[0]?.user_id;
   const conversations = useMessPrev(userId);
@@ -139,6 +142,8 @@ const TherapistSidebar = ({ users }) => {
     // ||
     //   patient?.lastMessage?.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  console.log("hahah", therapistInfo);
 
   // Handle filter change
   const handleFilterChange = (filter) => {
@@ -159,23 +164,6 @@ const TherapistSidebar = ({ users }) => {
   return (
     <>
       <div className={styles.patientListContainer}>
-        <h3 className={styles.chatHeader}>Earnings</h3>
-        <Link href="/dashboard/wallet">
-          <div
-            className={`${styles.walletShortcut} ${
-              pathname == "/dashboard/wallet" ? styles.activeWallet : ""
-            }`}
-          >
-            <div className={styles.walletIcon}>
-              <Wallet size={20} weight="bold" />
-            </div>
-            <div className={styles.walletInfo}>
-              <span className={styles.walletLabel}>Your Wallet</span>
-              <span className={styles.walletBalance}>$1,450.00</span>
-            </div>
-            <CaretRight size={16} className={styles.walletArrow} />
-          </div>
-        </Link>
         <h3 className={styles.chatHeader}>Messages</h3>
         {/* Modern search input */}
         <div className={styles.searchContainer}>
@@ -295,6 +283,26 @@ const TherapistSidebar = ({ users }) => {
           </div>
           <span>Start New Conversation</span>
         </div>
+
+        <h3 className={styles.chatHeader}>Earnings</h3>
+        <Link href="/dashboard/wallet">
+          <div
+            className={`${styles.walletShortcut} ${
+              pathname == "/dashboard/wallet" ? styles.activeWallet : ""
+            }`}
+          >
+            <div className={styles.walletIcon}>
+              <Wallet size={20} weight="bold" />
+            </div>
+            <div className={styles.walletInfo}>
+              <span className={styles.walletLabel}>Your Wallet</span>
+              <span className={styles.walletBalance}>
+                {formatCurrency(therapistInfo?.therapistData[0]?.balance)}
+              </span>
+            </div>
+            <CaretRight size={16} className={styles.walletArrow} />
+          </div>
+        </Link>
       </div>
 
       {/* Quick actions at the bottom */}

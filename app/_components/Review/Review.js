@@ -78,11 +78,6 @@ export default function Review() {
               >
                 <Star
                   size={40}
-                  // fill={star <= (hoverRating || rating) ? "#fbbf24" : "none"}
-                  // stroke={
-                  //   star <= (hoverRating || rating) ? "red" : "red"
-                  // star <= (hoverRating || rating) ? "#fbbf24" : "red"
-                  // }
                   weight={star <= (hoverRating || rating) ? "fill" : "light"}
                   color="#fbbf24"
                 />
@@ -111,7 +106,7 @@ export default function Review() {
             onChange={(e) => setReview(e.target.value)}
             className={styles.textarea}
             placeholder="Share your thoughts..."
-            rows={5}
+            rows={20}
           />
         </div>
 

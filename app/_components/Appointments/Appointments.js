@@ -297,10 +297,13 @@ const Appointments = () => {
 
             <form onSubmit={handleSubmit} className={styles.modalBody}>
               <div className={styles.formGroup}>
-                <label className={styles.label}>Event Title</label>
+                <label htmlFor="title" className={styles.label}>
+                  Event Title
+                </label>
                 <input
                   type="text"
                   name="title"
+                  id="title"
                   value={newEvent.title}
                   onChange={handleInputChange}
                   placeholder="Enter event title"
@@ -311,10 +314,13 @@ const Appointments = () => {
               </div>
 
               <div className={styles.formGroup}>
-                <label className={styles.label}>Date & Time</label>
+                <label htmlFor="datetime" className={styles.label}>
+                  Date & Time
+                </label>
                 <input
                   type="datetime-local"
                   name="start"
+                  id="datetime"
                   value={formatDateForInput(newEvent.start)}
                   onChange={handleInputChange}
                   className={styles.input}

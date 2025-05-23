@@ -15,14 +15,16 @@ import CallUI from "../_components/CallUI/CallUI-v1";
 import Stream from "../_components/Stream/Stream";
 import SideBar from "../_components/SideBar/SideBar";
 import PricingModal from "../_components/PricingModal/PricingModal";
+import { getUsers } from "../_lib/data-services";
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const userInfo = await getUsers();
   return (
     <html lang="en">
       <body>
         <UserProvider>
           <div className={styles.appLayout}>
-            <SideBar />
+            <SideBar userInfo={userInfo} />
 
             <main
               style={{

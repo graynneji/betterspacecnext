@@ -44,7 +44,7 @@
   .avatarInitial {
     font-size: 20px;
     font-weight: 600;
-    color: #325343;
+    color: var(--primary);
   }
 
   .statusDot {

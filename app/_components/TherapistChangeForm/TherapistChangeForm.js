@@ -120,7 +120,7 @@ const styles = {
     border: "none",
   },
   primaryButton: {
-    backgroundColor: "#325343",
+    backgroundColor: "#008080",
     // backgroundColor: "#4299e1",
     color: "#fff",
   },

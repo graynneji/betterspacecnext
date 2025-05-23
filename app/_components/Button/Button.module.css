@@ -135,8 +135,8 @@ caret-color: transparent;
   }
   .reject{
     background: white;
-    color: #325343;
-    border: 1px solid #325343;
+    color: var(--primary);
+    border: 1px solid var(--primary);
     border-radius: 2.4rem;
     font-weight: 500;
     font-size: 1.6rem;
@@ -150,7 +150,7 @@ caret-color: transparent;
     font-size: 1.6rem;
     line-height: 2.4rem;
     letter-spacing: -0.004em;
-    background: #325343;
+    background: var(--primary);
     /* background: #022c22; */
     border-radius: 24px;
     padding: 8px 20px;
@@ -178,7 +178,7 @@ caret-color: transparent;
     line-height: 2.4rem;
     letter-spacing: -0.004em;
     border: none;
-    background-color: #325343;
+    background-color: var(--primary);
     color: white;
     width: 100%;
   }

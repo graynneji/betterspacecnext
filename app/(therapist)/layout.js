@@ -4,6 +4,7 @@ import "@/app/_styles/globalStyles.css";
 import {
   getAllPatientsAttachedToTherapist,
   getTherapistsPatients,
+  getTherpistInfo,
 } from "../_lib/data-services";
 
 import styles from "./layout.module.css";
@@ -13,6 +14,7 @@ import Stream from "../_components/Stream/Stream";
 
 export default async function DashboardLayout({ children }) {
   const therepistPatient = await getAllPatientsAttachedToTherapist();
+  const therapistInfo = await getTherpistInfo();
 
   return (
     <>
@@ -20,7 +22,10 @@ export default async function DashboardLayout({ children }) {
         <body>
           <UserProvider>
             <div className={styles.appLayout}>
-              <SideBar therepistPatient={therepistPatient} />
+              <SideBar
+                therepistPatient={therepistPatient}
+                therapistInfo={therapistInfo}
+              />
               {/* <SideBar /> */}
               <main
                 style={{

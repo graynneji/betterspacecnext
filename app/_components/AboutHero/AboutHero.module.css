@@ -1,5 +1,5 @@
 .heroSection {
-    background-color: #325343;
+    background-color: var(--primary);
     width: 100vw;
     padding: 0px 200px;
   }

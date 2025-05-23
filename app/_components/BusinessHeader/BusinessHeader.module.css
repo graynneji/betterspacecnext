@@ -1,6 +1,6 @@
 /* BusinessHeader.module.css */
 .hero {
-    background: #325343;
+    background: var(--primary);
     display: flex;
     padding: 64px 156px;
     gap: 32px;

@@ -1,7 +1,15 @@
 :root {
 
   /* Green */
-  --primary: #325343;
+  --primary: #008080;
+  --button-hover: #006666;
+--button-active: #004C4C;
+/* --color-text-primary:  */
+--primary-text: #1F2937;
+--secondary-text: #6B7280;
+--placeholder-text: #9CA3AF;
+  /* --primary: #00A86b; */
+  /* --primary: #8a9a5b; */
 --color-green-950: #022c22;
 --color-green-900: #064e3b;
 --color-green-800: #065f46;
@@ -37,6 +45,8 @@
 /* For dark mode */
 --image-grayscale: 0;
 --image-opacity: 100%;
+
+
 }
 *,
 *::before,
@@ -86,6 +96,20 @@ textarea,
 }
 button {
   cursor: pointer;
+}
+
+button:disabled{
+ background-color: #E0E0E0;
+  color: #9E9E9E;
+  border: 1px solid #CCCCCC;
+  opacity: 1;
+  cursor: not-allowed;
+}
+button:disabled:hover {
+  filter: none;
+   background-color: #E0E0E0;
+  color: #9E9E9E;
+  border: 1px solid #CCCCCC;
 }
 
 *:disabled {

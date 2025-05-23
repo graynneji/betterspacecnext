@@ -2,7 +2,7 @@
 import styles from "./SideBar.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/public/Company Logo.svg";
+import Logo from "@/public/ORANGE LOGO SVG.svg";
 import PatientsCard from "../PatientsCard/PatientsCard";
 import MenuSquare from "@/public/applicationIcon/squares-2x2.svg";
 import {
@@ -23,6 +23,10 @@ import {
   SignOut,
   DotsThreeOutline,
   Wallet,
+  CalendarCheck,
+  GrainsSlash,
+  UsersThree,
+  ChatDots,
 } from "@phosphor-icons/react/dist/ssr";
 import { PhoneCall, Star } from "@phosphor-icons/react";
 import ProfilePicsThera from "@/public/t.jpg";
@@ -33,6 +37,8 @@ import { sideBarToggle } from "@/app/store/sideBarSlice";
 import TherapistSidebar from "../TherapistSideBar/TherapistSideBar";
 import { RiSidebarFoldFill, RiSidebarUnfoldFill } from "react-icons/ri";
 import SidebarSkeleton from "../SideBarSkeleton/SidebarSkeleton";
+import MenuComponent from "../MenuComponent/menuComponent";
+import { usePathname, useSearchParams } from "next/navigation";
 
 // const messNav = [
 //   { menuName: "Sessions", MenuIcon: ChatCircleText },
@@ -74,115 +80,19 @@ const patientsData = [
   },
 ];
 
-// const messNav = [
-//   { menuName: "Chats", MenuIcon: ChatText },
-//   { menuName: "Patients", MenuIcon: Users },
-//   { menuName: "Schedule", MenuIcon: Calendar },
-// ];
-// const RenderPatientList = () => {
-//   return (
-//     <>
-//       <div className={styles.patientListContainer}>
-//         <h3 className={styles.chatHeader}>Messages</h3>
-
-//         {/* Modern search input */}
-//         <div className={styles.searchContainer}>
-//           <MagnifyingGlass
-//             size={18}
-//             weight="bold"
-//             className={styles.searchIcon}
-//           />
-//           <input
-//             type="text"
-//             placeholder="Search conversations..."
-//             className={styles.searchInput}
-//           />
-//         </div>
-
-//         {/* Navigation tabs with animated indicator */}
-//         <div className={styles.navigationTabs}>
-//           {messNav.map((item, index) => (
-//             <div
-//               className={`${styles.navTab} ${
-//                 index === 0 ? styles.activeTab : ""
-//               }`}
-//               key={item.menuName}
-//             >
-//               <item.MenuIcon size={20} weight="bold" />
-//               <span>{item.menuName}</span>
-//               {index === 0 && <div className={styles.activeIndicator}></div>}
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* Filter chips */}
-//         <div className={styles.filterChips}>
-//           <div className={`${styles.chip} ${styles.activeChip}`}>
-//             <span>All</span>
-//           </div>
-//           <div className={styles.chip}>
-//             <span>Unread</span>
-//           </div>
-//           <div className={styles.chip}>
-//             <span>Recent</span>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Patient conversations with visual indicators */}
-//       <div className={styles.patientsList}>
-//         <div className={styles.patientsListHeader}>
-//           <h4
-//             style={{
-//               letterSpacing: "-0.01em",
-//             }}
-//           >
-//             Recent Conversations
-//           </h4>
-//           <span className={styles.viewAll}>
-//             View all <CaretRight size={14} />
-//           </span>
-//         </div>
-
-//         <PatientsCard />
-
-//         <div className={styles.addNewChat}>
-//           <div className={styles.addIcon}>
-//             <Wallet size={20} weight="bold" />
-//           </div>
-//           <Link href="/dashboard/wallet">
-//             <span>Wallet</span>
-//           </Link>
-//         </div>
-//       </div>
-
-//       <div className={styles.profileDown}>
-//         <div className={styles.quickActions}>
-//           <div className={styles.actionItem}>
-//             <Clock size={20} weight="bold" />
-//             <span>History</span>
-//           </div>
-//           <div className={styles.actionItem}>
-//             <Bookmark size={20} weight="bold" />
-//             <span>Saved</span>
-//           </div>
-//           <div className={styles.actionItem}>
-//             <GearSix size={20} weight="bold" />
-//             <span>Settings</span>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
 const RenderTherapistDetails = ({ users }) => {
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const queryString = searchParams.toString();
+  const currentUrl = queryString ? `${pathname}?${queryString}` : pathname;
   const handleSignout = () => {
     startTransition(() => signOut());
   };
-
+  const handleOpenClose = () => {
+    setIsOpen((prev) => !prev);
+  };
   const therapist = {
     name: "Dr. Maya Thompson",
     isVerified: true,
@@ -193,6 +103,29 @@ const RenderTherapistDetails = ({ users }) => {
     specialties: ["Anxiety", "Depression", "PTSD"],
     location: "Los Angeles, CA",
   };
+
+  const menus = [
+    {
+      title: "Session",
+      Icon: ChatDots,
+      url: "/therapy",
+    },
+    {
+      title: "Appointment",
+      Icon: CalendarCheck,
+      url: "/therapy/appointment",
+    },
+    {
+      title: "CareFlow AI",
+      Icon: GrainsSlash,
+      url: "/therapy/careflow-ai",
+    },
+    {
+      title: "Community",
+      Icon: UsersThree,
+      url: `/therapy/community?userID=${users[0]?.user_id}&author=${users[0]?.name}`,
+    },
+  ];
 
   const getIcon = (method) => {
     switch (method) {
@@ -221,7 +154,6 @@ const RenderTherapistDetails = ({ users }) => {
     <div className={styles.therapistProfileContainer}>
       {/* Profile header with visual enhancements */}
       <div className={styles.profileHeader}>
-        {/* <div className={styles.coverImage}></div> */}
         <div className={styles.profileImageContainer}>
           <Image
             src={ProfilePicsThera}
@@ -247,11 +179,9 @@ const RenderTherapistDetails = ({ users }) => {
           </h2>
           <div className={styles.ratingBar}>
             <div className={styles.stars}>
-              <Star size={16} weight="fill" color="#fbbf24" />
-              <Star size={16} weight="fill" color="#fbbf24" />
-              <Star size={16} weight="fill" color="#fbbf24" />
-              <Star size={16} weight="fill" color="#fbbf24" />
-              <Star size={16} weight="fill" color="#fbbf24" />
+              {Array.from({ length: 5 }, (_, i) => (
+                <Star key={i} size={16} weight="fill" color="#fbbf24" />
+              ))}
             </div>
             <span className={styles.ratingText}>5.0 (126 reviews)</span>
           </div>
@@ -292,55 +222,42 @@ const RenderTherapistDetails = ({ users }) => {
             </div>
           </div>
         </div>
-        {/* 
-        <div className={styles.infoCard}>
-          <div className={styles.infoIconContainer}>
-            <MapPin size={20} weight="fill" className={styles.infoIcon} />
-          </div>
-          <div className={styles.infoContent}>
-            <span className={styles.infoLabel}>Location</span>
-            <p className={styles.infoValue}>{users[0]?.therapist?.authority}</p>
-          </div>
-        </div> */}
       </div>
 
       {/* Action buttons with enhanced styling */}
       <div className={styles.actionButtonsContainer}>
-        <Link href="/therapy/appointment">
-          <button className={`${styles.actionButton} ${styles.primaryButton}`}>
-            Book Appointment
-          </button>
-        </Link>
-
-        <div className={styles.secondaryActions}>
-          <button className={styles.secondaryButton}>
-            {" "}
-            <Link href="/therapy/change">Change Therapist </Link>
-          </button>
-
-          <button className={styles.secondaryButton}>
-            <Link href="/therapy/review">View Reviews </Link>
-          </button>
-        </div>
+        {menus.map((menu) => {
+          return (
+            <Link key={menu?.title} href={menu.url}>
+              <button
+                className={`${styles.actionButton} ${
+                  currentUrl == menu?.url
+                    ? styles.primaryButton
+                    : styles.secondaryButton
+                }`}
+              >
+                <menu.Icon size={24} />
+                {menu?.title}
+              </button>
+            </Link>
+          );
+        })}
 
         {/* Communication methods with modern styling */}
         <div className={styles.communicationSection}>
           <h3 className={styles.sectionTitle}>Communication Methods</h3>
           <div className={styles.commMethods}>
             {therapist.communication.map((method) => (
-              <Link href="/therapy" key={method} className={styles.commMethod}>
+              <div key={method} className={styles.commMethod}>
                 {getIcon(method)}
                 <span>{method}</span>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
 
         <div className={styles.utilityActions}>
-          <button
-            className={styles.utilityButton}
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
+          <button className={styles.utilityButton} onClick={handleOpenClose}>
             <DotsThreeOutline size={20} weight="bold" />
             More Options
           </button>
@@ -350,7 +267,9 @@ const RenderTherapistDetails = ({ users }) => {
             {isPending ? "Logging out..." : "Logout"}
           </button>
 
-          {isOpen && <div>kjdffffffffffffffffffffffffffff</div>}
+          {isOpen && (
+            <MenuComponent isOpen={isOpen} handleOpenClose={handleOpenClose} />
+          )}
         </div>
       </div>
     </div>
@@ -373,20 +292,19 @@ function MapPin(props) {
   );
 }
 
-const RenderComponent = ({ users }) => {
+const RenderComponent = ({ users, therapistInfo }) => {
   const therapist = users[0]?.therapist;
 
   return therapist ? (
     <RenderTherapistDetails users={users} />
   ) : therapist === undefined ? (
-    // <p>Loading or unknown role...</p>
     <SidebarSkeleton />
   ) : (
-    <TherapistSidebar users={users} />
+    <TherapistSidebar users={users} therapistInfo={therapistInfo} />
   );
 };
 
-function SideBar() {
+function SideBar({ userInfo, therapistInfo }) {
   const dispatch = useDispatch();
   const sidebar = useSelector((state) => state.sideBar.sidebar);
   const users = useSelector((state) => state.getStoredUsers.users);
@@ -398,12 +316,6 @@ function SideBar() {
   if (sidebar) {
     return (
       <div className={styles.collapsedSidebar}>
-        {/* <Sidebar
-          size={28}
-          weight="fill"
-          onClick={handleSidebarToggle}
-          className={styles.toggleIcon}
-          /> */}
         <RiSidebarUnfoldFill
           size={24}
           onClick={handleSidebarToggle}
@@ -417,20 +329,15 @@ function SideBar() {
     <section className={styles.sideBarContainer}>
       <div className={styles.sideBarHeader}>
         <Link href="/" className={styles.logoLink}>
-          {/* <Image
-            width={130}
-            height={40}
+          <Image
+            width={100}
+            height={15}
             src={Logo}
             alt="Logo"
             className={styles.logo}
-          /> */}
+          />
         </Link>
-        {/* <Sidebar
-          size={24}
-          weight="fill"
-          onClick={handleSidebarToggle}
-          className={styles.toggleIcon}
-          /> */}
+
         <RiSidebarFoldFill
           size={24}
           onClick={handleSidebarToggle}
@@ -438,7 +345,7 @@ function SideBar() {
         />
       </div>
 
-      <RenderComponent users={users} />
+      <RenderComponent users={users} therapistInfo={therapistInfo} />
     </section>
   );
 }

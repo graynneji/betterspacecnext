@@ -58,15 +58,10 @@ export async function login(formData) {
     email: formData.get("email"),
     password: formData.get("password"),
   });
-  // try {
   if (!validatedFields.success) {
-    // return "Invalid inputs, please check your inputs";
     const message = "Invalid inputs, please check your inputs";
     redirect(`/login?error=${encodeURIComponent(message)}`);
   }
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-
   const { data, error } = await supabase.auth.signInWithPassword({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -74,7 +69,6 @@ export async function login(formData) {
 
   console.log("data", error, data);
   const designation = data?.user?.user_metadata?.designation == "therapist";
-  // console.log(designation);
   if (!error) {
     const redirectUrl = designation ? "/dashboard" : "/therapy";
     return redirectUrl;
@@ -203,11 +197,71 @@ export const sendMessage = async (users, formData) => {
 };
 
 export async function updateViewNotes(patientId, formData) {
-  const newNote = formData.get("note");
-  if (newNote.length > 40) {
-    console.log("error");
-  }
+  const note = formData.get("note");
   const color = formData.get("color");
-  const data = await updateNote(patientId, newNote, color);
+
+  const { data: patientData, error } = await supabase
+    .from("patients")
+    .select("notes")
+    .eq("patient_id", patientId)
+    .single();
+
+  if (error) {
+    throw new Error("Could not add note");
+  }
+
+  const patientNotes = patientData?.notes ?? [];
+
+  const newNote = {
+    id: Date.now(),
+    text: note,
+    color: color,
+    timestamp: new Date().toISOString(),
+  };
+
+  const newNotes = [...patientNotes, newNote];
+
+  const { data, error: updateNotesError } = await supabase
+    .from("patients")
+    .update({ notes: newNotes })
+    .eq("patient_id", patientId)
+    .select();
+
+  if (updateNotesError) {
+    console.error("Update error:", updateNotesError);
+    return null;
+  }
+
   return data;
+}
+
+// schedule an appointment
+export async function appointment(options, formData) {
+  const title = formData.get("title");
+  const datetime = formData.get("datetime");
+}
+
+// create post in community
+export async function createPost({ userID, author }, formData) {
+  const title = formData.get("title");
+  const content = formData.get("content");
+  const category = formData.get("category").toLowerCase();
+  const tags = formData.get("tags");
+  const { data: categoryData, error: categoryError } = await supabase
+    .from("categories_article")
+    .select("*")
+    .eq("category_name", category);
+  console.log("category", categoryData);
+  const post = {
+    author_id: userID,
+    title: title,
+    content: content,
+    category: categoryData[0]?.id,
+    tags: tags,
+    author: author,
+  };
+
+  const { data, error } = await supabase.from("article").insert([post]);
+  console.log(data, error);
+  return { data, error };
 }

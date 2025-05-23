@@ -10,6 +10,7 @@ import { supabase } from "@/app/_lib/supabase";
 import Profile from "@/public/applicationIcon/confident-b.png";
 import { useListenTypingStatus } from "@/app/hooks/useListenTypingStatus";
 import ProfilePicsThera from "@/public/t.jpg";
+import { capitalizeFirstLetter } from "@/app/utils/capitalizeFirstLetter";
 
 function AppNav({ userInfo }) {
   const dispatch = useDispatch();
@@ -41,15 +42,6 @@ function AppNav({ userInfo }) {
       },
     ]);
     dispatch(call({ inCall: true, channel, type, caller: userId }));
-
-    // await supabase.from("messages").insert([
-    //   {
-    //     message: "pending",
-    //     sender_id: userId,
-    //     reciever_id: toUserId,
-    //     channel,
-    //   },
-    // ]);
   };
 
   return (
@@ -77,7 +69,9 @@ function AppNav({ userInfo }) {
         <div className={styles.userInfo}>
           <h2 className={styles.userName}>
             {userInfo[0]?.therapist ? "Therapy with" : "Patient"}{" "}
-            <span className={styles.highlightName}>{recieversName}</span>
+            <span className={styles.highlightName}>
+              {capitalizeFirstLetter(recieversName)}
+            </span>
           </h2>
           <p className={styles.userRole}>
             {!isTyping ? (

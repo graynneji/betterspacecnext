@@ -25,7 +25,12 @@
     margin-bottom: 1rem;
     color: var(--primary);
   }
-  
+  .characterCount {
+  font-size: 0.875rem;
+  color: #6b7280;
+  /* margin-top: 0.25rem; */
+  margin-bottom: 1rem;
+}
   /* .noteTextarea {
     width: 100%;
     padding: 0.75rem;
@@ -66,9 +71,10 @@
     color: white;
     border-radius: 0.5rem;
     cursor: pointer;
+    border: none;
   }
   
   .saveBtn:hover {
-    background-color: #325343eb;
+    background-color: var(--primary);
   }
   

@@ -164,18 +164,20 @@
   .addNoteBtn {
     background-color: var(--primary);
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 9999px;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
+    border: none;
     /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     transition: background-color 0.2s;
     /* transition: background-color 0.2s, box-shadow 0.2s; */
   }
   
   .addNoteBtn:hover {
-    background-color: #325343f3;
+    background-color: var(--button-hover);
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); */
   }
   

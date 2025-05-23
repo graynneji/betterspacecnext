@@ -11,6 +11,7 @@ import {
   Eye,
   EyeClosed,
 } from "@phosphor-icons/react/dist/ssr";
+import { formatCurrency } from "@/app/utils/formatCurrency";
 
 function TherapistWallet({ therapistData }) {
   console.log(therapistData);
@@ -91,17 +92,6 @@ function TherapistWallet({ therapistData }) {
   };
 
   const toggleShowBalance = () => setShowBalance(!showBalance);
-
-  const formatCurrency = (amount) => {
-    // Format the number with commas and decimal places
-    const formattedNumber = new Intl.NumberFormat("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(amount);
-
-    // Add the Naira symbol manually
-    return `₦${formattedNumber}`;
-  };
 
   const handleWithdraw = () => {
     // Implement withdrawal logic

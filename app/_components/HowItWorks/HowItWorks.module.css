@@ -133,5 +133,5 @@ background-color: #C4B1F9;
         }
         
         .custom .shape {
-            fill: #325343;
+            fill: var(--primary);
         }

@@ -83,8 +83,8 @@
   }
   
   .receiverBubble {
-    background-color: #325343;
-    /* background-color: #325343dc; */
+    background-color: var(--primary);
+    /* background-color: var(--primary)dc; */
     /* background-color: white; */
     color: white;
     border: 1px solid rgba(0, 0, 0, 0.08);

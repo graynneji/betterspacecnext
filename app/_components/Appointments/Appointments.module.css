@@ -2,11 +2,11 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --fc-border-color: #e2e8f0;
   --fc-button-text-color: #fff;
-  --fc-button-bg-color: #325343e6;
+  --fc-button-bg-color: var(--primary);
   --fc-button-border-color: var(--primary);
-  --fc-button-hover-bg-color: var(--primary);
+  --fc-button-hover-bg-color: var(--button-hover);
   --fc-button-hover-border-color: var(--primary);
-  --fc-button-active-bg-color: var(--primary);
+  --fc-button-active-bg-color: var(--button-active);
   --fc-button-active-border-color: var(--primary);
   --fc-event-bg-color: #3b82f6;
   --fc-event-border-color: #3b82f6;
@@ -22,7 +22,30 @@
   background-color: white;
   color: #1a202cd4;
   font-size: 12px;
+  overflow-y: auto;
+  /* height: 100vh; */
+ height: calc(100vh - 7rem);
+
 }
+
+   .calendarContainer::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .calendarContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .calendarContainer::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  .calendarContainer::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+  }
+
 
 .container {
   padding: 1rem;
@@ -55,7 +78,7 @@
   padding: 0 0.5rem;
 }
 .calendarContainer :global(.fc-event-title) {
-font-size: 12px;
+font-size: 10px;
 }
 .calendarContainer :global(.fc-event-time) {
 font-size: 8px;
@@ -365,7 +388,7 @@ font-size: 8px;
 }
 
 .buttonSave:hover {
-  background-color: #325343e6;
+  background-color: var(--primary)e6;
 }
 
 @keyframes fadeIn {

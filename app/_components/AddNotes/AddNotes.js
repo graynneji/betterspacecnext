@@ -10,19 +10,18 @@ function AddNotes({ setFormVisible, setNewNote, addNote, newNote, patientId }) {
     return ["#fef3c7", "#dbeafe", "#d1fae5", "#ede9fe", "#fce7f3"];
   }, []);
   const [selectedColor, setSelectedColor] = useState("");
+  const [character, setCharacter] = useState({
+    note: "",
+  });
+  const disabled = character.note.length > 300 || character.note.length < 10;
 
-  // const debounce = (fn, delay) => {
-  //   let timeout;
-  //   return (...arg) => {
-  //     clearTimeout(timeout);
-  //     timeout = setTimeout(() => {
-  //       fn(...arg);
-  //     }, delay);
-  //   };
-  // };
-  // const handleChange = debounce((value) => {
-  //   setNewNote(value);
-  // }, 500);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCharacter((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   useEffect(() => {
     function getRandomNoteColor(array) {
@@ -60,7 +59,11 @@ function AddNotes({ setFormVisible, setNewNote, addNote, newNote, patientId }) {
             name="note"
             id="note"
             placeholder="Enter your note here..."
+            onHandleChange={handleChange}
           />
+          <div className={styles.characterCount}>
+            {character.note.length}/300 characters
+          </div>
           <input type="hidden" name="color" value={selectedColor} />
           <div className={styles.modalActions}>
             <button
@@ -69,7 +72,7 @@ function AddNotes({ setFormVisible, setNewNote, addNote, newNote, patientId }) {
             >
               Cancel
             </button>
-            <button className={styles.saveBtn}>
+            <button disabled={disabled} className={styles.saveBtn}>
               {/* <button onClick={addNote} className={styles.saveBtn}> */}
               Save Note
             </button>

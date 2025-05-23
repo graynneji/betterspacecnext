@@ -7,7 +7,7 @@
   justify-content: center;
   /* align-items: center; */
   /* background: #022c22; */
-  background: #325343;
+  background: var(--primary);
   width: 100vw;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   position: relative;

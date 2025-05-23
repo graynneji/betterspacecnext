@@ -40,7 +40,7 @@ export async function getTherpistInfo() {
     .from("therapist")
     .select("id, balance, pending, total_earning")
     .eq("therapist_id", userId);
-
+  console.log(therapistError);
   return { therapistData, desgn };
 }
 

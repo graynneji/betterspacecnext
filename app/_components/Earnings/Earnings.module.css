@@ -1,0 +1,65 @@
+  .chatHeader {
+    /* margin: 0 0 16px;
+    font-size: 20px; */
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3748;
+    letter-spacing: -0.01em;
+  }
+
+   /* Wallet shortcut styles */
+  .walletShortcut {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #ebf4ef;
+    margin: 0 0 20px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #ebf4ef;
+  }
+  
+.activeWallet{
+  border-color: var(--primary);
+}
+
+  .walletShortcut:hover {
+    background-color: #dbeadf;
+  }
+  
+  .walletIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    margin-right: 12px;
+  }
+  
+  .walletInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .walletLabel {
+    font-size: 13px;
+    color: #4a5568;
+    margin-bottom: 4px;
+  }
+  
+  .walletBalance {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  
+  .walletArrow {
+    color: #8a9199;
+  }
+  

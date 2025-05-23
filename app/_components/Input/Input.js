@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 function Input({
+  onHandleChange,
   type,
   label,
   id,
@@ -148,6 +149,7 @@ function Input({
           className={styles.noteTextarea}
           name={id}
           id={id}
+          onChange={onHandleChange}
         />
       )}
     </>

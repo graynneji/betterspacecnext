@@ -124,7 +124,7 @@
     font-size: 1.6rem;
     line-height: 2rem;
     letter-spacing: -0.0004em;
-    color: #325343;
+    color: var(--primary);
   }
   .rightHero {
     flex: 1;

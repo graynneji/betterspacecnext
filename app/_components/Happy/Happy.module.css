@@ -1,7 +1,7 @@
 /* Happy.module.css */
 
 .styledHappy {
-    background-color: #325343;
+    background-color: var(--primary);
     padding: 100px 200px;
     position: relative;
     overflow: hidden;

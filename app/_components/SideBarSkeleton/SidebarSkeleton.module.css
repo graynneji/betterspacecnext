@@ -255,6 +255,14 @@
   overflow-y: auto;
 }
 
+  .navigation::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .navigation::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 10px;
+  }
 .menuSection {
   margin-bottom: 32px;
   padding: 0 20px;

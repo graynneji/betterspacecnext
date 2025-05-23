@@ -55,7 +55,7 @@
   }
   
   .toggleIcon {
-    color: #325343;
+    color: #2d3748;
     cursor: pointer;
     transition: all 0.2s ease;
   }
@@ -152,7 +152,7 @@
   }
   
   .activeTab {
-    color: #325343;
+    color: var(--primary);
     font-weight: 600;
   }
   
@@ -162,7 +162,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background-color: #325343;
+    background-color: var(--primary);
     border-radius: 2px;
   }
   
@@ -188,7 +188,7 @@
   }
   
   .activeChip {
-    background-color: #325343;
+    background-color: var(--primary);
     color: white;
   }
   
@@ -212,7 +212,7 @@
   
   .viewAll {
     font-size: 12px;
-    color: #325343;
+    color: var(--primary);
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -240,7 +240,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #325343;
+    background-color: var(--primary);
     color: white;
     margin-right: 12px;
   }
@@ -301,7 +301,7 @@
     height: 80px;
     /* height: 120px; */
     /* background: linear-gradient(135deg, #B1D8FC 0%, #b1d8fcc0 100%); */
-    /* background: linear-gradient(135deg, #325343 0%, #5a896e 100%); */
+    /* background: linear-gradient(135deg, var(--primary) 0%, #5a896e 100%); */
     /* border-radius: 0 0 16px 16px; */
   }
   
@@ -373,7 +373,7 @@
     padding: 16px;
     background-color: #f9f9f9;
     border-radius: 12px;
-    border-left: 4px solid #325343;
+    border-left: 4px solid var(--primary);
     max-width: 340px;
   }
   
@@ -416,7 +416,7 @@
     background-color: #f0f7f4;
     border-radius: 8px;
     margin-right: 12px;
-    color: #325343;
+    color: var(--primary);
   }
   
   .infoContent {
@@ -448,14 +448,14 @@
   .specialtyTag {
     padding: 4px 10px;
     background-color: #edf7f0;
-    color: #325343;
+    color: #4a5568;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 500;
   }
   
   .communicationSection {
-    padding: 16px 20px;
+    padding: 16px 0px;
     margin-bottom: 24px;
     /* border-top: 1px solid #f0f0f0; */
     margin-top: 20px;
@@ -510,6 +510,7 @@
   .actionButton {
     width: 100%;
     padding: 0;
+    margin-bottom: 16px;
     border: none;
     background: none;
     cursor: pointer;
@@ -518,18 +519,41 @@
     font-weight: 500;
     border-radius: 8px;
     transition: all 0.3s ease;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
   }
-  
+
+.iconPositioning{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
   .primaryButton {
     padding: 12px;
-    background-color: #325343;
+    background-color: var(--primary);
     color: white;
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
     box-shadow: 0 4px 12px rgba(50, 83, 67, 0.2);
   }
   
+.subButton{
+   border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+     flex: 1;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-self: flex-start;
+}
+
   .primaryButton:hover {
-    background-color: #264235;
+    background-color: var(--button-hover);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(50, 83, 67, 0.3);
   }
@@ -543,8 +567,8 @@
   .secondaryButton {
     flex: 1;
     padding: 12px;
-    background-color: #f0f7f4;
-    color: #325343;
+    /* background-color: #f0f7f4; */
+    color: #4a5568;
     border: none;
     border-radius: 8px;
     font-size: 14px;
@@ -560,6 +584,7 @@
   .utilityActions {
     display: flex;
     justify-content: space-between;
+    position: relative;
   }
   
   .utilityButton, .logoutButton {
